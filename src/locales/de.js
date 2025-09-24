@@ -19,7 +19,6 @@ export const de = {
   // Extended introduction
   extendedIntro: 'Ich bin ein 39-jähriger, ambitionierter und lebensfroher junger Mann voller Ideen und Pläne. Ich wohne in Schattendorf und plane meine Zukunft in Österreich, da meine Partnerin und ein großer Teil meiner Familie bereits hier leben oder arbeiten. Ich habe eine Bewegungseinschränkung, die eine Anerkennung als Person mit besonderen Bedürfnissen zur Folge hat, was für Unternehmen steuerliche Vorteile bietet. Dies beeinträchtigt jedoch weder meine Mobilität noch meine Arbeitsleistung. Da ich bisher ausschließlich für ungarische multinationale Unternehmen gearbeitet habe, lerne ich gerne Deutsch, jedoch reichen meine aktuellen Deutschkenntnisse noch nicht für fließende mündliche Kommunikation aus.',
 
-  
   // Services section
   whatIDo: 'Was ich mache',
   myServices: 'Meine Dienstleistungen',
