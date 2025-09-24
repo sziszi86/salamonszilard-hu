@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { linkClick, toggleMenu } from "../utils";
+import LanguageSwitcher from "../components/LanguageSwitcher";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Header = () => {
+  const { t } = useLanguage();
   const [day, setDay] = useState(true);
   useEffect(() => {
     if (day) {
@@ -13,7 +16,6 @@ const Header = () => {
     }
   }, [day]);
 
-  const [pageToggle, setPageToggle] = useState(false);
 
   return (
     <Fragment>
@@ -29,8 +31,8 @@ const Header = () => {
                     <img
                       width={228}
                       height={38}
-                      src="assets/images/logo2.png"
-                      alt=""
+                      src="/assets/images/logo2.png"
+                      alt="Salamon Szilárd"
                     />
                   </a>
                 </Link>
@@ -79,6 +81,8 @@ const Header = () => {
                   </svg>
                 </span>
               </a>
+              {/* Language Switcher */}
+              <LanguageSwitcher />
               {/* menu btn */}
               <a href="#" className="menu-btn" onClick={(e) => toggleMenu(e)}>
                 <span />
@@ -99,7 +103,7 @@ const Header = () => {
                                   className="splitting-text-anim-2"
                                   data-splitting="chars"
                                 >
-                                  Home
+                                  {t('home', 'navigation')}
                                 </a>
                               </Link>
                             </li>
@@ -108,9 +112,9 @@ const Header = () => {
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
                                 href="/#services-section"
-                                onClick={() => linkClick()}
+                                onClick={() => linkClick('#services-section')}
                               >
-                                Services
+                                {t('services', 'navigation')}
                               </a>
                             </li>
                             <li className="menu-item">
@@ -118,9 +122,9 @@ const Header = () => {
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
                                 href="/#skills-section"
-                                onClick={() => linkClick()}
+                                onClick={() => linkClick('#skills-section')}
                               >
-                                Skills
+                                {t('skills', 'navigation')}
                               </a>
                             </li>
                             <li className="menu-item">
@@ -128,9 +132,9 @@ const Header = () => {
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
                                 href="/#works-section"
-                                onClick={() => linkClick()}
+                                onClick={() => linkClick('#works-section')}
                               >
-                                Works
+                                {t('works', 'navigation')}
                               </a>
                             </li>
                             <li className="menu-item">
@@ -138,29 +142,9 @@ const Header = () => {
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
                                 href="/#resume-section"
-                                onClick={() => linkClick()}
+                                onClick={() => linkClick('#resume-section')}
                               >
-                                Resume
-                              </a>
-                            </li>
-                            <li className="menu-item">
-                              <a
-                                className="splitting-text-anim-2"
-                                data-splitting="chars"
-                                href="/#testimonials-sec
-                                onClick={() => linkClick()}tion"
-                              >
-                                Testimonials
-                              </a>
-                            </li>
-                            <li className="menu-item">
-                              <a
-                                className="splitting-text-anim-2"
-                                data-splitting="chars"
-                                href="/#pricing-section"
-                                onClick={() => linkClick()}
-                              >
-                                Pricing
+                                {t('resume', 'navigation')}
                               </a>
                             </li>
                             <li className="menu-item">
@@ -168,9 +152,9 @@ const Header = () => {
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
                                 href="/#blog-section"
-                                onClick={() => linkClick()}
+                                onClick={() => linkClick('#blog-section')}
                               >
-                                Blog
+                                {t('blog', 'navigation')}
                               </a>
                             </li>
                             <li className="menu-item">
@@ -178,85 +162,16 @@ const Header = () => {
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
                                 href="/#contact-section"
-                                onClick={() => linkClick()}
+                                onClick={() => linkClick('#contact-section')}
                               >
-                                Contact
+                                {t('contact', 'navigation')}
                               </a>
-                            </li>
-                            <li
-                              className={`menu-item menu-item-has-children has-children ${
-                                pageToggle ? "opened" : "closed"
-                              }`}
-                            >
-                              <a
-                                className="splitting-text-anim-2"
-                                data-splitting="chars"
-                                onClick={() => setPageToggle(!pageToggle)}
-                              >
-                                Pages
-                                <i className="fas fa-chevron-down"></i>
-                              </a>
-
-                              <ul
-                                className="sub-menu"
-                                style={{
-                                  marginTop: "1rem",
-                                  display: `${pageToggle ? "block" : "none"}`,
-                                }}
-                              >
-                                <li className="menu-item">
-                                  <Link legacyBehavior href="/works-list">
-                                    <a
-                                      className="splitting-text-anim-1"
-                                      data-splitting="chars"
-                                    >
-                                      Works (List)
-                                    </a>
-                                  </Link>
-                                </li>
-                                <li className="menu-item">
-                                  <Link legacyBehavior href="/works">
-                                    <a
-                                      className="splitting-text-anim-1"
-                                      data-splitting="chars"
-                                    >
-                                      Works (Grid)
-                                    </a>
-                                  </Link>
-                                </li>
-                                <li className="menu-item">
-                                  <Link legacyBehavior href="/work-single">
-                                    <a
-                                      className="splitting-text-anim-1"
-                                      data-splitting="chars"
-                                    >
-                                      Work Single Page
-                                    </a>
-                                  </Link>
-                                </li>
-                                <li className="menu-item">
-                                  <Link legacyBehavior href="/blog">
-                                    <a
-                                      className=" splitting-text-anim-1"
-                                      data-splitting="chars"
-                                    >
-                                      Blog
-                                    </a>
-                                  </Link>
-                                </li>
-                                <li className="menu-item">
-                                  <Link legacyBehavior href="/blog-single">
-                                    <a
-                                      className="splitting-text-anim-1"
-                                      data-splitting="chars"
-                                    >
-                                      Single Post
-                                    </a>
-                                  </Link>
-                                </li>
-                              </ul>
                             </li>
                           </ul>
+                        </div>
+                        {/* Language Switcher in Menu */}
+                        <div className="menu-language-switcher">
+                          <LanguageSwitcher />
                         </div>
                         {/* social */}
                         <div className="menu-social-links">

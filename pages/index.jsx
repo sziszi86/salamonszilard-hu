@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Resume from "../src/components/Resume";
 import Layout from "../src/layouts/Layout";
+import { useLanguage } from "../src/contexts/LanguageContext";
 import {
   servicesSliderProps,
-  testimonialsSliderProps,
 } from "../src/sliderProps";
 const PortfolioIsotope = dynamic(
   () => import("../src/components/PortfolioIsotope"),
@@ -13,9 +13,19 @@ const PortfolioIsotope = dynamic(
     ssr: false,
   }
 );
-const Index = () => {
+const Index = ({ latestPosts }) => {
+  const { t, language, isClient } = useLanguage();
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(language === 'hu' ? 'hu-HU' : 'de-DE', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
   return (
-    <Layout pageClassName={"home"}>
+    <Layout key={language} pageClassName={"home"}>
       {/* Section - Hero Started */}
       <section
         className="lui-section lui-section-hero lui-gradient-top"
@@ -33,7 +43,7 @@ const Index = () => {
                   <div className="lui-subtitle">
                     <span>
                       {" "}
-                      Hello, <b>my name is</b>
+                      {t('greeting')}, <b>{t('myNameIs')}</b>
                     </span>
                   </div>
                   <h1
@@ -42,32 +52,19 @@ const Index = () => {
                     data-animate="active"
                   >
                     <span>
-                      <b>Zoé</b> Miller{" "}
+                      <b>{t('name')}</b>
                     </span>
                   </h1>
                   <div className="label lui-subtitle">
                     {" "}
-                    I am <strong>Web Developer</strong>
+                    {t('iAm')} <strong>{t('title')}</strong>
                   </div>
                 </div>
                 <div className="description">
                   <div>
                     <p>
-                      From France, Paris. I have rich experience in web design,
-                      also I am good at wordpress. I love to talk with you about
-                      our unique.
+                      {t('extendedIntro')}
                     </p>
-                  </div>
-                  <div className="social-links">
-                    <a target="_blank" rel="nofollow" href="#">
-                      <i aria-hidden="true" className="fab fa-twitter" />
-                    </a>
-                    <a target="_blank" rel="nofollow" href="#">
-                      <i aria-hidden="true" className="fab fa-dribbble" />
-                    </a>
-                    <a target="_blank" rel="nofollow" href="#">
-                      <i aria-hidden="true" className="fab fa-behance" />
-                    </a>
                   </div>
                 </div>
                 <div className="bts">
@@ -76,11 +73,10 @@ const Index = () => {
                     href="https://drive.google.com/"
                     className="btn"
                   >
-                    <span>Download CV</span>
+                    <span>{t('downloadCV')}</span>
                   </a>
                   <a href="#skills-section" className="btn-lnk">
-                    {" "}
-                    My Skills{" "}
+                    {t('mySkills')}
                   </a>
                 </div>
               </div>
@@ -91,7 +87,7 @@ const Index = () => {
                 <img
                   decoding="async"
                   src="assets/images/profile2.png"
-                  alt="<b>Zoé</b> Miller"
+                  alt={t('name')}
                 />
                 <span className="circle circle-1" />
                 <span
@@ -116,16 +112,16 @@ const Index = () => {
                   <ul>
                     <li>
                       <span className="num">
-                        12 <strong>+</strong>
+                        15 <strong>+</strong>
                       </span>
                       <span className="value">
-                        Years of <strong>Experience</strong>
+                        {t('yearsExperience')} <strong>{t('experience', 'common')}</strong>
                       </span>
                     </li>
                     <li>
-                      <span className="num">330</span>
+                      <span className="num">150</span>
                       <span className="value">
-                        Completed <strong>Projects</strong>
+                        {t('completedProjects')} <strong>{t('projects', 'common')}</strong>
                       </span>
                     </li>
                   </ul>
@@ -152,7 +148,7 @@ const Index = () => {
                 data-splitting="words"
                 data-animate="active"
               >
-                <span> What I Do </span>
+                <span suppressHydrationWarning> {t('whatIDo')} </span>
               </h2>
               <div
                 className="m-subtitle splitting-text-anim-1 scroll-animate"
@@ -160,8 +156,7 @@ const Index = () => {
                 data-animate="active"
               >
                 <span>
-                  {" "}
-                  my <b>Services</b>{" "}
+                  {t('myServices')}
                 </span>
               </div>
             </div>
@@ -178,23 +173,19 @@ const Index = () => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> Web Development </span>
+                    <span> {t('webDevelopment')} </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> Web Design &amp; Logo </span>
+                    <span> {t('webDesignLogo')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
-                      {" "}
-                      Web designers craft the overall vision &amp; plan for a
-                      website layout. Professional logo development: Business,
-                      Company, or Personal.{" "}
+                      {t('webDesignDescription')}
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
-                    {" "}
-                    See Pricing{" "}
+                  <a href="#contact-section" className="lnk">
+                    {t('contactMe')}
                   </a>
                   <div
                     className="image"
@@ -207,24 +198,21 @@ const Index = () => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> Apps Development </span>
+                    <span> {t('appsDevelopment')} </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> iOS &amp; Android </span>
+                    <span> {t('iosAndroid')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
                       <p>
-                        Design Software applications to run on mobile devices.
-                        Modern and mobile-ready application that will help you
-                        reach all of your marketing.
+                        {t('appsDescription')}
                       </p>
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
-                    {" "}
-                    See Pricing{" "}
+                  <a href="#contact-section" className="lnk">
+                    {t('contactMe')}
                   </a>
                   <div
                     className="image"
@@ -237,23 +225,19 @@ const Index = () => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> Game Development </span>
+                    <span> {t('gameDevelopment')} </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> Unity &amp; Unreal Engine </span>
+                    <span> {t('unityUnreal')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
-                      {" "}
-                      Creating games &amp; describes the design, development and
-                      release of a game. Developing unique mobile android and
-                      ios games.{" "}
+                      {t('gameDescription')}
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
-                    {" "}
-                    See Pricing{" "}
+                  <a href="#contact-section" className="lnk">
+                    {t('contactMe')}
                   </a>
                   <div
                     className="image"
@@ -266,23 +250,19 @@ const Index = () => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> Advertising </span>
+                    <span> {t('advertising')} </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> Google Ads </span>
+                    <span> {t('googleAds')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
-                      {" "}
-                      Advertising services include: Google search result pages,
-                      gmails, YouTube and other websites participated in Google
-                      Ads program.{" "}
+                      {t('advertisingDescription')}
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
-                    {" "}
-                    See Pricing{" "}
+                  <a href="#contact-section" className="lnk">
+                    {t('contactMe')}
                   </a>
                   <div
                     className="image"
@@ -295,23 +275,21 @@ const Index = () => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> Music Writing </span>
+                    <span> {t('musicWriting')} </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> Sound Track </span>
+                    <span> {t('soundTrack')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
                       <p>
-                        Music copying, writing, creating, transcription and
-                        composition services.
+                        {t('musicDescription')}
                       </p>
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
-                    {" "}
-                    See Pricing{" "}
+                  <a href="#contact-section" className="lnk">
+                    {t('contactMe')}
                   </a>
                   <div
                     className="image"
@@ -324,7 +302,7 @@ const Index = () => {
               <div className="swiper-pagination" />
             </Swiper>
             <div className="lui-bgtitle">
-              <span> Services </span>
+              <span> {t('myServices')} </span>
             </div>
           </div>
         </div>
@@ -340,16 +318,15 @@ const Index = () => {
                 data-splitting="words"
                 data-animate="active"
               >
-                <span> Professional Skills </span>
+                <span suppressHydrationWarning> {t('professionalSkills')} </span>
               </h2>
               <div
                 className="m-subtitle splitting-text-anim-1 scroll-animate"
                 data-splitting="words"
                 data-animate="active"
               >
-                <span>
-                  {" "}
-                  my <b>Talent</b>{" "}
+                <span suppressHydrationWarning>
+                  {t('myTalent')}
                 </span>
               </div>
             </div>
@@ -579,513 +556,7 @@ const Index = () => {
       </section>
 
       {/* Section - Resume */}
-      <Resume />
-      {/* Section - Testimonials */}
-      <section
-        className="lui-section lui-gradient-center"
-        id="testimonials-section"
-      >
-        {/* Heading */}
-        <div className="lui-heading">
-          <div className="container">
-            <div className="m-titles align-center">
-              <h2
-                className="m-title splitting-text-anim-1 scroll-animate"
-                data-splitting="words"
-                data-animate="active"
-              >
-                <span> Testimonials </span>
-              </h2>
-              <div
-                className="m-subtitle splitting-text-anim-1 scroll-animate"
-                data-splitting="words"
-                data-animate="active"
-              >
-                <span>
-                  {" "}
-                  what <b>Customers Say</b>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Testimonials */}
-        <div className="v-line v-line-right">
-          <div className="container">
-            <Swiper
-              {...testimonialsSliderProps}
-              className="swiper-container js-testimonials scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <SwiperSlide className="swiper-slide">
-                <div className="testimonials-item">
-                  <div className="image">
-                    <img
-                      decoding="async"
-                      src="assets/images/testi4-2.jpg"
-                      alt="Barbara Wilson"
-                    />
-                    <div className="icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                        width="44px"
-                        height="34px"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          strokeWidth="2px"
-                          stroke="rgb(0, 0, 0)"
-                          fill="rgb(41, 165, 135)"
-                          d="M17.360,8.325 C15.490,5.563 11.616,4.762 8.705,6.536 C6.901,7.635 5.815,9.533 5.826,11.567 C5.828,14.854 8.637,17.516 12.101,17.515 C13.290,17.513 14.456,17.192 15.460,16.587 C14.967,17.975 14.049,19.457 12.537,20.942 C11.934,21.533 11.951,22.476 12.574,23.048 C13.198,23.619 14.192,23.604 14.794,23.012 C20.384,17.515 19.658,11.539 17.360,8.333 L17.360,8.325 ZM32.407,8.325 C30.538,5.563 26.663,4.762 23.752,6.536 C21.949,7.635 20.863,9.533 20.873,11.567 C20.875,14.854 23.685,17.516 27.148,17.515 C28.338,17.513 29.503,17.192 30.508,16.587 C30.015,17.975 29.097,19.457 27.585,20.942 C26.982,21.533 26.999,22.476 27.622,23.048 C28.245,23.619 29.239,23.604 29.842,23.012 C35.432,17.515 34.706,11.539 32.407,8.333 L32.407,8.325 Z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text lui-text">
-                    <div>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="info">
-                    <h6 className="name">
-                      <span>Barbara Wilson</span>
-                    </h6>
-                    <div className="author">
-                      <span>CEO Company</span>
-                    </div>
-                  </div>
-                  <div
-                    className="bg-img"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
-                <div className="testimonials-item">
-                  <div className="image">
-                    <img
-                      decoding="async"
-                      src="assets/images/testi4-1.jpg"
-                      alt="Charlie Smith"
-                    />
-                    <div className="icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                        width="44px"
-                        height="34px"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          strokeWidth="2px"
-                          stroke="rgb(0, 0, 0)"
-                          fill="rgb(41, 165, 135)"
-                          d="M17.360,8.325 C15.490,5.563 11.616,4.762 8.705,6.536 C6.901,7.635 5.815,9.533 5.826,11.567 C5.828,14.854 8.637,17.516 12.101,17.515 C13.290,17.513 14.456,17.192 15.460,16.587 C14.967,17.975 14.049,19.457 12.537,20.942 C11.934,21.533 11.951,22.476 12.574,23.048 C13.198,23.619 14.192,23.604 14.794,23.012 C20.384,17.515 19.658,11.539 17.360,8.333 L17.360,8.325 ZM32.407,8.325 C30.538,5.563 26.663,4.762 23.752,6.536 C21.949,7.635 20.863,9.533 20.873,11.567 C20.875,14.854 23.685,17.516 27.148,17.515 C28.338,17.513 29.503,17.192 30.508,16.587 C30.015,17.975 29.097,19.457 27.585,20.942 C26.982,21.533 26.999,22.476 27.622,23.048 C28.245,23.619 29.239,23.604 29.842,23.012 C35.432,17.515 34.706,11.539 32.407,8.333 L32.407,8.325 Z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text lui-text">
-                    <div>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="info">
-                    <h6 className="name">
-                      <span>Charlie Smith</span>
-                    </h6>
-                    <div className="author">
-                      <span>Designer</span>
-                    </div>
-                  </div>
-                  <div
-                    className="bg-img"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
-                <div className="testimonials-item">
-                  <div className="image">
-                    <img
-                      decoding="async"
-                      src="assets/images/testi4-4.jpg"
-                      alt="Roy Wang"
-                    />
-                    <div className="icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                        width="44px"
-                        height="34px"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          strokeWidth="2px"
-                          stroke="rgb(0, 0, 0)"
-                          fill="rgb(41, 165, 135)"
-                          d="M17.360,8.325 C15.490,5.563 11.616,4.762 8.705,6.536 C6.901,7.635 5.815,9.533 5.826,11.567 C5.828,14.854 8.637,17.516 12.101,17.515 C13.290,17.513 14.456,17.192 15.460,16.587 C14.967,17.975 14.049,19.457 12.537,20.942 C11.934,21.533 11.951,22.476 12.574,23.048 C13.198,23.619 14.192,23.604 14.794,23.012 C20.384,17.515 19.658,11.539 17.360,8.333 L17.360,8.325 ZM32.407,8.325 C30.538,5.563 26.663,4.762 23.752,6.536 C21.949,7.635 20.863,9.533 20.873,11.567 C20.875,14.854 23.685,17.516 27.148,17.515 C28.338,17.513 29.503,17.192 30.508,16.587 C30.015,17.975 29.097,19.457 27.585,20.942 C26.982,21.533 26.999,22.476 27.622,23.048 C28.245,23.619 29.239,23.604 29.842,23.012 C35.432,17.515 34.706,11.539 32.407,8.333 L32.407,8.325 Z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text lui-text">
-                    <div>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="info">
-                    <h6 className="name">
-                      <span>Roy Wang</span>
-                    </h6>
-                    <div className="author">
-                      <span>Manager GYM</span>
-                    </div>
-                  </div>
-                  <div
-                    className="bg-img"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
-                <div className="testimonials-item">
-                  <div className="image">
-                    <img
-                      decoding="async"
-                      src="assets/images/testi4-3.jpg"
-                      alt="Jennifer Smith"
-                    />
-                    <div className="icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                        width="44px"
-                        height="34px"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          strokeWidth="2px"
-                          stroke="rgb(0, 0, 0)"
-                          fill="rgb(41, 165, 135)"
-                          d="M17.360,8.325 C15.490,5.563 11.616,4.762 8.705,6.536 C6.901,7.635 5.815,9.533 5.826,11.567 C5.828,14.854 8.637,17.516 12.101,17.515 C13.290,17.513 14.456,17.192 15.460,16.587 C14.967,17.975 14.049,19.457 12.537,20.942 C11.934,21.533 11.951,22.476 12.574,23.048 C13.198,23.619 14.192,23.604 14.794,23.012 C20.384,17.515 19.658,11.539 17.360,8.333 L17.360,8.325 ZM32.407,8.325 C30.538,5.563 26.663,4.762 23.752,6.536 C21.949,7.635 20.863,9.533 20.873,11.567 C20.875,14.854 23.685,17.516 27.148,17.515 C28.338,17.513 29.503,17.192 30.508,16.587 C30.015,17.975 29.097,19.457 27.585,20.942 C26.982,21.533 26.999,22.476 27.622,23.048 C28.245,23.619 29.239,23.604 29.842,23.012 C35.432,17.515 34.706,11.539 32.407,8.333 L32.407,8.325 Z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text lui-text">
-                    <div>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="info">
-                    <h6 className="name">
-                      <span>Jennifer Smith</span>
-                    </h6>
-                    <div className="author">
-                      <span>CEO &amp; Founder</span>
-                    </div>
-                  </div>
-                  <div
-                    className="bg-img"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
-                <div className="testimonials-item">
-                  <div className="image">
-                    <img
-                      decoding="async"
-                      src="assets/images/testi4-5.jpg"
-                      alt="Paul Freeman"
-                    />
-                    <div className="icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                        width="44px"
-                        height="34px"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          strokeWidth="2px"
-                          stroke="rgb(0, 0, 0)"
-                          fill="rgb(41, 165, 135)"
-                          d="M17.360,8.325 C15.490,5.563 11.616,4.762 8.705,6.536 C6.901,7.635 5.815,9.533 5.826,11.567 C5.828,14.854 8.637,17.516 12.101,17.515 C13.290,17.513 14.456,17.192 15.460,16.587 C14.967,17.975 14.049,19.457 12.537,20.942 C11.934,21.533 11.951,22.476 12.574,23.048 C13.198,23.619 14.192,23.604 14.794,23.012 C20.384,17.515 19.658,11.539 17.360,8.333 L17.360,8.325 ZM32.407,8.325 C30.538,5.563 26.663,4.762 23.752,6.536 C21.949,7.635 20.863,9.533 20.873,11.567 C20.875,14.854 23.685,17.516 27.148,17.515 C28.338,17.513 29.503,17.192 30.508,16.587 C30.015,17.975 29.097,19.457 27.585,20.942 C26.982,21.533 26.999,22.476 27.622,23.048 C28.245,23.619 29.239,23.604 29.842,23.012 C35.432,17.515 34.706,11.539 32.407,8.333 L32.407,8.325 Z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text lui-text">
-                    <div>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="info">
-                    <h6 className="name">
-                      <span>Paul Freeman</span>
-                    </h6>
-                    <div className="author">
-                      <span>Photographer</span>
-                    </div>
-                  </div>
-                  <div
-                    className="bg-img"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
-                  />
-                </div>
-              </SwiperSlide>
-              <div className="swiper-pagination" />
-            </Swiper>
-            <div className="lui-bgtitle">
-              <span> Reviews </span>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Section - Pricing */}
-      <section className="lui-section lui-gradient-center" id="pricing-section">
-        {/* Heading */}
-        <div className="lui-heading">
-          <div className="container">
-            <div className="m-titles align-center">
-              <h2
-                className="m-title splitting-text-anim-1 scroll-animate"
-                data-splitting="words"
-                data-animate="active"
-              >
-                <span> Pricing </span>
-              </h2>
-              <div
-                className="m-subtitle splitting-text-anim-1 scroll-animate"
-                data-splitting="words"
-                data-animate="active"
-              >
-                <span>
-                  {" "}
-                  my <b>Price Board</b>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Pricing */}
-        <div className="v-line v-line-left">
-          <div className="container">
-            <div className="pricing-items row">
-              <div className="pricing-col col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                <div
-                  className="pricing-item scrolla-element-anim-1 scroll-animate"
-                  data-animate="active"
-                >
-                  <div className="lui-subtitle">
-                    <span> Hourley Basis </span>
-                  </div>
-                  <div className="icon" />
-                  <div className="price">
-                    <span>
-                      {" "}
-                      39 <b>$</b>
-                    </span>
-                    <em>Hour</em>
-                  </div>
-                  <div className="lui-text">
-                    <div>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="list">
-                    <div>
-                      <ul>
-                        <li>
-                          <i className="fas fa-check" />
-                          Brand Design
-                        </li>
-                        <li>
-                          <i className="fas fa-check" />
-                          Web Development
-                        </li>
-                        <li>
-                          <em>Advertising</em>
-                        </li>
-                        <li>
-                          <em>Photography</em>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <a href="#contact-section" className="btn btn-solid">
-                    <span>Start Project</span>
-                  </a>
-                  <div
-                    className="bg-img"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="pricing-col center col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                <div className="label">
-                  <span> Popular </span>
-                </div>
-                <div
-                  className="pricing-item scrolla-element-anim-1 scroll-animate"
-                  data-animate="active"
-                >
-                  <div className="lui-subtitle">
-                    <span> Freelancing </span>
-                  </div>
-                  <div className="icon" />
-                  <div className="price">
-                    <span>
-                      {" "}
-                      259 <b>$</b>
-                    </span>
-                    <em>Week</em>
-                  </div>
-                  <div className="lui-text">
-                    <div>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="list">
-                    <div>
-                      <ul>
-                        <li>
-                          <i className="fas fa-check" />
-                          Brand Design
-                        </li>
-                        <li>
-                          <i className="fas fa-check" />
-                          Web Development
-                        </li>
-                        <li>
-                          <i className="fas fa-check" />
-                          Advertising
-                        </li>
-                        <li>
-                          <em>Photography</em>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <a href="#contact-section" className="btn btn-solid">
-                    <span>Start Project</span>
-                  </a>
-                  <div
-                    className="bg-img"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="pricing-col col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                <div
-                  className="pricing-item scrolla-element-anim-1 scroll-animate"
-                  data-animate="active"
-                >
-                  <div className="lui-subtitle">
-                    <span> Full Time </span>
-                  </div>
-                  <div className="icon" />
-                  <div className="price">
-                    <span>
-                      {" "}
-                      1.249 <b>$</b>
-                    </span>
-                    <em>Month</em>
-                  </div>
-                  <div className="lui-text">
-                    <div>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="list">
-                    <div>
-                      <ul>
-                        <li>
-                          <i className="fas fa-check" />
-                          Brand Design
-                        </li>
-                        <li>
-                          <i className="fas fa-check" />
-                          Web Development
-                        </li>
-                        <li>
-                          <i className="fas fa-check" />
-                          Advertising
-                        </li>
-                        <li>
-                          <i className="fas fa-check" />
-                          Photography
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <a href="#contact-section" className="btn btn-solid">
-                    <span>Start Project</span>
-                  </a>
-                  <div
-                    className="bg-img"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="lui-bgtitle">
-              <span> Pricing </span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Resume key={language} />
       {/* Section - Blog */}
       <section className="lui-section lui-gradient-top" id="blog-section">
         {/* Heading */}
@@ -1097,7 +568,7 @@ const Index = () => {
                 data-splitting="words"
                 data-animate="active"
               >
-                <span> Latest Blog </span>
+                <span> {t('latestBlog')} </span>
               </h2>
               <div
                 className="m-subtitle splitting-text-anim-1 scroll-animate"
@@ -1105,8 +576,7 @@ const Index = () => {
                 data-animate="active"
               >
                 <span>
-                  {" "}
-                  my <b>Articles and Advice</b>
+                  {t('myArticles')}
                 </span>
               </div>
             </div>
@@ -1116,126 +586,46 @@ const Index = () => {
         <div className="v-line v-line-right">
           <div className="container">
             <div className="blog-items row">
-              <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div
-                  className="archive-item scrolla-element-anim-1 scroll-animate"
-                  data-animate="active"
-                >
-                  <div className="image">
-                    <Link legacyBehavior href="/blog-single">
-                      <a>
-                        <img
-                          decoding="async"
-                          src="assets/images/single7.jpg"
-                          alt="The Main Thing For The Designer"
-                        />
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="desc">
-                    <div className="category lui-subtitle">
-                      <span>October 31, 2022</span>
-                    </div>
-                    <h5 className="lui-title">
-                      <Link legacyBehavior href="/blog-single">
-                        <a>The Main Thing For The Designer</a>
+              {latestPosts && latestPosts.slice(0, 3).map((post, index) => (
+                <div key={post.slug} className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div
+                    className="archive-item scrolla-element-anim-1 scroll-animate"
+                    data-animate="active"
+                  >
+                    <div className="image">
+                      <Link legacyBehavior href={`/blog/${post.slug}`}>
+                        <a>
+                          <img
+                            decoding="async"
+                            src={post.image}
+                            alt={language === 'hu' ? post.title : (post.titleDe || post.title)}
+                          />
+                        </a>
                       </Link>
-                    </h5>
-                    <div className="lui-text">
-                      <p>
-                        Vivamus interdum suscipit lacus. Nunc ultrices accumsan
-                        mattis. Aliquam vel sem vel velit efficitur malesuada.
-                        Donec arcu lacus, ornare eget…{" "}
-                      </p>
-                      <div className="readmore">
-                        <Link legacyBehavior href="/blog-single">
-                          <a className="lnk">Read more</a>
+                    </div>
+                    <div className="desc">
+                      <div className="category lui-subtitle">
+                        <span>{formatDate(post.date)}</span>
+                      </div>
+                      <h5 className="lui-title">
+                        <Link legacyBehavior href={`/blog/${post.slug}`}>
+                          <a>{language === 'hu' ? post.title : (post.titleDe || post.title)}</a>
                         </Link>
+                      </h5>
+                      <div className="lui-text">
+                        <p>
+                          {language === 'hu' ? post.excerpt : (post.excerptDe || post.excerpt)}
+                        </p>
+                        <div className="readmore">
+                          <Link legacyBehavior href={`/blog/${post.slug}`}>
+                            <a className="lnk">{t('readMore')}</a>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div
-                  className="archive-item scrolla-element-anim-1 scroll-animate"
-                  data-animate="active"
-                >
-                  <div className="image">
-                    <Link legacyBehavior href="/blog-single">
-                      <a>
-                        <img
-                          decoding="async"
-                          src="assets/images/blog-4-scaled-1.jpg"
-                          alt="Follow Your Own Design Process"
-                        />
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="desc">
-                    <div className="category lui-subtitle">
-                      <span>October 31, 2022</span>
-                    </div>
-                    <h5 className="lui-title">
-                      <Link legacyBehavior href="/blog-single">
-                        <a>Follow Your Own Design Process</a>
-                      </Link>
-                    </h5>
-                    <div className="lui-text">
-                      <p>
-                        Vivamus interdum suscipit lacus. Nunc ultrices accumsan
-                        mattis. Aliquam vel sem vel velit efficitur malesuada.
-                        Donec arcu lacus, ornare eget…{" "}
-                      </p>
-                      <div className="readmore">
-                        <Link legacyBehavior href="/blog-single">
-                          <a className="lnk">Read more</a>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div
-                  className="archive-item scrolla-element-anim-1 scroll-animate"
-                  data-animate="active"
-                >
-                  <div className="image">
-                    <Link legacyBehavior href="/blog-single">
-                      <a>
-                        <img
-                          decoding="async"
-                          src="assets/images/blog-2.jpg"
-                          alt="Usability Secrets to Create Better Interfaces"
-                        />
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="desc">
-                    <div className="category lui-subtitle">
-                      <span>November 28, 2021</span>
-                    </div>
-                    <h5 className="lui-title">
-                      <Link legacyBehavior href="/blog-single">
-                        <a>Usability Secrets to Create Better Interfaces</a>
-                      </Link>
-                    </h5>
-                    <div className="lui-text">
-                      <p>
-                        Vivamus interdum suscipit lacus. Nunc ultrices accumsan
-                        mattis. Aliquam vel sem vel velit efficitur malesuada.
-                        Donec arcu lacus, ornare eget…{" "}
-                      </p>
-                      <div className="readmore">
-                        <Link legacyBehavior href="/blog-single">
-                          <a className="lnk">Read more</a>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
             <div className="load-more">
               <Link legacyBehavior href="/blog">
@@ -1243,12 +633,12 @@ const Index = () => {
                   className="btn scrolla-element-anim-1 scroll-animate"
                   data-animate="active"
                 >
-                  <span>View Blog</span>
+                  <span>{t('viewBlog')}</span>
                 </a>
               </Link>
             </div>
             <div className="lui-bgtitle">
-              <span> Blog </span>
+              <span> {t('latestBlog')} </span>
             </div>
           </div>
         </div>
@@ -1264,7 +654,7 @@ const Index = () => {
                 data-splitting="words"
                 data-animate="active"
               >
-                <span> Contact Me </span>
+                <span> {t('contactMe')} </span>
               </h2>
               <div
                 className="m-subtitle splitting-text-anim-1 scroll-animate"
@@ -1273,7 +663,7 @@ const Index = () => {
               >
                 <span>
                   {" "}
-                  Let’s <b>Talk About Ideas</b>
+                  {t('letsTalk')}
                 </span>
               </div>
             </div>
@@ -1293,10 +683,10 @@ const Index = () => {
                       <i aria-hidden="true" className="far fa-map" />
                     </div>
                     <div className="title">
-                      <span> Address </span>
+                      <span> {t('address')} </span>
                     </div>
                     <div className="lui-text">
-                      <span> North Tower, Toronto, Canada </span>
+                      <span> {t('addressText')} </span>
                     </div>
                   </div>
                   <div
@@ -1307,10 +697,10 @@ const Index = () => {
                       <i aria-hidden="true" className="far fa-user" />
                     </div>
                     <div className="title">
-                      <span> Freelance </span>
+                      <span> {t('freelance')} </span>
                     </div>
                     <div className="lui-text">
-                      <span> Available Right Now </span>
+                      <span> {t('availableNow')} </span>
                     </div>
                   </div>
                   <div
@@ -1321,10 +711,10 @@ const Index = () => {
                       <i aria-hidden="true" className="far fa-envelope" />
                     </div>
                     <div className="title">
-                      <span> Email </span>
+                      <span> {t('email')} </span>
                     </div>
                     <div className="lui-text">
-                      <span> zoe.miller@mydomain.com </span>
+                      <span> {t('contactEmail')} </span>
                     </div>
                   </div>
                   <div
@@ -1335,10 +725,10 @@ const Index = () => {
                       <i aria-hidden="true" className="far fa-address-book" />
                     </div>
                     <div className="title">
-                      <span> Phone </span>
+                      <span> {t('phone')} </span>
                     </div>
                     <div className="lui-text">
-                      <span> +1 900 - 900 - 9000 </span>
+                      <span> {t('contactPhone')} </span>
                     </div>
                   </div>
                 </div>
@@ -1360,7 +750,7 @@ const Index = () => {
                         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                           <div className="group">
                             <label>
-                              Your Full Name <b>*</b>
+                              {t('yourFullName')} <b>*</b>
                               <input type="text" name="name" />
                             </label>
                           </div>
@@ -1368,7 +758,7 @@ const Index = () => {
                         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                           <div className="group">
                             <label>
-                              Your Email Address <b>*</b>
+                              {t('yourEmail')} <b>*</b>
                               <input type="email" name="email" />
                             </label>
                           </div>
@@ -1376,7 +766,7 @@ const Index = () => {
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                           <div className="group">
                             <label>
-                              Your Subject <b>*</b>
+                              {t('yourSubject')} <b>*</b>
                               <input type="text" name="subject" />
                             </label>
                           </div>
@@ -1384,14 +774,14 @@ const Index = () => {
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                           <div className="group">
                             <label>
-                              Your Message <b>*</b>
+                              {t('yourMessage')} <b>*</b>
                               <textarea name="message" defaultValue={""} />
                             </label>
                           </div>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
                           <div className="terms-label">
-                            * Accept the terms and conditions.
+                            {t('acceptTerms')}
                           </div>
                           <a
                             href="#"
@@ -1410,20 +800,20 @@ const Index = () => {
                               }
                             }}
                           >
-                            <span>Send Message</span>
+                            <span>{t('sendMessage')}</span>
                           </a>
                         </div>
                       </div>
                     </form>
                     <div className="alert-success" style={{ display: "none" }}>
-                      <p>Thanks, your message is sent successfully.</p>
+                      <p>{t('thankYouMessage')}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="lui-bgtitle">
-              <span> Contact Me </span>
+              <span> {t('contactMe')} </span>
             </div>
           </div>
         </div>
@@ -1431,4 +821,16 @@ const Index = () => {
     </Layout>
   );
 };
+
+export async function getStaticProps() {
+  const { getLatestBlogPosts } = require('../src/utils/blog');
+  const latestPosts = getLatestBlogPosts(3);
+  
+  return {
+    props: {
+      latestPosts,
+    },
+  };
+}
+
 export default Index;

@@ -100,9 +100,12 @@ export const toggleMenu = (e) => {
   return false;
 };
 
-export const linkClick = () => {
+export const linkClick = (targetId = null) => {
   const menu = document.querySelector(".menu-btn");
-  if (menu.classList.contains("active")) {
+  const menuWasActive = menu.classList.contains("active");
+  
+  // Close menu if it's open
+  if (menuWasActive) {
     menu.classList.remove("active");
     menu.classList.add("no-touch");
     document.body.classList.remove("no-scroll");
@@ -115,19 +118,35 @@ export const linkClick = () => {
       document.querySelector(".menu-full-overlay").classList.remove("visible");
       menu.classList.remove("no-touch");
     }, 1000);
-  } else {
-    menu.classList.add("active", "no-touch");
-    document.body.classList.add("no-scroll");
-    document
-      .querySelector(".menu-full-overlay")
-      .classList.add("is-open", "visible");
-    setTimeout(function () {
-      document
-        .querySelector(".menu-full-overlay")
-        .classList.add("has-scroll", "animate-active");
-      menu.classList.remove("no-touch");
-    }, 1000);
   }
+  
+  // Handle smooth scrolling to section if targetId is provided
+  if (targetId) {
+    const scrollDelay = menuWasActive ? 500 : 0;
+    setTimeout(() => {
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        // Try modern scrollIntoView first
+        if ('scrollIntoView' in targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        } else {
+          // Fallback for older browsers
+          const headerOffset = 80; // Account for header height
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }, scrollDelay);
+  }
+  
   return false;
 };
 

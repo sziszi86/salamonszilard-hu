@@ -13,8 +13,11 @@ export const useLanguage = () => {
 
 export const LanguageProvider = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState('hu');
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+    
     // Check URL parameter first
     const urlParams = new URLSearchParams(window.location.search);
     const langFromUrl = urlParams.get('lang');
@@ -35,26 +38,33 @@ export const LanguageProvider = ({ children }) => {
   const changeLanguage = (language) => {
     if (translations[language]) {
       setCurrentLanguage(language);
-      localStorage.setItem('language', language);
-      
-      // Update URL parameter
-      const url = new URL(window.location);
-      url.searchParams.set('lang', language);
-      window.history.pushState({}, '', url);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('language', language);
+        
+        // Update URL parameter and reload to ensure all components update
+        const url = new URL(window.location);
+        url.searchParams.set('lang', language);
+        window.location.href = url.toString();
+      }
     }
   };
 
   const t = (key, section) => {
+    // Ensure we have a valid current language, fallback to 'hu'
+    const lang = currentLanguage && translations[currentLanguage] ? currentLanguage : 'hu';
+    
     if (section) {
-      return translations[currentLanguage]?.[section]?.[key] || key;
+      return translations[lang]?.[section]?.[key] || translations['hu']?.[section]?.[key] || key;
     }
-    return translations[currentLanguage]?.[key] || key;
+    return translations[lang]?.[key] || translations['hu']?.[key] || key;
   };
 
   const value = {
     currentLanguage,
+    language: currentLanguage, // Add language alias for convenience
     changeLanguage,
     t,
+    isClient,
     availableLanguages: Object.keys(translations)
   };
 
