@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Fragment, useEffect, useState } from "react";
 import PreLoader from "../src/layouts/PreLoader";
+import { LanguageProvider } from "../src/contexts/LanguageContext";
 import "../styles/globals.css";
 const App = ({ Component, pageProps }) => {
   const [loader, setLoader] = useState(true);
@@ -23,8 +24,10 @@ const App = ({ Component, pageProps }) => {
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
-      {loader && <PreLoader />}
-      <Component {...pageProps} />
+      <LanguageProvider>
+        {loader && <PreLoader />}
+        <Component {...pageProps} />
+      </LanguageProvider>
     </Fragment>
   );
 };
