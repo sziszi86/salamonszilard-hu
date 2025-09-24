@@ -1,3 +1,156 @@
 .menu-full-overlay {
   min-height: 100vh;
 }
+
+/* Language Switcher Styles */
+.language-switcher {
+  display: inline-flex;
+  gap: 6px;
+  margin-right: 15px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid #41a587;
+  color: #41a587;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lang-btn:hover {
+  background: #41a587;
+  color: white;
+}
+
+.lang-btn.active {
+  background: #41a587;
+  color: white;
+}
+
+/* Dark theme adjustments */
+.dark-skin .lang-btn {
+  border-color: #fff;
+  color: #fff;
+}
+
+.dark-skin .lang-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.dark-skin .lang-btn.active {
+  background: #fff;
+  color: #000;
+}
+
+/* Flag icon styles */
+.flag-icon {
+  font-size: 14px;
+  line-height: 1;
+  display: inline-block;
+}
+
+.lang-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Language switcher in menu */
+.menu-language-switcher {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.menu-language-switcher .language-switcher {
+  justify-content: center;
+}
+
+.menu-language-switcher .lang-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+.menu-language-switcher .flag-icon {
+  font-size: 16px;
+}
+
+/* Blog Content Styles */
+.blog-content {
+  line-height: 1.8;
+}
+
+.blog-content h1, .blog-content h2, .blog-content h3 {
+  color: #41a587;
+  margin: 2rem 0 1rem 0;
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.blog-content code {
+  background: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+.blog-content pre {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-content pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.blog-content ul, .blog-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-content blockquote {
+  border-left: 4px solid #41a587;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #555;
+}
+
+/* Fix for clickable read more links */
+.readmore a.lnk {
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
+}
+
+/* Tag separator styling */
+.tag-separator {
+  color: #999;
+  margin: 0 5px;
+}

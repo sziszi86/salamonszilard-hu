@@ -1,62 +1,75 @@
 import { useState } from "react";
-
-const educationData = [
-  {
-    id: 1,
-    title: "Backend Programming",
-    academy: "CoderHouse Course",
-    dec: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    startYear: "2014",
-    endYear: "2016",
-  },
-  {
-    id: 2,
-    title: "Faculty of Design",
-    academy: "Lviv National Academy of Arts",
-    dec: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    startYear: "2012",
-    endYear: "2014",
-  },
-  {
-    id: 3,
-    title: "High School",
-    academy: "IT Future",
-    dec: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    startYear: "2010",
-    endYear: "2012",
-  },
-];
-
-const experienceData = [
-  {
-    id: 1,
-    title: "UI Head & Manager",
-    company: "Soft Tech Inc.",
-    dec: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    startYear: "2020",
-    endYear: false,
-  },
-  {
-    id: 2,
-    title: "UI / UX Specialist",
-    company: "Kana Design Studio",
-    dec: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    startYear: "2018",
-    endYear: "2020",
-  },
-  {
-    id: 3,
-    title: "Plugins Developer",
-    company: "Fiverr.com",
-    dec: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    startYear: "2016",
-    endYear: "2018",
-  },
-];
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Resume = () => {
+  const { t } = useLanguage();
   const [educationToggle, setEducationToggle] = useState(1);
   const [experienceToggle, setExperienceToggle] = useState(1);
+  
+  // Education data from language files
+  const educationData = [
+    {
+      id: 1,
+      title: "Frontend Webfejlesztő",
+      academy: t('bkfTitle'),
+      dec: t('bkfDesc'),
+      startYear: "2005",
+      endYear: "2007",
+    },
+  ];
+
+  // Professional experience data from language files
+  const experienceData = [
+    {
+      id: 1,
+      title: t('freelancerTitle'),
+      company: t('freelancer'),
+      dec: t('freelancerDesc'),
+      startYear: "2024",
+      endYear: false,
+    },
+    {
+      id: 2,
+      title: t('gbSolutionsTitle'),
+      company: t('gbSolutions'),
+      dec: t('gbSolutionsDesc'),
+      startYear: "2021",
+      endYear: "2024",
+    },
+    {
+      id: 3,
+      title: t('easywayTitle'),
+      company: t('easywaySystem'),
+      dec: t('easywayDesc'),
+      startYear: "2019",
+      endYear: "2021",
+    },
+    {
+      id: 4,
+      title: t('adaptiveTitle'),
+      company: t('adaptiveRecognition'),
+      dec: t('adaptiveDesc'),
+      startYear: "2014",
+      endYear: "2019",
+    },
+    {
+      id: 5,
+      title: t('greenroomTitle'),
+      company: t('greenroom'),
+      dec: t('greenroomDesc'),
+      startYear: "2010",
+      endYear: "2014",
+    },
+    {
+      id: 6,
+      title: t('hinoraTitle'),
+      company: t('hinoraGroup'),
+      dec: t('hinoraDesc'),
+      startYear: "2007",
+      endYear: "2010",
+    },
+  ];
+
   return (
     <section className="lui-section lui-gradient-bottom" id="resume-section">
       {/* Heading */}
@@ -68,7 +81,7 @@ const Resume = () => {
               data-splitting="words"
               data-animate="active"
             >
-              <span> Resume </span>
+              <span> {t('resume')} </span>
             </h2>
             <div
               className="m-subtitle splitting-text-anim-1 scroll-animate"
@@ -76,8 +89,7 @@ const Resume = () => {
               data-animate="active"
             >
               <span>
-                {" "}
-                my <b>Story</b>
+                {t('workExperience')} & {t('education')}
               </span>
             </div>
           </div>
@@ -92,7 +104,7 @@ const Resume = () => {
                 className="history-title scrolla-element-anim-1 scroll-animate"
                 data-animate="active"
               >
-                <span> Education </span>
+                <span> {t('education')} </span>
               </h5>
               <div className="history-items">
                 {educationData.map((education, i) => (
@@ -121,8 +133,7 @@ const Resume = () => {
                       </div>
                       <div className="date lui-subtitle">
                         <span>
-                          {" "}
-                          {education.startYear} - {education.endYear}{" "}
+                          {t('bkfYears')}
                         </span>
                       </div>
                       <div className="text">
@@ -140,7 +151,7 @@ const Resume = () => {
                 className="history-title scrolla-element-anim-1 scroll-animate"
                 data-animate="active"
               >
-                <span> Experience </span>
+                <span> {t('workExperience')} </span>
               </h5>
               <div className="history-items">
                 {experienceData.map((experience) => (
@@ -165,12 +176,11 @@ const Resume = () => {
                       </div>
                       <div className="date lui-subtitle">
                         <span>
-                          {" "}
                           {experience.startYear} -{" "}
                           {experience.endYear ? (
                             experience.endYear
                           ) : (
-                            <b>Present</b>
+                            <b>{t('availableNow')}</b>
                           )}
                         </span>
                       </div>
@@ -186,7 +196,7 @@ const Resume = () => {
             </div>
           </div>
           <div className="lui-bgtitle">
-            <span> History </span>
+            <span> {t('workExperience')} </span>
           </div>
         </div>
       </div>

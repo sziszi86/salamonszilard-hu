@@ -2,33 +2,41 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { languageNames } from '../locales';
 
-const LanguageSwitcher = ({ className = '' }) => {
-  const { currentLanguage, changeLanguage, availableLanguages, t } = useLanguage();
+const LanguageSwitcher = () => {
+  const { currentLanguage, changeLanguage, availableLanguages } = useLanguage();
+
+  const getLanguageIcon = (lang) => {
+    switch (lang) {
+      case 'hu':
+        return (
+          <span className="flag-icon">
+            🇭🇺
+          </span>
+        );
+      case 'de':
+        return (
+          <span className="flag-icon">
+            🇩🇪
+          </span>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
-    <div className={`language-switcher ${className}`}>
-      <div className="dropdown">
-        <button 
-          className="dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
+    <div className="language-switcher">
+      {availableLanguages.map((lang) => (
+        <button
+          key={lang}
+          className={`lang-btn ${currentLanguage === lang ? 'active' : ''}`}
+          onClick={() => changeLanguage(lang)}
+          title={languageNames[lang]}
         >
-          {languageNames[currentLanguage]} <i className="fas fa-chevron-down"></i>
+          {getLanguageIcon(lang)}
+          <span className="lang-text">{lang.toUpperCase()}</span>
         </button>
-        <ul className="dropdown-menu">
-          {availableLanguages.map((lang) => (
-            <li key={lang}>
-              <button
-                className={`dropdown-item ${currentLanguage === lang ? 'active' : ''}`}
-                onClick={() => changeLanguage(lang)}
-              >
-                {languageNames[lang]}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      ))}
     </div>
   );
 };
