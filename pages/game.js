@@ -30,7 +30,7 @@ function Game() {
   
   const [player, setPlayer] = useState({
     x: 50,
-    y: GAME_HEIGHT - PLAYER_SIZE - 50,
+    y: GAME_HEIGHT - PLAYER_SIZE - 100,
     velocityY: 0,
     isJumping: false
   });
@@ -79,7 +79,7 @@ function Game() {
     setGameState('playing');
     setPlayer({
       x: 50,
-      y: GAME_HEIGHT - PLAYER_SIZE - 50,
+      y: GAME_HEIGHT - PLAYER_SIZE - 100,
       velocityY: 0,
       isJumping: false
     });
@@ -110,7 +110,7 @@ function Game() {
       const pattern = patterns[i % patterns.length];
       newObstacles.push({
         x: currentX,
-        y: GAME_HEIGHT - pattern.height - 50,
+        y: GAME_HEIGHT - pattern.height - 100,
         width: 40,
         height: pattern.height,
         type: 'pc',
@@ -285,7 +285,7 @@ function Game() {
       // Update player physics
       setPlayer(prev => {
         const newY = prev.y + prev.velocityY;
-        const groundLevel = GAME_HEIGHT - PLAYER_SIZE - 50;
+        const groundLevel = GAME_HEIGHT - PLAYER_SIZE - 100;
         
         if (newY >= groundLevel) {
           return {
@@ -323,7 +323,7 @@ function Game() {
           const pattern = patterns[Math.floor(Math.random() * patterns.length)];
           updated.push({
             x: (lastObstacle?.x || GAME_WIDTH) + pattern.spacing,
-            y: GAME_HEIGHT - pattern.height - 50,
+            y: GAME_HEIGHT - pattern.height - 100,
             width: 40,
             height: pattern.height,
             type: 'pc',
@@ -398,7 +398,7 @@ function Game() {
                   } else {
                     setPlayer({
                       x: 50,
-                      y: GAME_HEIGHT - PLAYER_SIZE - 50,
+                      y: GAME_HEIGHT - PLAYER_SIZE - 100,
                       velocityY: 0,
                       isJumping: false
                     });
@@ -496,7 +496,7 @@ function Game() {
           <div id="game-area" style={{
             position: 'relative',
             width: isMobile ? GAME_WIDTH * 0.9 : GAME_WIDTH,
-            height: isMobile ? GAME_HEIGHT * 0.8 : GAME_HEIGHT,
+            height: GAME_HEIGHT,
             backgroundColor: '#87CEEB',
             background: 'linear-gradient(135deg, rgba(0, 20, 40, 0.3) 0%, rgba(0, 40, 80, 0.2) 100%)',
             border: '2px solid #2c3e50',
@@ -583,7 +583,7 @@ function Game() {
             {/* Ground */}
             <div style={{
               position: 'absolute',
-              bottom: 0,
+              bottom: 50,
               left: 0,
               width: '100%',
               height: 50,
