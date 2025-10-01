@@ -51,6 +51,80 @@ export const hu = {
   myTalent: 'Képességeim',
   technologies: 'Technológiák',
   designTools: 'Tervezőeszközök',
+
+  // Skills data
+  skills: {
+    nextjs: {
+      name: 'Next.js',
+      percentage: 85,
+      description: 'Modern React keretrendszer a teljes stack webalkalmazások fejlesztésére. Server-side rendering, API routes és optimalizált teljesítmény szakértői szinten.'
+    },
+    javascript: {
+      name: 'JavaScript',
+      percentage: 90,
+      description: 'Mély ismeretek ES6+ szintaxisban, aszinkron programozásban és modern JavaScript fejlesztési környezetekben. DOM manipuláció és API integrációk profi szinten.'
+    },
+    css: {
+      name: 'CSS3 / SASS / Tailwind / Bootstrap',
+      percentage: 90,
+      description: 'Kiváló stíluslap készítési képességek. Responsive design, CSS Grid, Flexbox, animációk és modern CSS preprocessing eszközök szakértői használata.'
+    },
+    figma: {
+      name: 'Figma / Adobe Cloud',
+      percentage: 75,
+      description: 'Dizájn tervek pixel-pontos megvalósítása. Figma komponensek értelmezése, Adobe Creative Suite használata és design-development együttműködés.'
+    },
+    wordpress: {
+      name: 'WordPress',
+      percentage: 70,
+      description: 'Egyedi témák és bővítmények fejlesztése, WordPress REST API használata, teljesítmény optimalizálás és biztonsági beállítások implementálása.'
+    },
+    git: {
+      name: 'Git / Vercel',
+      percentage: 75,
+      description: 'Verziókezelés Git-tel, branch management, CI/CD pipeline beállítása Vercel platformon és csapatmunkában való hatékony együttműködés.'
+    },
+    react: {
+      name: 'React',
+      percentage: 85,
+      description: 'Komponens alapú fejlesztés, hooks használata, state management (Context, Redux), React Router és teljesítmény optimalizálás haladó szinten.'
+    },
+    cms: {
+      name: 'Directus / Strapi / Egyéb CMS',
+      percentage: 65,
+      description: 'Headless CMS rendszerek integrálása, API endpoint konfigurálás, tartalomkezelő rendszerek testreszabása és adatbázis tervezés.'
+    },
+    magento: {
+      name: 'Magento',
+      percentage: 45,
+      description: 'E-commerce platform alapismeretek, téma testreszabás, bővítmények telepítése és alapvető konfiguráció beállítások kezelése.'
+    },
+    angular: {
+      name: 'Angular',
+      percentage: 65,
+      description: 'TypeScript alapú fejlesztés, komponens architektúra, szolgáltatások használata, RxJS reaktív programozás és Angular Material implementáció.'
+    },
+    claudecode: {
+      name: 'Claude Code',
+      percentage: 100,
+      description: 'Mesterszintű AI-asszisztált fejlesztés. Claude Code maximális kihasználása kódgenerálásra, refaktorálásra és komplex fejlesztési feladatok megoldására.'
+    },
+    sketch: {
+      name: 'Sketch',
+      percentage: 65,
+      description: 'Vektoros dizájn eszköz használata, szimbólumok és artboard-ok kezelése, prototípusok készítése és fejlesztőkkel való design handoff folyamat.'
+    },
+    joomla: {
+      name: 'Joomla',
+      percentage: 80,
+      description: 'CMS testreszabás, komponensek és modulok fejlesztése, template készítés, adatbázis migráció és multisite kezelés tapasztalt szinten.'
+    },
+    php: {
+      name: 'PHP',
+      percentage: 60,
+      description: 'Szerver oldali programozás alapjai, MySQL adatbázis kapcsolatok, egyszerű API végpontok készítése és WordPress backend fejlesztés.'
+    }
+  },
   
   // Professional experience
   workExperience: 'Szakmai tapasztalat',

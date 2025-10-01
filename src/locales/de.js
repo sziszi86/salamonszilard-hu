@@ -47,6 +47,80 @@ export const de = {
   myTalent: 'Mein Talent',
   technologies: 'Technologien',
   designTools: 'Design-Tools',
+
+  // Skills data
+  skills: {
+    nextjs: {
+      name: 'Next.js',
+      percentage: 85,
+      description: 'Modernes React-Framework für Full-Stack-Webanwendungen. Server-side Rendering, API-Routes und optimierte Performance auf Expertenebene.'
+    },
+    javascript: {
+      name: 'JavaScript',
+      percentage: 90,
+      description: 'Tiefe Kenntnisse in ES6+ Syntax, asynchroner Programmierung und modernen JavaScript-Entwicklungsumgebungen. DOM-Manipulation und API-Integration professionell.'
+    },
+    css: {
+      name: 'CSS3 / SASS / Tailwind / Bootstrap',
+      percentage: 90,
+      description: 'Exzellente Stylesheet-Erstellung. Responsive Design, CSS Grid, Flexbox, Animationen und moderne CSS-Preprocessing-Tools auf Expertenebene.'
+    },
+    figma: {
+      name: 'Figma / Adobe Cloud',
+      percentage: 75,
+      description: 'Pixel-perfekte Umsetzung von Design-Entwürfen. Figma-Komponenten interpretieren, Adobe Creative Suite und Design-Development-Zusammenarbeit.'
+    },
+    wordpress: {
+      name: 'WordPress',
+      percentage: 70,
+      description: 'Entwicklung individueller Themes und Plugins, WordPress REST API Nutzung, Performance-Optimierung und Sicherheitseinstellungen implementieren.'
+    },
+    git: {
+      name: 'Git / Vercel',
+      percentage: 75,
+      description: 'Versionskontrolle mit Git, Branch-Management, CI/CD-Pipeline-Setup auf Vercel-Plattform und effiziente Teamarbeit.'
+    },
+    react: {
+      name: 'React',
+      percentage: 85,
+      description: 'Komponentenbasierte Entwicklung, Hooks-Verwendung, State Management (Context, Redux), React Router und Performance-Optimierung auf fortgeschrittenem Niveau.'
+    },
+    cms: {
+      name: 'Directus / Strapi / Andere',
+      percentage: 65,
+      description: 'Headless CMS-Integration, API-Endpoint-Konfiguration, Content-Management-System-Anpassung und Datenbankdesign.'
+    },
+    magento: {
+      name: 'Magento',
+      percentage: 45,
+      description: 'E-Commerce-Plattform Grundkenntnisse, Theme-Anpassung, Plugin-Installation und grundlegende Konfigurationseinstellungen.'
+    },
+    angular: {
+      name: 'Angular',
+      percentage: 65,
+      description: 'TypeScript-basierte Entwicklung, Komponentenarchitektur, Services-Nutzung, RxJS reactive Programming und Angular Material Implementation.'
+    },
+    claudecode: {
+      name: 'Claude Code',
+      percentage: 100,
+      description: 'Meisterhafte KI-unterstützte Entwicklung. Maximale Claude Code Nutzung für Code-Generierung, Refactoring und komplexe Entwicklungsaufgaben.'
+    },
+    sketch: {
+      name: 'Sketch',
+      percentage: 65,
+      description: 'Vektor-Design-Tool-Verwendung, Symbol- und Artboard-Management, Prototyping und Design-Handoff-Prozess mit Entwicklern.'
+    },
+    joomla: {
+      name: 'Joomla',
+      percentage: 80,
+      description: 'CMS-Anpassung, Komponenten- und Modul-Entwicklung, Template-Erstellung, Datenbank-Migration und Multisite-Management auf erfahrenem Niveau.'
+    },
+    php: {
+      name: 'PHP',
+      percentage: 60,
+      description: 'Server-seitige Programmierung Grundlagen, MySQL-Datenbankverbindungen, einfache API-Endpunkte erstellen und WordPress Backend-Entwicklung.'
+    }
+  },
   
   // Professional experience
   workExperience: 'Berufserfahrung',

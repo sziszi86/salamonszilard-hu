@@ -1,3 +1,4 @@
+import React from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,6 +8,7 @@ import { useLanguage } from "../src/contexts/LanguageContext";
 import {
   servicesSliderProps,
 } from "../src/sliderProps";
+import emailjs from '@emailjs/browser';
 const PortfolioIsotope = dynamic(
   () => import("../src/components/PortfolioIsotope"),
   {
@@ -15,6 +17,48 @@ const PortfolioIsotope = dynamic(
 );
 const Index = ({ latestPosts }) => {
   const { t, language, isClient } = useLanguage();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [showSuccess, setShowSuccess] = React.useState(false);
+  const [showError, setShowError] = React.useState(false);
+  const [error, setError] = React.useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setShowSuccess(false);
+    setShowError(false);
+    setError('');
+
+    try {
+      // EmailJS configuration from environment variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      const templateParams = {
+        from_name: e.target.name.value,
+        from_email: e.target.email.value,
+        subject: e.target.subject.value,
+        message: e.target.message.value,
+        to_email: 'salamonszilard@gmail.com'
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setShowSuccess(true);
+      e.target.reset(); // Clear the form
+      // Hide success message after 5 seconds
+      setTimeout(() => setShowSuccess(false), 5000);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setError('Hiba történt az üzenet küldése során. Kérlek próbáld újra.');
+      setShowError(true);
+      // Hide error message after 5 seconds
+      setTimeout(() => setShowError(false), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -359,180 +403,51 @@ const Index = ({ latestPosts }) => {
         <div className="v-line v-line-left">
           <div className="container">
             <div className="row">
-              <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div className="skills-items">
-                  <div
-                    className="skills-item scrolla-element-anim-1 scroll-animate"
-                    data-animate="active"
-                  >
-                    <h6 className="name">
-                      <span> PHP </span>
-                    </h6>
-                    <div className="text">
-                      <div>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
-                        </p>
+              {(() => {
+                const skillsArray = Object.entries(t('skills'));
+                const skillsPerColumn = Math.ceil(skillsArray.length / 3);
+                const columns = [];
+                
+                for (let i = 0; i < 3; i++) {
+                  const columnSkills = skillsArray.slice(i * skillsPerColumn, (i + 1) * skillsPerColumn);
+                  columns.push(
+                    <div key={i} className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                      <div className="skills-items">
+                        {columnSkills.map(([key, skill]) => (
+                          <div
+                            key={key}
+                            className="skills-item scrolla-element-anim-1 scroll-animate"
+                            data-animate="active"
+                          >
+                            <h6 className="name">
+                              <span> {skill.name} </span>
+                            </h6>
+                            <div className="text">
+                              <div>
+                                <p>
+                                  {skill.description}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="dots">
+                              <div className="dot" style={{ width: `${skill.percentage}%` }}>
+                                <span />
+                              </div>
+                            </div>
+                            <div className="value">
+                              <span className="num">
+                                {skill.percentage} <span>%</span>
+                              </span>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                    <div className="dots">
-                      <div className="dot" style={{ width: "85%" }}>
-                        <span />
-                      </div>
-                    </div>
-                    <div className="value">
-                      <span className="num">
-                        85 <span>%</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    className="skills-item scrolla-element-anim-1 scroll-animate"
-                    data-animate="active"
-                  >
-                    <h6 className="name">
-                      <span> Python </span>
-                    </h6>
-                    <div className="text">
-                      <div>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="dots">
-                      <div className="dot" style={{ width: "75%" }}>
-                        <span />
-                      </div>
-                    </div>
-                    <div className="value">
-                      <span className="num">
-                        75 <span>%</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div className="skills-items">
-                  <div
-                    className="skills-item scrolla-element-anim-1 scroll-animate"
-                    data-animate="active"
-                  >
-                    <h6 className="name">
-                      <span> JavaScript </span>
-                    </h6>
-                    <div className="text">
-                      <div>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="dots">
-                      <div className="dot" style={{ width: "75%" }}>
-                        <span />
-                      </div>
-                    </div>
-                    <div className="value">
-                      <span className="num">
-                        75 <span>%</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    className="skills-item scrolla-element-anim-1 scroll-animate"
-                    data-animate="active"
-                  >
-                    <h6 className="name">
-                      <span> React </span>
-                    </h6>
-                    <div className="text">
-                      <div>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="dots">
-                      <div className="dot" style={{ width: "70%" }}>
-                        <span />
-                      </div>
-                    </div>
-                    <div className="value">
-                      <span className="num">
-                        70 <span>%</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div className="skills-items">
-                  <div
-                    className="skills-item scrolla-element-anim-1 scroll-animate"
-                    data-animate="active"
-                  >
-                    <h6 className="name">
-                      <span> WordPress </span>
-                    </h6>
-                    <div className="text">
-                      <div>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="dots">
-                      <div className="dot" style={{ width: "90%" }}>
-                        <span />
-                      </div>
-                    </div>
-                    <div className="value">
-                      <span className="num">
-                        90 <span>%</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    className="skills-item scrolla-element-anim-1 scroll-animate"
-                    data-animate="active"
-                  >
-                    <h6 className="name">
-                      <span> Adobe XD </span>
-                    </h6>
-                    <div className="text">
-                      <div>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="dots">
-                      <div className="dot" style={{ width: "80%" }}>
-                        <span />
-                      </div>
-                    </div>
-                    <div className="value">
-                      <span className="num">
-                        80 <span>%</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  );
+                }
+                
+                return columns;
+              })()}
             </div>
             <div className="lui-bgtitle">
               <span> Skills </span>
@@ -768,13 +683,13 @@ const Index = ({ latestPosts }) => {
                     }}
                   />
                   <div className="contacts-form">
-                    <form onSubmit={(e) => e.preventDefault()} id="cform">
+                    <form onSubmit={handleSubmit} id="cform">
                       <div className="row">
                         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                           <div className="group">
                             <label>
                               {t('yourFullName')} <b>*</b>
-                              <input type="text" name="name" />
+                              <input type="text" name="name" required />
                             </label>
                           </div>
                         </div>
@@ -782,7 +697,7 @@ const Index = ({ latestPosts }) => {
                           <div className="group">
                             <label>
                               {t('yourEmail')} <b>*</b>
-                              <input type="email" name="email" />
+                              <input type="email" name="email" required />
                             </label>
                           </div>
                         </div>
@@ -790,7 +705,7 @@ const Index = ({ latestPosts }) => {
                           <div className="group">
                             <label>
                               {t('yourSubject')} <b>*</b>
-                              <input type="text" name="subject" />
+                              <input type="text" name="subject" required />
                             </label>
                           </div>
                         </div>
@@ -798,7 +713,7 @@ const Index = ({ latestPosts }) => {
                           <div className="group">
                             <label>
                               {t('yourMessage')} <b>*</b>
-                              <textarea name="message" defaultValue={""} />
+                              <textarea name="message" required defaultValue={""} />
                             </label>
                           </div>
                         </div>
@@ -806,30 +721,21 @@ const Index = ({ latestPosts }) => {
                           <div className="terms-label">
                             {t('acceptTerms')}
                           </div>
-                          <a
-                            href="#"
+                          <button
+                            type="submit"
                             className="btn"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              const form = document.getElementById("cform");
-                              if (form) {
-                                if (typeof form.requestSubmit === "function") {
-                                  form.requestSubmit();
-                                } else {
-                                  form.dispatchEvent(
-                                    new Event("submit", { cancelable: true })
-                                  );
-                                }
-                              }
-                            }}
+                            disabled={isSubmitting}
                           >
-                            <span>{t('sendMessage')}</span>
-                          </a>
+                            <span>{isSubmitting ? t('loading') : t('sendMessage')}</span>
+                          </button>
                         </div>
                       </div>
                     </form>
-                    <div className="alert-success" style={{ display: "none" }}>
+                    <div className="alert-success" style={{ display: showSuccess ? "block" : "none" }}>
                       <p>{t('thankYouMessage')}</p>
+                    </div>
+                    <div className="alert-error" style={{ display: showError ? "block" : "none", color: "red" }}>
+                      <p>{error || "Hiba történt az üzenet küldése során."}</p>
                     </div>
                   </div>
                 </div>
