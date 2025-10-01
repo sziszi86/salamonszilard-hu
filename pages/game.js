@@ -910,8 +910,8 @@ function Game() {
                     backgroundColor: '#e74c3c',
                     color: 'white',
                     border: 'none',
-                    padding: '15px 30px',
-                    fontSize: '18px',
+                    padding: isMobile ? '12px 24px' : '15px 30px',
+                    fontSize: isMobile ? '16px' : '18px',
                     fontWeight: 'bold',
                     borderRadius: '8px',
                     cursor: 'pointer',
@@ -919,6 +919,8 @@ function Game() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    lineHeight: '1.2',
+                    minHeight: isMobile ? '44px' : '50px',
                     zIndex: 2001,
                     touchAction: 'manipulation'
                   }}
@@ -976,8 +978,8 @@ function Game() {
                     backgroundColor: '#f1c40f',
                     color: '#2c3e50',
                     border: 'none',
-                    padding: '15px 30px',
-                    fontSize: '18px',
+                    padding: isMobile ? '12px 24px' : '15px 30px',
+                    fontSize: isMobile ? '16px' : '18px',
                     fontWeight: 'bold',
                     borderRadius: '8px',
                     cursor: 'pointer',
@@ -985,6 +987,8 @@ function Game() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    lineHeight: '1.2',
+                    minHeight: isMobile ? '44px' : '50px',
                     zIndex: 2001,
                     touchAction: 'manipulation'
                   }}
