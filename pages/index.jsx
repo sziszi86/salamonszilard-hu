@@ -29,32 +29,58 @@ const Index = ({ latestPosts }) => {
     setShowError(false);
     setError('');
 
+    // Get form data
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+
+    // Basic validation
+    if (!name || !email || !subject || !message) {
+      setError('Kérlek töltsd ki az összes mezőt!');
+      setShowError(true);
+      setIsSubmitting(false);
+      setTimeout(() => setShowError(false), 5000);
+      return;
+    }
+
     try {
-      // EmailJS configuration from environment variables
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-      const templateParams = {
-        from_name: e.target.name.value,
-        from_email: e.target.email.value,
-        subject: e.target.subject.value,
-        message: e.target.message.value,
-        to_email: 'salamonszilard@gmail.com'
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log('Sending email via FormSubmit...');
       
-      setShowSuccess(true);
-      e.target.reset(); // Clear the form
-      // Hide success message after 5 seconds
-      setTimeout(() => setShowSuccess(false), 5000);
+      // Using FormSubmit.co - completely free, no registration needed
+      // Just replace 'salamonszilard@gmail.com' with your actual email
+      const formSubmitData = new FormData();
+      formSubmitData.append('name', name);
+      formSubmitData.append('email', email); 
+      formSubmitData.append('subject', `Weboldal üzenet: ${subject}`);
+      formSubmitData.append('message', message);
+      formSubmitData.append('_next', window.location.href); // Redirect back to same page
+      formSubmitData.append('_subject', `Új üzenet: ${subject}`);
+      formSubmitData.append('_autoresponse', `Köszönöm ${name}, az üzeneted megérkezett! Hamarosan válaszolok.`);
+
+      const response = await fetch('https://formsubmit.co/salamonszilard@gmail.com', {
+        method: 'POST',
+        body: formSubmitData
+      });
+
+      console.log('FormSubmit response:', response.status);
+
+      if (response.ok) {
+        setShowSuccess(true);
+        e.target.reset(); // Clear the form
+        console.log('Email sent successfully via FormSubmit!');
+        // Hide success message after 5 seconds
+        setTimeout(() => setShowSuccess(false), 5000);
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
     } catch (error) {
       console.error('Error sending message:', error);
-      setError('Hiba történt az üzenet küldése során. Kérlek próbáld újra.');
+      setError(`Hiba történt: ${error.message || 'Ismeretlen hiba történt az üzenet küldése során.'}`);
       setShowError(true);
-      // Hide error message after 5 seconds
-      setTimeout(() => setShowError(false), 5000);
+      // Hide error message after 8 seconds for longer error messages
+      setTimeout(() => setShowError(false), 8000);
     } finally {
       setIsSubmitting(false);
     }
@@ -734,8 +760,16 @@ const Index = ({ latestPosts }) => {
                     <div className="alert-success" style={{ display: showSuccess ? "block" : "none" }}>
                       <p>{t('thankYouMessage')}</p>
                     </div>
-                    <div className="alert-error" style={{ display: showError ? "block" : "none", color: "red" }}>
-                      <p>{error || "Hiba történt az üzenet küldése során."}</p>
+                    <div className="alert-error" style={{ 
+                      display: showError ? "block" : "none", 
+                      color: "red", 
+                      backgroundColor: "#fee", 
+                      padding: "10px", 
+                      borderRadius: "5px", 
+                      marginTop: "10px",
+                      border: "1px solid #fcc"
+                    }}>
+                      <p style={{ margin: "0" }}>{error || "Hiba történt az üzenet küldése során."}</p>
                     </div>
                   </div>
                 </div>
