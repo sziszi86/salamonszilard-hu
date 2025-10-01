@@ -158,6 +158,16 @@ const Header = () => {
                               </a>
                             </li>
                             <li className="menu-item">
+                              <Link legacyBehavior href="/game">
+                                <a
+                                  className="splitting-text-anim-2"
+                                  data-splitting="chars"
+                                >
+                                  {t('game', 'navigation')}
+                                </a>
+                              </Link>
+                            </li>
+                            <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"

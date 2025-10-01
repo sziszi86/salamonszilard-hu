@@ -257,8 +257,23 @@ export const hu = {
     testimonials: "Referenciák",
     pricing: "Árak",
     blog: "Blog",
+    game: "Game",
     contact: "Kapcsolat",
     pages: "Oldalak"
+  },
+  
+  // Game section
+  game: {
+    title: "Szilárd Fejlesztő Kaland",
+    jumpInstructions: "Használd a FEL NYILAT, SPACE-t vagy koppints, hogy átugord a hibákat!",
+    collectInstructions: "Gyűjtsd össze a kód szimbólumokat pontokért!",
+    restartInstructions: "Nyomd meg a FEL NYILAT, SPACE-t vagy koppints az újrakezdéshez",
+    playAgainInstructions: "Nyomd meg a FEL NYILAT, SPACE-t vagy koppints az újrakezdéshez",
+    successMessage: "SIKERES FEJLESZTÉS!",
+    gameOver: "GAME OVER",
+    codesCollected: "Kódok összegyűjtve",
+    restartButton: "Újrakezdés",
+    playAgainButton: "Újra játék"
   },
   pages: {
     worksList: "Munkák (Lista)",

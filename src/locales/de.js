@@ -253,8 +253,23 @@ export const de = {
     testimonials: "Referenzen",
     pricing: "Preise",
     blog: "Blog",
+    game: "Game",
     contact: "Kontakt",
     pages: "Seiten"
+  },
+  
+  // Game section
+  game: {
+    title: "Szilárd Entwicklungsabenteuer",
+    jumpInstructions: "Verwende PFEIL NACH OBEN, LEERTASTE oder tippe, um über die Fehler zu springen!",
+    collectInstructions: "Sammle Code-Symbole für Punkte!",
+    restartInstructions: "Drücke PFEIL NACH OBEN, LEERTASTE oder tippe zum Neustarten",
+    playAgainInstructions: "Drücke PFEIL NACH OBEN, LEERTASTE oder tippe zum Neustart",
+    successMessage: "ERFOLGREICHE ENTWICKLUNG!",
+    gameOver: "GAME OVER",
+    codesCollected: "Codes gesammelt",
+    restartButton: "Neustart",
+    playAgainButton: "Nochmal spielen"
   },
   pages: {
     worksList: "Arbeiten (Liste)",
