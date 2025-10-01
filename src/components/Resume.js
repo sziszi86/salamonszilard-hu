@@ -10,7 +10,7 @@ const Resume = () => {
   const educationData = [
     {
       id: 1,
-      title: "Frontend Webfejlesztő",
+      title: t('bkfSpecialty'),
       academy: t('bkfTitle'),
       dec: t('bkfDesc'),
       startYear: "2005",

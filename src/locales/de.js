@@ -22,22 +22,25 @@ export const de = {
   // Services section
   whatIDo: 'Was ich mache',
   myServices: 'Meine Dienstleistungen',
-  webDevelopment: 'Webentwicklung',
-  webDesignLogo: 'Webdesign & Logo',
-  webDesignDescription: 'Moderne, responsive Websites und professionelle Logos entwerfen. Benutzerfreundliche Interfaces erstellen, die Kundenzufriedenheit und Verkäufe steigern. NextJS, React Entwicklung.',
-  seePricing: 'Preise ansehen',
-  appsDevelopment: 'App-Entwicklung',
-  iosAndroid: 'iOS & Android',
-  appsDescription: 'Cross-Platform Mobile App Entwicklung mit React Native Technologie. Schnelle, zuverlässige und skalierbare Lösungen für iOS und Android Plattformen. App Store Optimierung.',
-  gameDevelopment: 'Spieleentwicklung',
-  unityUnreal: 'Unity & Unreal Engine',
-  gameDescription: 'Interaktive 2D/3D Spieleentwicklung mit Unity und Unreal Engine. Vollständiger Entwicklungszyklus: vom Konzept bis zur Veröffentlichung. Für Mobilgeräte optimierte Gaming-Lösungen.',
-  advertising: 'Werbung',
-  googleAds: 'Google Anzeigen',
-  advertisingDescription: 'Vollständige digitale Marketing-Services. Google Ads Kampagnenmanagement, SEO-Optimierung, Social Media Werbung. Messbare ROI-Steigerung und Conversion-Optimierung.',
-  musicWriting: 'Musikkomposition',
-  soundTrack: 'Soundtrack',
-  musicDescription: 'Individuelle Soundtracks und musikalische Untermalung für Websites, Apps und Spiele. Professionelle Audiotechnik und Audio-Branding Services.',
+  servicesSubtitle: 'Moderne Webentwicklung, die funktioniert und Ihr Produkt verkauft',
+
+  landingPageTitle: 'Landing Pages & Präsentationswebsites',
+  landingPageDescription: 'Moderne, konvertierende Seiten für kleine und mittlere Unternehmen. Stilvoll mit Tailwind CSS, blitzschnell mit Next.js.',
+
+  corporateWebTitle: 'Unternehmenswebsites & Webanwendungen',
+  corporateWebDescription: 'Komplexe Projekte auf React/Next.js Basis. Responsive Design, ausgezeichnete Leistung, SEO-freundlich.',
+
+  seoTitle: 'SEO & Suchmaschinenoptimierung',
+  seoDescription: 'Ich bringe Ihre Website auf die erste Google-Seite. Technisches SEO, Content-Optimierung und Linkaufbau professionell.',
+
+  cmsWebshopTitle: 'Custom CMS & E-Commerce Lösungen',
+  cmsWebshopDescription: 'Maßgeschneiderte Content-Management-Systeme und Online-Shop-Lösungen. Vollständige Kontrolle über Funktionalität und Design.',
+
+  wordpressTitle: 'WordPress Template Entwicklung',
+  wordpressDescription: 'Individuell entwickelte WordPress-Themes und Plugins. Schnelle, sichere und leicht verwaltbare Lösungen.',
+
+  sitebuildingTitle: 'Sitebuilding & Figma → Code',
+  sitebuildingDescription: 'Ich erwecke Ihre Designentwürfe zum Leben. Aus Figma, Adobe XD pixel-perfekte Website mit sauberem Code.',
   
   // Skills section
   professionalSkills: 'Berufliche Fähigkeiten',
@@ -55,12 +58,12 @@ export const de = {
   freelancerDesc: 'Ich nutze mein bisher erworbenes Wissen weiter und setze es bei kleineren und größeren Aufträgen ein. Ich helfe verschiedenen Unternehmen wie Autowerkstätten, Schönheitssalons und Fitnessstudios bei der täglichen Pflege und Weiterentwicklung ihrer Webpräsenz. Dabei konzentriere ich mich auf die Optimierung bestehender Websites und die Entwicklung neuer, benutzerfreundlicher Lösungen.',
   
   gbSolutions: 'GB SOLUTIONS ZRT. / INTUITECH',
-  gbSolutionsTitle: 'Frontend Developer',
+  gbSolutionsTitle: 'NextJs Frontend Developer',
   gbSolutionsYears: '2021-2024',
   gbSolutionsDesc: 'Der Hauptkunde des Unternehmens war vor allem zu Beginn die Gránit Bank. Ich war in dem Team, das Microsites für die Bank erstellte. Davon entstanden schließlich sehr viele, die neueren programmierten wir bereits unter NextJs, so konnte ich auch in React eintauchen.',
   
   easywaySystem: 'EASYWAY SYSTEM',
-  easywayTitle: 'Frontend Developer / Sitebuilder',
+  easywayTitle: 'Angular Frontend Developer / Sitebuilder',
   easywayYears: '2019-2021',
   easywayDesc: 'Wir entwickelten hauptsächlich webbasierte Anwendungen für heimische Banken und Verkehrsunternehmen. Hier begann ich, mich mit den Grundlagen von Angular und den dazugehörigen Framework-Systemen wie Angular Material vertraut zu machen.',
   
@@ -82,6 +85,7 @@ export const de = {
   // Education
   education: 'Ausbildung',
   bkfTitle: 'Budapester Kommunikationshochschule',
+  bkfSpecialty: 'Werbefachmann',
   bkfYears: '2005-2007',
   bkfDesc: 'Ab 2001 lernte ich in Szentgotthárd Programmierung, dann entschied ich mich, in Sárvár mein Abitur zu machen. Mich interessierte schon immer die Werbebranche und Kreativität, deshalb zog ich nach Budapest. An der Hochschule bildete ich mich weiter, wo ich für meine Diplomarbeit das Thema "Die Rolle der Werbung im Webdesign" wählte.',
   
@@ -93,7 +97,7 @@ export const de = {
   
   // Contact information
   contactEmail: 'salamonszilard@gmail.com',
-  contactPhone: '+36 30 123 4567',
+  contactPhone: '+36 30 657 3410',
   socialMedia: 'Social Media',
   facebook: 'Facebook',
   youtube: 'YouTube',
@@ -161,7 +165,7 @@ export const de = {
   downloadCV: 'CV herunterladen',
   mySkills: 'Meine Fähigkeiten',
   yearsExperience: 'Jahre',
-  completedProjects: 'Abgeschlossene',
+  completedProjects: 'Fertige',
   experience: 'Erfahrung',
   projects: 'Projekte',
   

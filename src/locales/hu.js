@@ -26,26 +26,29 @@ export const hu = {
   // Services section
   whatIDo: 'Mit csinálok',
   myServices: 'Szolgáltatásaim',
-  webDevelopment: 'Webfejlesztés',
-  webDesignLogo: 'Webdesign és Logó',
-  webDesignDescription: 'Modern, reszponzív weboldalak és professzionális logók tervezése. Felhasználóbarát interfészek készítése, amelyek növelik az ügyfelek elégedettségét és az értékesítést. NextJS, React fejlesztés.',
-  seePricing: 'Árak megtekintése',
-  appsDevelopment: 'Alkalmazásfejlesztés',
-  iosAndroid: 'iOS és Android',
-  appsDescription: 'Cross-platform mobilalkalmazások fejlesztése React Native technológiával. Gyors, megbízható és skálázható megoldások iOS és Android platformokra. App Store optimalizálás.',
-  gameDevelopment: 'Játékfejlesztés',
-  unityUnreal: 'Unity és Unreal Engine',
-  gameDescription: 'Interaktív 2D/3D játékok fejlesztése Unity és Unreal Engine használatával. Teljes fejlesztési ciklus: koncepciótól a kiadásig. Mobilra optimalizált gaming megoldások.',
-  advertising: 'Hirdetés',
-  googleAds: 'Google Hirdetések',
-  advertisingDescription: 'Teljes körű digitális marketing szolgáltatások. Google Ads kampánykezelés, SEO optimalizálás, közösségi média hirdetések. Mérhető ROI növelés és konverzió optimalizálás.',
-  musicWriting: 'Zeneszerzés',
-  soundTrack: 'Filmzene',
-  musicDescription: 'Egyedi soundtrackek és zenei aláfestés készítése weboldalakhoz, alkalmazásokhoz és játékokhoz. Professzionális hangtechnika és audio branding szolgáltatások.',
+  servicesSubtitle: 'Modern webfejlesztés, amely működik és eladja a termékedet',
+
+  landingPageTitle: 'Landing Page & Bemutatkozó Weboldalak',
+  landingPageDescription: 'Modern, konvertáló oldalak kis- és középvállalkozásoknak. Tailwind CSS-sel stílusosan, Next.js-sel villámgyorsan.',
+
+  corporateWebTitle: 'Vállalati Weboldalak & Web Alkalmazások',
+  corporateWebDescription: 'Komplex projektek React/Next.js alapokon. Responsive design, kiváló teljesítmény, SEO-friendly.',
+
+  seoTitle: 'SEO & Keresőoptimalizálás',
+  seoDescription: 'Google első oldalára juttatom a weboldaladat. Technikai SEO, tartalomoptimalizálás és link építés szakszerűen.',
+
+  cmsWebshopTitle: 'Saját Motorral Ellátott CMS & Webáruház',
+  cmsWebshopDescription: 'Egyedi tartalomkezelő rendszerek és e-commerce megoldások. Teljes kontroll a funkcionalitás és design felett.',
+
+  wordpressTitle: 'WordPress Sablon Fejlesztés',
+  wordpressDescription: 'Igény szerint fejlesztett WordPress témák és bővítmények. Gyors, biztonságos és könnyen kezelhető megoldások.',
+
+  sitebuildingTitle: 'Sitebuilding & Figma → Kód',
+  sitebuildingDescription: 'Dizájntervedet életre keltem. Figma, Adobe XD-ből pixel-pontos weboldal, tiszta kóddal.',
   
   // Skills section
   professionalSkills: 'Szakmai készségek',
-  myTalent: 'Tehetségem',
+  myTalent: 'Képességeim',
   technologies: 'Technológiák',
   designTools: 'Tervezőeszközök',
   
@@ -59,12 +62,12 @@ export const hu = {
   freelancerDesc: 'Eddigi tudásomat továbbra is használom és alkalmazom kisebb és nagyobb megbízásoknál. Különböző cégeknek segítek, mint autószerelők, szépségszalonok és fitnesz stúdiók webes jelenlétének napi karbantartásában és fejlesztésében. Közben a meglévő weboldalak optimalizálására és új, felhasználóbarát megoldások fejlesztésére összpontosítok.',
   
   gbSolutions: 'GB SOLUTIONS ZRT. / INTUITECH',
-  gbSolutionsTitle: 'Frontend fejlesztő',
+  gbSolutionsTitle: 'NextJs Frontend fejlesztő',
   gbSolutionsYears: '2021-2024',
   gbSolutionsDesc: 'A cég fő ügyfelei között elsősorban a Gránit Bank volt. A csapatban dolgoztam, amely mikro oldalakat készített a banknak. Végül nagyon sok ilyen oldal született, az újabbakat már NextJs alatt programoztuk, így a React-tel is megismerkedhettem.',
   
   easywaySystem: 'EASYWAY SYSTEM',
-  easywayTitle: 'Frontend fejlesztő / Sitebuilder',
+  easywayTitle: 'Angular Frontend fejlesztő / Sitebuilder',
   easywayYears: '2019-2021',
   easywayDesc: 'Főleg web alapú alkalmazásokat fejlesztettünk hazai bankok és közlekedési cégek számára. Itt kezdtem megismerkedni az Angular alapjaival és a hozzá tartozó framework rendszerekkel, mint az Angular Material.',
   
@@ -86,6 +89,7 @@ export const hu = {
   // Education
   education: 'Tanulmányaim',
   bkfTitle: 'Budapesti Kommunikációs Főiskola',
+  bkfSpecialty: 'Reklámszervező szakember',
   bkfYears: '2005-2007',
   bkfDesc: '2001-től Szentgotthárdon tanultam programozást, majd úgy döntöttem, hogy Sárváron érettségizek. Mindig is érdekelt a reklámszakma és a kreativitás, ezért Budapestre költöztem. A főiskolán továbbtanultam, ahol szakdolgozatom témájának "A reklám szerepe a webdesign-ban" címet választottam.',
   
@@ -97,7 +101,7 @@ export const hu = {
   
   // Contact information
   contactEmail: 'salamonszilard@gmail.com',
-  contactPhone: '+36 30 123 4567',
+  contactPhone: '+36 30 657 3410',
   socialMedia: 'Közösségi média',
   facebook: 'Facebook',
   youtube: 'YouTube',

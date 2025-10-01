@@ -156,7 +156,7 @@ const Index = ({ latestPosts }) => {
                 data-animate="active"
               >
                 <span>
-                  {t('myServices')}
+                  {t('servicesSubtitle')}
                 </span>
               </div>
             </div>
@@ -173,15 +173,15 @@ const Index = ({ latestPosts }) => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> {t('webDevelopment')} </span>
+                    <span> {language === 'hu' ? 'Webfejlesztés' : 'Webentwicklung'} </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> {t('webDesignLogo')} </span>
+                    <span> {t('landingPageTitle')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
-                      {t('webDesignDescription')}
+                      {t('landingPageDescription')}
                     </div>
                   </div>
                   <a href="#contact-section" className="lnk">
@@ -198,16 +198,16 @@ const Index = ({ latestPosts }) => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> {t('appsDevelopment')} </span>
+                    <span> {language === 'hu' ? 'Webfejlesztés' : 'Webentwicklung'} </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> {t('iosAndroid')} </span>
+                    <span> {t('corporateWebTitle')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
                       <p>
-                        {t('appsDescription')}
+                        {t('corporateWebDescription')}
                       </p>
                     </div>
                   </div>
@@ -225,15 +225,15 @@ const Index = ({ latestPosts }) => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> {t('gameDevelopment')} </span>
+                    <span> SEO </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> {t('unityUnreal')} </span>
+                    <span> {t('seoTitle')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
-                      {t('gameDescription')}
+                      {t('seoDescription')}
                     </div>
                   </div>
                   <a href="#contact-section" className="lnk">
@@ -250,15 +250,15 @@ const Index = ({ latestPosts }) => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> {t('advertising')} </span>
+                    <span> E-commerce </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> {t('googleAds')} </span>
+                    <span> {t('cmsWebshopTitle')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
-                      {t('advertisingDescription')}
+                      {t('cmsWebshopDescription')}
                     </div>
                   </div>
                   <a href="#contact-section" className="lnk">
@@ -275,17 +275,40 @@ const Index = ({ latestPosts }) => {
               <SwiperSlide className="swiper-slide">
                 <div className="services-item">
                   <div className="lui-subtitle">
-                    <span> {t('musicWriting')} </span>
+                    <span> WordPress </span>
                   </div>
                   <div className="icon" />
                   <h5 className="lui-title">
-                    <span> {t('soundTrack')} </span>
+                    <span> {t('wordpressTitle')} </span>
                   </h5>
                   <div className="lui-text">
                     <div>
-                      <p>
-                        {t('musicDescription')}
-                      </p>
+                      {t('wordpressDescription')}
+                    </div>
+                  </div>
+                  <a href="#contact-section" className="lnk">
+                    {t('contactMe')}
+                  </a>
+                  <div
+                    className="image"
+                    style={{
+                      backgroundImage: "url(assets/images/pat-2.png)",
+                    }}
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="swiper-slide">
+                <div className="services-item">
+                  <div className="lui-subtitle">
+                    <span> Sitebuilding </span>
+                  </div>
+                  <div className="icon" />
+                  <h5 className="lui-title">
+                    <span> {t('sitebuildingTitle')} </span>
+                  </h5>
+                  <div className="lui-text">
+                    <div>
+                      {t('sitebuildingDescription')}
                     </div>
                   </div>
                   <a href="#contact-section" className="lnk">
