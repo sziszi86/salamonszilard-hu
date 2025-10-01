@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Layout from '../src/layouts/Layout';
 import { useLanguage } from '../src/contexts/LanguageContext';
@@ -25,9 +25,12 @@ function Game() {
   const [totalRewardsCollected, setTotalRewardsCollected] = useState(0);
   const [matrixLines, setMatrixLines] = useState([]);
   
+  // Audio ref for jump sound
+  const jumpAudioRef = useRef(null);
+  
   const [player, setPlayer] = useState({
     x: 50,
-    y: GAME_HEIGHT - PLAYER_SIZE - 70,
+    y: GAME_HEIGHT - PLAYER_SIZE - 50,
     velocityY: 0,
     isJumping: false
   });
@@ -76,7 +79,7 @@ function Game() {
     setGameState('playing');
     setPlayer({
       x: 50,
-      y: GAME_HEIGHT - PLAYER_SIZE - 70,
+      y: GAME_HEIGHT - PLAYER_SIZE - 50,
       velocityY: 0,
       isJumping: false
     });
@@ -107,7 +110,7 @@ function Game() {
       const pattern = patterns[i % patterns.length];
       newObstacles.push({
         x: currentX,
-        y: GAME_HEIGHT - pattern.height - 70,
+        y: GAME_HEIGHT - pattern.height - 50,
         width: 40,
         height: pattern.height,
         type: 'pc',
@@ -125,7 +128,7 @@ function Game() {
       { emoji: '🍔', type: 'hamburger', value: 5 },
       { emoji: '🍎', type: 'apple', value: 3 },
       { emoji: '🌐', type: 'webstorm', value: 15 },
-      { emoji: '🐘', type: 'phpstorm', value: 15 },
+      { emoji: '🏎️', type: 'racecar', value: 15 },
       { emoji: '🎨', type: 'photoshop', value: 12 }
     ];
     
@@ -133,7 +136,7 @@ function Game() {
       const reward = rewardTypes[Math.floor(Math.random() * rewardTypes.length)];
       newCollectibles.push({
         x: GAME_WIDTH + 150 + i * 180,
-        y: GAME_HEIGHT - 110 - (Math.random() * 40),
+        y: GAME_HEIGHT - 90 - (Math.random() * 40),
         size: COLLECTIBLE_SIZE + 8,
         collected: false,
         id: Math.random(),
@@ -157,6 +160,12 @@ function Game() {
 
   const jump = useCallback(() => {
     if (!player.isJumping && gameState === 'playing') {
+      // Play jump sound
+      if (jumpAudioRef.current) {
+        jumpAudioRef.current.currentTime = 0;
+        jumpAudioRef.current.play().catch(e => console.log('Audio play failed:', e));
+      }
+      
       setPlayer(prev => ({
         ...prev,
         velocityY: JUMP_STRENGTH,
@@ -276,7 +285,7 @@ function Game() {
       // Update player physics
       setPlayer(prev => {
         const newY = prev.y + prev.velocityY;
-        const groundLevel = GAME_HEIGHT - PLAYER_SIZE - 70;
+        const groundLevel = GAME_HEIGHT - PLAYER_SIZE - 50;
         
         if (newY >= groundLevel) {
           return {
@@ -314,7 +323,7 @@ function Game() {
           const pattern = patterns[Math.floor(Math.random() * patterns.length)];
           updated.push({
             x: (lastObstacle?.x || GAME_WIDTH) + pattern.spacing,
-            y: GAME_HEIGHT - pattern.height - 70,
+            y: GAME_HEIGHT - pattern.height - 50,
             width: 40,
             height: pattern.height,
             type: 'pc',
@@ -342,13 +351,13 @@ function Game() {
             { emoji: '🍔', type: 'hamburger', value: 5 },
             { emoji: '🍎', type: 'apple', value: 3 },
             { emoji: '🌐', type: 'webstorm', value: 15 },
-            { emoji: '🐘', type: 'phpstorm', value: 15 },
+            { emoji: '🏎️', type: 'racecar', value: 15 },
             { emoji: '🎨', type: 'photoshop', value: 12 }
           ];
           const reward = rewardTypes[Math.floor(Math.random() * rewardTypes.length)];
           updated.push({
             x: (lastCollectible?.x || GAME_WIDTH) + 180,
-            y: GAME_HEIGHT - 110 - (Math.random() * 40),
+            y: GAME_HEIGHT - 90 - (Math.random() * 40),
             size: COLLECTIBLE_SIZE + 8,
             collected: false,
             id: Math.random(),
@@ -389,7 +398,7 @@ function Game() {
                   } else {
                     setPlayer({
                       x: 50,
-                      y: GAME_HEIGHT - PLAYER_SIZE - 70,
+                      y: GAME_HEIGHT - PLAYER_SIZE - 50,
                       velocityY: 0,
                       isJumping: false
                     });
@@ -577,7 +586,7 @@ function Game() {
               bottom: 0,
               left: 0,
               width: '100%',
-              height: 70,
+              height: 50,
               backgroundColor: '#8B4513'
             }} />
 
@@ -603,23 +612,27 @@ function Game() {
               }} />
               <div style={{
                 position: 'absolute',
-                bottom: 15,
-                left: -5,
+                bottom: player.isJumping ? 25 : 15,
+                left: player.isJumping ? -8 : -5,
                 width: 15,
                 height: 15,
                 backgroundColor: '#e8b896',
                 borderRadius: '50%',
-                border: '1px solid #2c3e50'
+                border: '1px solid #2c3e50',
+                transform: player.isJumping ? 'rotate(-30deg)' : 'rotate(0deg)',
+                transition: 'all 0.2s ease'
               }} />
               <div style={{
                 position: 'absolute',
-                bottom: 15,
-                right: -5,
+                bottom: player.isJumping ? 25 : 15,
+                right: player.isJumping ? -8 : -5,
                 width: 15,
                 height: 15,
                 backgroundColor: '#e8b896',
                 borderRadius: '50%',
-                border: '1px solid #2c3e50'
+                border: '1px solid #2c3e50',
+                transform: player.isJumping ? 'rotate(30deg)' : 'rotate(0deg)',
+                transition: 'all 0.2s ease'
               }} />
               <div style={{
                 position: 'absolute',
@@ -680,7 +693,7 @@ function Game() {
                   border: '2px solid #666',
                   boxShadow: '0 2px 6px rgba(0,0,0,0.4)'
                 }}>
-                  {/* Screen with Angry Face */}
+                  {/* Screen with Evil Face */}
                   <div style={{
                     position: 'absolute',
                     top: 3,
@@ -690,13 +703,14 @@ function Game() {
                     backgroundColor: '#1a1a1a',
                     borderRadius: '4px',
                     border: '1px solid #333',
-                    background: 'radial-gradient(circle at center, #001100 0%, #000000 100%)',
+                    background: 'radial-gradient(circle at center, #330000 0%, #000000 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '16px'
+                    fontSize: '16px',
+                    animation: 'evilGlow 2s infinite ease-in-out'
                   }}>
-                    😠
+                    👹
                   </div>
                   
                   <div style={{
@@ -898,9 +912,19 @@ function Game() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    zIndex: 2001
+                    zIndex: 2001,
+                    touchAction: 'manipulation'
                   }}
                   onClick={initializeGame}
+                  onTouchStart={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  onTouchEnd={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    initializeGame();
+                  }}
                 >
                   {t('restartButton', 'game')}
                 </button>
@@ -954,9 +978,19 @@ function Game() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    zIndex: 2001
+                    zIndex: 2001,
+                    touchAction: 'manipulation'
                   }}
                   onClick={initializeGame}
+                  onTouchStart={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  onTouchEnd={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    initializeGame();
+                  }}
                 >
                   Nochmal spielen / Újra játék
                 </button>
@@ -1009,6 +1043,15 @@ function Game() {
           </p>
         </div>
         
+        {/* Audio element for jump sound */}
+        <audio 
+          ref={jumpAudioRef}
+          preload="auto"
+          style={{ display: 'none' }}
+        >
+          <source src="data:audio/wav;base64,UklGRr4AAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YZoAAAC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4" type="audio/wav" />
+        </audio>
+        
         <style jsx global>{`
           @keyframes float {
             0%, 100% { transform: translateX(-50%) translateY(0px); }
@@ -1021,6 +1064,17 @@ function Game() {
             }
             50% { 
               box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 0 0 4px rgba(255,255,255,0.7);
+            }
+          }
+          
+          @keyframes evilGlow {
+            0%, 100% { 
+              background: radial-gradient(circle at center, #330000 0%, #000000 100%);
+              box-shadow: 0 0 5px #ff0000;
+            }
+            50% { 
+              background: radial-gradient(circle at center, #550000 0%, #220000 100%);
+              box-shadow: 0 0 10px #ff0000;
             }
           }
         `}</style>
