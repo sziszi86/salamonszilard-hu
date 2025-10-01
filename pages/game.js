@@ -25,8 +25,9 @@ function Game() {
   const [totalRewardsCollected, setTotalRewardsCollected] = useState(0);
   const [matrixLines, setMatrixLines] = useState([]);
   
-  // Audio ref for jump sound
+  // Audio refs for sounds
   const jumpAudioRef = useRef(null);
+  const painAudioRef = useRef(null);
   
   const [player, setPlayer] = useState({
     x: 50,
@@ -136,7 +137,7 @@ function Game() {
       const reward = rewardTypes[Math.floor(Math.random() * rewardTypes.length)];
       newCollectibles.push({
         x: GAME_WIDTH + 150 + i * 180,
-        y: GAME_HEIGHT - 90 - (Math.random() * 40),
+        y: GAME_HEIGHT - 140 - (Math.random() * 30),
         size: COLLECTIBLE_SIZE + 8,
         collected: false,
         id: Math.random(),
@@ -357,7 +358,7 @@ function Game() {
           const reward = rewardTypes[Math.floor(Math.random() * rewardTypes.length)];
           updated.push({
             x: (lastCollectible?.x || GAME_WIDTH) + 180,
-            y: GAME_HEIGHT - 90 - (Math.random() * 40),
+            y: GAME_HEIGHT - 140 - (Math.random() * 30),
             size: COLLECTIBLE_SIZE + 8,
             collected: false,
             id: Math.random(),
@@ -389,6 +390,12 @@ function Game() {
               
               setPlayerBlinking(true);
               setTimeout(() => setPlayerBlinking(false), 1500);
+              
+              // Play pain sound
+              if (painAudioRef.current) {
+                painAudioRef.current.currentTime = 0;
+                painAudioRef.current.play().catch(e => console.log('Pain audio play failed:', e));
+              }
               
               if (newHitCount >= 3) {
                 setLives(prevLives => {
@@ -1050,6 +1057,15 @@ function Game() {
           style={{ display: 'none' }}
         >
           <source src="data:audio/wav;base64,UklGRr4AAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YZoAAAC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4" type="audio/wav" />
+        </audio>
+        
+        {/* Audio element for pain sound */}
+        <audio 
+          ref={painAudioRef}
+          preload="auto"
+          style={{ display: 'none' }}
+        >
+          <source src="data:audio/wav;base64,UklGRr4AAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YZoAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=" type="audio/wav" />
         </audio>
         
         <style jsx global>{`
