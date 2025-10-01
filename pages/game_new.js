@@ -22,8 +22,6 @@ function Game() {
   const [playerBlinking, setPlayerBlinking] = useState(false);
   const [hitCount, setHitCount] = useState(0);
   const [applesCollected, setApplesCollected] = useState(0);
-  const [totalRewardsCollected, setTotalRewardsCollected] = useState(0);
-  const [matrixLines, setMatrixLines] = useState([]);
   
   const [player, setPlayer] = useState({
     x: 50,
@@ -37,40 +35,6 @@ function Game() {
   const [lives, setLives] = useState(3);
   const [score, setScore] = useState(0);
   const [gameDistance, setGameDistance] = useState(0);
-
-  // HTML code snippets for Matrix effect
-  const htmlCodeSnippets = [
-    '<div className="container">',
-    '<header>',
-    '<nav className="navbar">',
-    '<ul className="menu">',
-    '<li><a href="#home">Home</a></li>',
-    '<section id="main">',
-    '<h1>Welcome</h1>',
-    '<p>Hello World</p>',
-    '<button onClick={handleClick}>',
-    '<form onSubmit={handleSubmit}>',
-    '<input type="text" />',
-    '<textarea rows="4">',
-    '<img src="/logo.png" />',
-    '<footer className="footer">',
-    '</div>',
-    '</header>',
-    '</nav>',
-    '</section>',
-    '</button>',
-    '</form>',
-    '</footer>',
-    'const [state, setState] = useState();',
-    'useEffect(() => {',
-    'return () => clearInterval();',
-    'function handleClick() {',
-    'export default Component;',
-    'import React from "react";',
-    'npm install next react',
-    'git commit -m "feat: add component"',
-    'yarn build && yarn start'
-  ];
 
   const initializeGame = useCallback(() => {
     setGameState('playing');
@@ -86,8 +50,6 @@ function Game() {
     setHitCount(0);
     setPlayerBlinking(false);
     setApplesCollected(0);
-    // Only reset total rewards on full game restart (not on life loss)
-    setTotalRewardsCollected(0);
     
     // Initialize obstacles with infinite generation
     const newObstacles = [];
@@ -210,61 +172,8 @@ function Game() {
     const timer = setTimeout(() => {
       setShowTouchIndicator(false);
     }, 5000);
-
-    // Initialize Matrix code lines
-    const initializeMatrix = () => {
-      const lines = [];
-      for (let i = 0; i < 15; i++) {
-        lines.push({
-          id: Math.random(),
-          text: '',
-          targetText: htmlCodeSnippets[Math.floor(Math.random() * htmlCodeSnippets.length)],
-          x: Math.random() * GAME_WIDTH,
-          y: Math.random() * GAME_HEIGHT,
-          speed: 0.5 + Math.random() * 1,
-          opacity: 0.1 + Math.random() * 0.3,
-          currentIndex: 0,
-          delay: Math.random() * 2000
-        });
-      }
-      setMatrixLines(lines);
-    };
-
-    initializeMatrix();
-
-    // Matrix typing animation
-    const matrixTimer = setInterval(() => {
-      setMatrixLines(prev => prev.map(line => {
-        if (line.delay > 0) {
-          return { ...line, delay: line.delay - 100 };
-        }
-        
-        if (line.currentIndex < line.targetText.length) {
-          return {
-            ...line,
-            text: line.targetText.substring(0, line.currentIndex + 1),
-            currentIndex: line.currentIndex + 1,
-            y: line.y + line.speed
-          };
-        } else {
-          // Reset line when it's complete
-          return {
-            ...line,
-            text: '',
-            targetText: htmlCodeSnippets[Math.floor(Math.random() * htmlCodeSnippets.length)],
-            x: Math.random() * GAME_WIDTH,
-            y: -20,
-            currentIndex: 0,
-            delay: Math.random() * 1000
-          };
-        }
-      }));
-    }, 100);
     
-    return () => {
-      clearTimeout(timer);
-      clearInterval(matrixTimer);
-    };
+    return () => clearTimeout(timer);
   }, [initializeGame]);
 
   useEffect(() => {
@@ -416,9 +325,6 @@ function Game() {
           
           setScore(prevScore => prevScore + collectible.value);
           
-          // Increase total rewards counter (never decreases)
-          setTotalRewardsCollected(prev => prev + 1);
-          
           if (collectible.type === 'apple') {
             setApplesCollected(prev => {
               const newCount = prev + 1;
@@ -450,14 +356,18 @@ function Game() {
         prev.filter(animation => Date.now() - animation.startTime < 1000)
       );
 
-      // Check win condition based on total rewards collected
-      if (totalRewardsCollected >= 50) {
-        setGameState('won');
-      }
+      // Check win condition
+      setCollectibles(currentCollectibles => {
+        const collectedCount = currentCollectibles.filter(c => c.collected).length;
+        if (collectedCount >= 15) {
+          setGameState('won');
+        }
+        return currentCollectibles;
+      });
     }, 16);
 
     return () => clearInterval(gameLoop);
-  }, [gameState, obstacles, player, gameDistance, playerBlinking, totalRewardsCollected]);
+  }, [gameState, obstacles, player, gameDistance, playerBlinking]);
 
   return (
     <Layout>
@@ -489,7 +399,6 @@ function Game() {
             width: isMobile ? GAME_WIDTH * 0.9 : GAME_WIDTH,
             height: isMobile ? GAME_HEIGHT * 0.8 : GAME_HEIGHT,
             backgroundColor: '#87CEEB',
-            background: 'linear-gradient(135deg, rgba(0, 20, 40, 0.3) 0%, rgba(0, 40, 80, 0.2) 100%)',
             border: '2px solid #2c3e50',
             overflow: 'hidden',
             cursor: 'pointer',
@@ -546,28 +455,6 @@ function Game() {
                     border: '2px solid #ddd'
                   }} />
                 </div>
-              </div>
-            ))}
-
-            {/* Matrix Code Background */}
-            {matrixLines.map((line) => (
-              <div
-                key={line.id}
-                style={{
-                  position: 'absolute',
-                  left: line.x,
-                  top: line.y,
-                  fontSize: '10px',
-                  fontFamily: 'Courier New, monospace',
-                  color: '#00ff00',
-                  opacity: line.opacity,
-                  pointerEvents: 'none',
-                  zIndex: 1,
-                  whiteSpace: 'nowrap',
-                  textShadow: '0 0 5px #00ff00'
-                }}
-              >
-                {line.text}
               </div>
             ))}
 
@@ -655,7 +542,7 @@ function Game() {
               }} />
             </div>
 
-            {/* Obstacles - Old PCs with CRT Monitors and Angry Faces */}
+            {/* Obstacles - Old PCs with CRT Monitors */}
             {obstacles.map((obstacle, index) => (
               <div
                 key={obstacle.id || index}
@@ -680,7 +567,6 @@ function Game() {
                   border: '2px solid #666',
                   boxShadow: '0 2px 6px rgba(0,0,0,0.4)'
                 }}>
-                  {/* Screen with Angry Face */}
                   <div style={{
                     position: 'absolute',
                     top: 3,
@@ -690,14 +576,8 @@ function Game() {
                     backgroundColor: '#1a1a1a',
                     borderRadius: '4px',
                     border: '1px solid #333',
-                    background: 'radial-gradient(circle at center, #001100 0%, #000000 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '16px'
-                  }}>
-                    😠
-                  </div>
+                    background: 'radial-gradient(circle at center, #001100 0%, #000000 100%)'
+                  }} />
                   
                   <div style={{
                     position: 'absolute',
@@ -759,7 +639,7 @@ function Game() {
               </div>
             ))}
 
-            {/* Collectibles - Varied Rewards with Pulsing White Outline */}
+            {/* Collectibles - Varied Rewards */}
             {collectibles.map((collectible, index) => (
               !collectible.collected && (
                 <div
@@ -778,8 +658,7 @@ function Game() {
                     background: 'radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%)',
                     borderRadius: '50%',
                     border: '2px solid rgba(255,255,255,0.8)',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.5)',
-                    animation: 'pulseReward 2s infinite ease-in-out'
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
                   }}
                 >
                   {collectible.emoji}
@@ -846,13 +725,10 @@ function Game() {
               color: '#2c3e50',
               fontSize: '16px',
               fontWeight: 'bold',
-              textAlign: 'right',
-              backgroundColor: 'rgba(255,255,255,0.8)',
-              padding: '8px',
-              borderRadius: '8px'
+              textAlign: 'right'
             }}>
               <div>Score: {score}</div>
-              <div>Jutalmak: {totalRewardsCollected}/50</div>
+              <div>Jutalmak: {collectibles.filter(c => c.collected).length}/15</div>
               {applesCollected > 0 && (
                 <div style={{ color: '#27ae60', fontSize: '14px' }}>
                   Almák: {applesCollected}/3 ❤️
@@ -862,7 +738,6 @@ function Game() {
                 Hits: {hitCount}/3
               </div>
             </div>
-
 
             {/* Game Over Screen */}
             {gameState === 'gameOver' && (
@@ -880,8 +755,7 @@ function Game() {
                 color: '#e74c3c',
                 fontSize: '32px',
                 fontWeight: 'bold',
-                textAlign: 'center',
-                zIndex: 2000
+                textAlign: 'center'
               }}>
                 <div style={{ marginBottom: '20px' }}>{t('gameOver', 'game')}</div>
                 <button
@@ -897,8 +771,7 @@ function Game() {
                     fontFamily: 'monospace',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 2001
+                    justifyContent: 'center'
                   }}
                   onClick={initializeGame}
                 >
@@ -923,8 +796,7 @@ function Game() {
                 color: '#f1c40f',
                 fontSize: '24px',
                 fontWeight: 'bold',
-                textAlign: 'center',
-                zIndex: 2000
+                textAlign: 'center'
               }}>
                 <div style={{ marginBottom: '20px', fontSize: '32px' }}>
                   🎉 GRATULATION! 🎉
@@ -938,7 +810,7 @@ function Game() {
                   marginBottom: '20px',
                   maxWidth: '80%'
                 }}>
-                  Du hast alle 50 Belohnungen gesammelt! / Összegyűjtöttél mind az 50 jutalmat!
+                  Du hast alle 15 Belohnungen gesammelt! / Összegyűjtöttél mind a 15 jutalmat!
                 </div>
                 <button
                   style={{
@@ -953,8 +825,7 @@ function Game() {
                     fontFamily: 'monospace',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 2001
+                    justifyContent: 'center'
                   }}
                   onClick={initializeGame}
                 >
@@ -1005,7 +876,7 @@ function Game() {
           </p>
           <p style={{ margin: '5px 0' }}>Gyűjtsd össze a jutalmakat pontokért! / Sammle Belohnungen für Punkte!</p>
           <p style={{ fontWeight: 'bold', color: '#e74c3c', margin: '10px 0', fontSize: isMobile ? '11px' : '13px' }}>
-            Gyűjts össze mind az 50 jutalmat a győzelemhez! / Sammle alle 50 Belohnungen zum Sieg!
+            Gyűjts össze mind a 15 jutalmat a győzelemhez! / Sammle alle 15 Belohnungen zum Sieg!
           </p>
         </div>
         
@@ -1013,15 +884,6 @@ function Game() {
           @keyframes float {
             0%, 100% { transform: translateX(-50%) translateY(0px); }
             50% { transform: translateX(-50%) translateY(-3px); }
-          }
-          
-          @keyframes pulseReward {
-            0%, 100% { 
-              box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.3);
-            }
-            50% { 
-              box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 0 0 4px rgba(255,255,255,0.7);
-            }
           }
         `}</style>
       </div>
