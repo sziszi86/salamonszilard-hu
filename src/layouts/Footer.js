@@ -33,7 +33,6 @@ const Footer = () => {
                 className="copyright-text align-right scrolla-element-anim-1 scroll-animate"
                 data-animate="active"
               >
-                Developed by <strong>bslthemes</strong>
               </div>
             </div>
           </div>
