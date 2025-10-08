@@ -29,28 +29,23 @@ const Header = () => {
                 <Link href="/" legacyBehavior>
                   <a>
                     <img
-                      width={228}
-                      height={38}
+                      width={285}
+                      height={48}
                       src="/assets/images/logo2.png"
                       alt="Salamon Szilárd"
                       style={{
                         maxWidth: '100%',
-                        height: 'auto',
-                        '@media (max-width: 767px)': {
-                          width: '180px',
-                          height: '30px'
-                        }
+                        height: 'auto'
                       }}
                     />
                   </a>
                 </Link>
               </div>
             </div>
-            <div className="col-xs-6 col-sm-8 col-md-8 col-lg-8 align-right">
+            <div className="col-xs-6 col-sm-8 col-md-8 col-lg-8" style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'flex-end',
                 gap: '8px',
                 flexWrap: 'nowrap'
               }}>

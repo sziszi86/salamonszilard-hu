@@ -4,6 +4,7 @@ import PreLoader from "../src/layouts/PreLoader";
 import { LanguageProvider } from "../src/contexts/LanguageContext";
 import ClientOnly from "../src/components/ClientOnly";
 import "../styles/globals.css";
+import "../styles/mobile-header.css";
 const App = ({ Component, pageProps }) => {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
