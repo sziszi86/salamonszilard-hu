@@ -1,4 +1,6 @@
+import { useLanguage } from "../contexts/LanguageContext";
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <div className="footer">
       <div className="footer__builder">
@@ -25,7 +27,7 @@ const Footer = () => {
                 className="copyright-text align-center scrolla-element-anim-1 scroll-animate"
                 data-animate="active"
               >
-                © 2025 <strong>Salamon Szilárd</strong>. All rights reserved
+                © 2025 <strong>Salamon Szilárd</strong>. {t('allRightsReserved')}
               </div>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">

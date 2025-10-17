@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Layout from "../src/layouts/Layout";
+import { useLanguage } from "../src/contexts/LanguageContext";
 const BlogSingle = () => {
+  const { t } = useLanguage();
   return (
     <Layout>
       {/* Section Started Heading */}
@@ -266,7 +268,7 @@ const BlogSingle = () => {
                         <div className="group-row">
                           <div className="group">
                             <button type="submit" name="submit" className="btn">
-                              Submit
+                              {t('submit')}
                             </button>
                           </div>
                         </div>

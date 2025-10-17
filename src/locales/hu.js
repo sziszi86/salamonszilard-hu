@@ -185,6 +185,7 @@ export const hu = {
   myWork: 'Munkáim',
   myCases: 'Munkáim',
   viewProject: 'Projekt megtekintése',
+  viewMore: 'Több megtekintése',
   
   // Resume section
   resume: 'Önéletrajz',
@@ -221,6 +222,7 @@ export const hu = {
   letsTalk: 'Beszéljünk az ötletekről',
   getInTouch: 'Vedd fel velem a kapcsolatot',
   sendMessage: 'Üzenet küldése',
+  submit: 'Küldés',
   address: 'Cím',
   addressText: 'Schattendorf, Ausztria',
   freelance: 'Szabadúszó',
@@ -281,5 +283,54 @@ export const hu = {
     workSingle: "Munka Részletei",
     blogPage: "Blog",
     singlePost: "Bejegyzés"
-  }
+  },
+  
+  // Portfolio/Projects section
+  projects: [
+    {
+      id: "dijlovasok",
+      title: "Díjlovasok",
+      description: "Díjlovasok egyesület modern weboldala. Reszponzív design, galéria és eseménykezelő rendszer."
+    },
+    {
+      id: "eskuvo",
+      title: "Esküvő",
+      description: "Elegáns esküvői weboldal. Romantikus design, vendégkönyv és RSVP rendszer."
+    },
+    {
+      id: "granit",
+      title: "Granit",
+      description: "Gránit Bank mikrooldala. Modern, banki szabványoknak megfelelő dizájn és funkcionalitás."
+    },
+    {
+      id: "granitblog",
+      title: "Granit Blog",
+      description: "Gránit Bank blog platformja. Tartalomkezelő rendszer és felhasználóbarát szerkesztőfelület."
+    },
+    {
+      id: "humda",
+      title: "Humda",
+      description: "Vállalati bemutatkozó weboldal. Professzionális design, szolgáltatások és kapcsolati felület."
+    },
+    {
+      id: "invest",
+      title: "Invest",
+      description: "Befektetési tanácsadó cég weboldala. Bizalomépítő design és ügyfélportál."
+    },
+    {
+      id: "kb8",
+      title: "KB8",
+      description: "KB8 vállalati weboldal. Modern design, termékbemutató és ügyfélszolgálati felület."
+    },
+    {
+      id: "palace",
+      title: "Palace",
+      description: "Palace hotel weboldala. Luxus design, szobafoglalási rendszer és galéria."
+    },
+    {
+      id: "ursulyabeauty",
+      title: "Ursulyabeauty",
+      description: "Szépségszalon weboldala. Elegáns design, időpontfoglalási rendszer és szolgáltatások."
+    }
+  ]
 };

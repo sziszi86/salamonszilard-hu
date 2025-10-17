@@ -181,6 +181,7 @@ export const de = {
   myWork: 'Meine Arbeiten',
   myCases: 'Meine Fälle',
   viewProject: 'Projekt ansehen',
+  viewMore: 'Mehr anzeigen',
   
   // Resume section
   resume: 'Lebenslauf',
@@ -217,6 +218,7 @@ export const de = {
   letsTalk: 'Sprechen wir über Ideen',
   getInTouch: 'Kontaktieren Sie mich',
   sendMessage: 'Nachricht senden',
+  submit: 'Senden',
   address: 'Adresse',
   addressText: 'Schattendorf, Österreich',
   freelance: 'Freelancer',
@@ -277,5 +279,54 @@ export const de = {
     workSingle: "Arbeitsdetails",
     blogPage: "Blog",
     singlePost: "Beitrag"
-  }
+  },
+  
+  // Portfolio/Projects section
+  projects: [
+    {
+      id: "dijlovasok",
+      title: "Dressurreiter",
+      description: "Moderne Website für Dressurreiter-Verein. Responsive Design, Galerie und Veranstaltungsverwaltung."
+    },
+    {
+      id: "eskuvo",
+      title: "Hochzeit",
+      description: "Elegante Hochzeitswebsite. Romantisches Design, Gästebuch und RSVP-System."
+    },
+    {
+      id: "granit",
+      title: "Granit",
+      description: "Gránit Bank Microsite. Modernes Design und Funktionalität nach Bankenstandards."
+    },
+    {
+      id: "granitblog",
+      title: "Granit Blog",
+      description: "Gránit Bank Blog-Plattform. Content-Management-System und benutzerfreundliche Benutzeroberfläche."
+    },
+    {
+      id: "humda",
+      title: "Humda",
+      description: "Unternehmens-Präsentationswebsite. Professionelles Design, Dienstleistungen und Kontaktschnittstelle."
+    },
+    {
+      id: "invest",
+      title: "Invest",
+      description: "Website für Investmentberatung. Vertrauensbildendes Design und Kundenportal."
+    },
+    {
+      id: "kb8",
+      title: "KB8",
+      description: "KB8 Unternehmenswebsite. Modernes Design, Produktpräsentation und Kundendienst-Interface."
+    },
+    {
+      id: "palace",
+      title: "Palace",
+      description: "Palace Hotel Website. Luxuriöses Design, Buchungssystem und Galerie."
+    },
+    {
+      id: "ursulyabeauty",
+      title: "Ursulyabeauty",
+      description: "Schönheitssalon Website. Elegantes Design, Terminbuchungssystem und Dienstleistungen."
+    }
+  ]
 };
