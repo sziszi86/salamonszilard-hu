@@ -171,7 +171,6 @@ export const de = {
   
   // Contact information
   contactEmail: 'salamonszilard@gmail.com',
-  contactPhone: '+36 30 657 3410',
   socialMedia: 'Social Media',
   facebook: 'Facebook',
   youtube: 'YouTube',
@@ -215,8 +214,9 @@ export const de = {
   
   // Contact section
   contactMe: 'Kontaktieren Sie mich',
-  letsTalk: 'Sprechen wir über Ideen',
-  getInTouch: 'Kontaktieren Sie mich',
+  letsTalk: 'Schreiben Sie mir über Ihre Ideen',
+  getInTouch: 'Schreiben Sie mir eine E-Mail',
+  preferredCommunication: 'Ich bevorzuge schriftliche Kommunikation',
   sendMessage: 'Nachricht senden',
   submit: 'Senden',
   address: 'Adresse',
@@ -224,7 +224,6 @@ export const de = {
   freelance: 'Freelancer',
   availableNow: 'Jetzt verfügbar',
   email: 'E-Mail',
-  phone: 'Telefon',
   yourFullName: 'Ihr vollständiger Name',
   yourEmail: 'Ihre E-Mail-Adresse',
   yourSubject: 'Ihr Betreff',

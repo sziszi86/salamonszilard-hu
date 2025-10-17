@@ -175,7 +175,6 @@ export const hu = {
   
   // Contact information
   contactEmail: 'salamonszilard@gmail.com',
-  contactPhone: '+36 30 657 3410',
   socialMedia: 'Közösségi média',
   facebook: 'Facebook',
   youtube: 'YouTube',
@@ -219,8 +218,9 @@ export const hu = {
   
   // Contact section
   contactMe: 'Kapcsolat',
-  letsTalk: 'Beszéljünk az ötletekről',
-  getInTouch: 'Vedd fel velem a kapcsolatot',
+  letsTalk: 'Írj nekem az ötleteidről',
+  getInTouch: 'Írj nekem egy emailt',
+  preferredCommunication: 'Írásos megkereséseket részesítem előnyben',
   sendMessage: 'Üzenet küldése',
   submit: 'Küldés',
   address: 'Cím',
@@ -228,7 +228,6 @@ export const hu = {
   freelance: 'Szabadúszó',
   availableNow: 'Jelenleg elérhető',
   email: 'Email',
-  phone: 'Telefon',
   yourFullName: 'Teljes neved',
   yourEmail: 'Email címed',
   yourSubject: 'Tárgy',

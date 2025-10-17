@@ -630,6 +630,17 @@ const Index = ({ latestPosts }) => {
                   {t('letsTalk')}
                 </span>
               </div>
+              <div
+                className="m-subtitle splitting-text-anim-1 scroll-animate"
+                data-splitting="words"
+                data-animate="active"
+                style={{marginTop: '10px', fontSize: '14px', opacity: '0.8'}}
+              >
+                <span>
+                  {" "}
+                  {t('preferredCommunication')}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -679,20 +690,6 @@ const Index = ({ latestPosts }) => {
                     </div>
                     <div className="lui-text">
                       <span> {t('contactEmail')} </span>
-                    </div>
-                  </div>
-                  <div
-                    className="numbers-item scrolla-element-anim-1 scroll-animate"
-                    data-animate="active"
-                  >
-                    <div className="icon">
-                      <i aria-hidden="true" className="far fa-address-book" />
-                    </div>
-                    <div className="title">
-                      <span> {t('phone')} </span>
-                    </div>
-                    <div className="lui-text">
-                      <span> {t('contactPhone')} </span>
                     </div>
                   </div>
                 </div>

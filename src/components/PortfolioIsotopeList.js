@@ -1,266 +1,146 @@
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
+
 const PortfolioIsotopeList = ({ noViewMore }) => {
   const { t } = useLanguage();
+  const [lightboxImage, setLightboxImage] = useState(null);
+
+  const openLightbox = (imageSrc, title) => {
+    setLightboxImage({ src: imageSrc, title: title });
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
+
+  const projects = t('projects') || [];
+
   return (
     <Fragment>
       <div className="works-box works-list">
         <div className="works-items works-list-items row">
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
+          {projects.slice(0, 6).map((project, index) => (
+            <div key={project.id} className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div
+                className="works-item scrolla-element-anim-1 scroll-animate"
+                data-animate="active"
+              >
+                <div className="image">
+                  <div className="img">
+                    <div 
+                      onClick={() => openLightbox(`assets/images/portfolio/${project.id}.png`, project.title)}
+                      style={{ cursor: 'pointer' }}
+                    >
                       <img
                         decoding="async"
-                        src="assets/images/portfolio/dijlovasok.png"
-                        alt={t('projects')[0]?.title}
+                        src={`assets/images/portfolio/${project.id}.png`}
+                        alt={project.title}
                       />
                       <span className="overlay" />
-                    </a>
-                  </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="desc">
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>{t('projects')[0]?.title}</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    {t('projects')[0]?.description}
-                  </p>
+                <div className="desc">
+                  <h5 className="name">
+                    {project.title}
+                  </h5>
+                  <div className="text">
+                    <p>
+                      {project.description}
+                    </p>
+                  </div>
                 </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">{t('viewProject')}</a>
-                </Link>
+                <div
+                  className="bg-img"
+                  style={{
+                    backgroundImage: "url(assets/images/pat-2.png)",
+                  }}
+                />
               </div>
-              <div
-                className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
-              />
             </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
+          ))}
+        </div>
+      </div>
+
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div 
+          className="lightbox-overlay"
+          onClick={closeLightbox}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            cursor: 'pointer'
+          }}
+        >
+          <div 
+            className="lightbox-content"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: 'relative',
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              cursor: 'default'
+            }}
+          >
+            <img
+              src={lightboxImage.src}
+              alt={lightboxImage.title}
+              style={{
+                width: '100%',
+                height: 'auto',
+                maxWidth: '100%',
+                maxHeight: '90vh',
+                objectFit: 'contain'
+              }}
+            />
+            <button
+              onClick={closeLightbox}
+              style={{
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
+                background: 'rgba(255, 255, 255, 0.8)',
+                border: 'none',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
+                fontSize: '20px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
             >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        decoding="async"
-                        src="assets/images/portfolio/eskuvo.png"
-                        alt={t('projects')[1]?.title}
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>{t('projects')[1]?.title}</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    {t('projects')[1]?.description}
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">{t('viewProject')}</a>
-                </Link>
-              </div>
-              <div
-                className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
-              />
-            </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              ×
+            </button>
             <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
+              style={{
+                position: 'absolute',
+                bottom: '10px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                background: 'rgba(0, 0, 0, 0.7)',
+                color: 'white',
+                padding: '10px 20px',
+                borderRadius: '4px',
+                fontSize: '16px'
+              }}
             >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        decoding="async"
-                        src="assets/images/portfolio/granit.png"
-                        alt={t('projects')[2]?.title}
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>{t('projects')[2]?.title}</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    {t('projects')[2]?.description}
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">{t('viewProject')}</a>
-                </Link>
-              </div>
-              <div
-                className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
-              />
-            </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        decoding="async"
-                        src="assets/images/portfolio/granitblog.png"
-                        alt={t('projects')[3]?.title}
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>{t('projects')[3]?.title}</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    {t('projects')[3]?.description}
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">{t('viewProject')}</a>
-                </Link>
-              </div>
-              <div
-                className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
-              />
-            </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        decoding="async"
-                        src="assets/images/portfolio/humda.png"
-                        alt={t('projects')[4]?.title}
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>{t('projects')[4]?.title}</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    {t('projects')[4]?.description}
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">{t('viewProject')}</a>
-                </Link>
-              </div>
-              <div
-                className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
-              />
-            </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        decoding="async"
-                        src="assets/images/portfolio/invest.png"
-                        alt={t('projects')[5]?.title}
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>{t('projects')[5]?.title}</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    {t('projects')[5]?.description}
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">{t('viewProject')}</a>
-                </Link>
-              </div>
-              <div
-                className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
-              />
+              {lightboxImage.title}
             </div>
           </div>
         </div>
-      </div>
+      )}
     </Fragment>
   );
 };
