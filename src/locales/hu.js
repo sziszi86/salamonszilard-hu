@@ -334,8 +334,8 @@ export const hu = {
       description: "Szombathelyi Póker klub teljes frontend és backend egyedi admin felülettel és egyedi megoldásokkal."
     },
     {
-      id: "ursulyabeauty",
-      title: "Ursulya Beauty Wien",
+      id: "ursulabeauty",
+      title: "Ursula Beauty Wien",
       description: "Szépségszalon weboldala. Elegáns design, időpontfoglalási rendszer és szolgáltatások."
     }
   ]

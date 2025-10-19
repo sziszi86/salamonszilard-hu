@@ -330,8 +330,8 @@ export const de = {
       description: "Szombathelyer Poker Club komplettes Frontend und Backend mit individueller Admin-Oberfläche und maßgeschneiderten Lösungen."
     },
     {
-      id: "ursulyabeauty",
-      title: "Ursulya Beauty Wien",
+      id: "ursulabeauty",
+      title: "Ursula Beauty Wien",
       description: "Schönheitssalon Website. Elegantes Design, Terminbuchungssystem und Dienstleistungen."
     }
   ]
