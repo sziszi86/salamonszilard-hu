@@ -156,7 +156,7 @@ const Index = ({ latestPosts }) => {
               >
                 <img
                   decoding="async"
-                  src="assets/images/profile2.png"
+                  src="assets/images/me.png"
                   alt={t('name')}
                 />
                 <span className="circle circle-1" />
