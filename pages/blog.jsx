@@ -68,7 +68,7 @@ const Blog = ({ posts }) => {
                 <div className="filter-info" style={{ marginBottom: '20px', textAlign: 'center' }}>
                   <Link legacyBehavior href="/blog">
                     <a className="btn" style={{ display: 'inline-block', padding: '10px 20px', background: '#41a587', color: 'white', textDecoration: 'none', borderRadius: '5px' }}>
-                      {language === 'hu' ? 'Minden cikk megtekintése' : 'Alle Artikel anzeigen'}
+{t('allArticles')}
                     </a>
                   </Link>
                 </div>
@@ -133,7 +133,7 @@ const Blog = ({ posts }) => {
               <div className="col__sedebar">
                 <div className="blog-menu scrolla-element-anim-1 scroll-animate" data-animate="active">
                   <h5 className="lui-title">
-                    <span>{language === 'hu' ? 'Kategóriák' : 'Kategorien'}</span>
+                    <span>{t('categories')}</span>
                   </h5>
                   <div className="archive-links">
                     <ul>
@@ -147,7 +147,7 @@ const Blog = ({ posts }) => {
                 </div>
                 <div className="blog-menu scrolla-element-anim-1 scroll-animate" data-animate="active">
                   <h5 className="lui-title">
-                    <span>{language === 'hu' ? 'Legfrissebb cikkek' : 'Neueste Artikel'}</span>
+                    <span>{t('latestPosts')}</span>
                   </h5>
                   <div className="recent-posts">
                     {posts.slice(0, 3).map(post => (

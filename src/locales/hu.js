@@ -212,9 +212,15 @@ export const hu = {
   
   // Blog section
   latestBlog: 'Legfrissebb blog',
-  myArticles: 'Cikkeimm és tanácsaim',
+  myArticles: 'Cikkeim és tanácsaim',
   readMore: 'Tovább olvasás',
   viewBlog: 'Blog megtekintése',
+  categories: 'Kategóriák',
+  latestPosts: 'Legfrissebb cikkek',
+  relatedTopics: 'Kapcsolódó témák',
+  tags: 'Címkék',
+  backToBlog: 'Vissza a bloghoz',
+  allArticles: 'Minden cikk megtekintése',
   
   // Contact section
   contactMe: 'Kapcsolat',
@@ -242,6 +248,7 @@ export const hu = {
   loading: 'Betöltés...',
   language: 'Nyelv',
   downloadCV: 'CV letöltése',
+  cvPath: '/cv/szilard-salamon-hu-2025.pdf',
   mySkills: 'Készségeim',
   yearsExperience: 'Év',
   completedProjects: 'Befejezett',
@@ -288,18 +295,18 @@ export const hu = {
   projects: [
     {
       id: "dijlovasok",
-      title: "Díjlovasok",
-      description: "Díjlovasok egyesület modern weboldala. Reszponzív design, galéria és eseménykezelő rendszer."
+      title: "Díjlovasok.hu",
+      description: "Egyedi sablon és Joomla alapú weboldal készült a díjlovas szakág számára, amely professzionális megjelenést és könnyen kezelhető tartalomkezelő rendszert biztosít."
     },
     {
       id: "eskuvo",
-      title: "Esküvő",
-      description: "Elegáns esküvői weboldal. Romantikus design, vendégkönyv és RSVP rendszer."
+      title: "Eskuvoabalatonon.hu",
+      description: "Elegáns és romantikus esküvői weboldal készült Joomla alapokon, amely bemutatja a Balaton parti esküvői helyszíneket és szolgáltatásokat."
     },
     {
       id: "granit",
-      title: "Granit",
-      description: "Gránit Bank mikrooldala. Modern, banki szabványoknak megfelelő dizájn és funkcionalitás."
+      title: "Gránit Elite Metal Bankkártya",
+      description: "Prémium Metal bankkártya landing oldal készült a GranitBank számára, amely modern és exkluzív designnal prezentálja a fém bankkártya előnyeit és szolgáltatásait."
     },
     {
       id: "granitblog",
@@ -308,13 +315,13 @@ export const hu = {
     },
     {
       id: "humda",
-      title: "Humda",
-      description: "Vállalati bemutatkozó weboldal. Professzionális design, szolgáltatások és kapcsolati felület."
+      title: "Humda Green",
+      description: "Venntarthatóságra fókuszáló weboldal készült a HUMDA számára, amely bemutatja a vállalat környezettudatos kezdeményezéseit és zöld programjait."
     },
     {
       id: "invest",
-      title: "Invest",
-      description: "Befektetési tanácsadó cég weboldala. Bizalomépítő design és ügyfélportál."
+      title: "Investline",
+      description: "Professzionális pénzügyi szolgáltatások weboldala készült befektetési és vagyonkezelési megoldások bemutatására, modern és megbízható arculattal."
     },
     {
       id: "kb8",
@@ -323,12 +330,12 @@ export const hu = {
     },
     {
       id: "palace",
-      title: "Palace",
-      description: "Palace hotel weboldala. Luxus design, szobafoglalási rendszer és galéria."
+      title: "Palace Poker Club",
+      description: "Szombathelyi Póker klub teljes frontend és backend egyedi admin felülettel és egyedi megoldásokkal."
     },
     {
       id: "ursulyabeauty",
-      title: "Ursulyabeauty",
+      title: "Ursulya Beauty Wien",
       description: "Szépségszalon weboldala. Elegáns design, időpontfoglalási rendszer és szolgáltatások."
     }
   ]

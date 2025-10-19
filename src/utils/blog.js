@@ -21,26 +21,68 @@ function getBlogPost(slug) {
   const { data, content } = matter(fileContents);
   
   // Parse content into Hungarian and German sections
-  const sections = content.split('---\n\n# ');
-  const hungarianContent = sections[0].replace(/^# /, '');
-  const germanContent = sections[1] || hungarianContent;
+  // Look for the "---" separator that divides languages
+  const sections = content.split(/\n---\n\n/);
+  let hungarianContent, germanContent;
   
-  // For now, return plain text content - will implement markdown parsing later
-  const formatPlainText = (text) => {
+  if (sections.length >= 2) {
+    hungarianContent = sections[0];
+    germanContent = sections[1];
+  } else {
+    // Fallback: if no separator found, use same content for both languages
+    hungarianContent = content;
+    germanContent = content;
+  }
+  
+  // Simplified markdown to HTML conversion
+  const formatMarkdownToHTML = (text) => {
+    if (!text) return '';
+    
     return text
-      .replace(/\n\n/g, '</p><p>')
-      .replace(/^/, '<p>')
-      .replace(/$/, '</p>')
+      // Convert headings
+      .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+      .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+      .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+      
+      // Convert code blocks first (before other replacements)
+      .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>')
+      .replace(/`([^`\n]+)`/g, '<code>$1</code>')
+      
+      // Convert bold and italic
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>');
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      
+      // Convert unordered lists
+      .replace(/^- (.*$)/gm, '<li>$1</li>')
+      .replace(/((<li>.*<\/li>\n?)+)/gm, '<ul>\n$1</ul>')
+      
+      // Convert ordered lists  
+      .replace(/^\d+\. (.*$)/gm, '<li>$1</li>')
+      
+      // Convert paragraphs (split by double newlines)
+      .split('\n\n')
+      .map(paragraph => {
+        paragraph = paragraph.trim();
+        if (!paragraph) return '';
+        if (paragraph.startsWith('<h') || paragraph.startsWith('<ul') || paragraph.startsWith('<ol') || paragraph.startsWith('<pre') || paragraph.startsWith('<div')) {
+          return paragraph;
+        }
+        return `<p>${paragraph}</p>`;
+      })
+      .join('\n')
+      
+      // Convert single line breaks to <br> within paragraphs
+      .replace(/(<p>.*?)<\/p>/gs, (match, content) => {
+        return content.replace(/\n/g, '<br>') + '</p>';
+      });
   };
   
   return {
     slug,
     frontMatter: data,
     content: {
-      hu: formatPlainText(hungarianContent),
-      de: formatPlainText(germanContent)
+      hu: formatMarkdownToHTML(hungarianContent),
+      de: formatMarkdownToHTML(germanContent)
     },
     rawContent: {
       hu: hungarianContent,

@@ -26,10 +26,6 @@ const WorksList = () => {
               data-splitting="words"
               data-animate="active"
             >
-              <span>
-                {" "}
-                my <b>Cases</b>
-              </span>
             </div>
           </div>
         </div>

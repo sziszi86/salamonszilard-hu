@@ -7,7 +7,7 @@ export const de = {
   
   // Home section
   welcome: 'Willkommen bei',
-  name: 'Salamon Szilárd',
+  name: 'Szilárd Salamon',
   title: 'Frontend Webentwickler',
   subtitle: 'Kreative und moderne Websites erstellen',
   greeting: 'Hallo',
@@ -211,6 +211,12 @@ export const de = {
   myArticles: 'Meine Artikel und Ratschläge',
   readMore: 'Mehr lesen',
   viewBlog: 'Blog ansehen',
+  categories: 'Kategorien',
+  latestPosts: 'Neueste Artikel',
+  relatedTopics: 'Verwandte Themen',
+  tags: 'Tags',
+  backToBlog: 'Zurück zum Blog',
+  allArticles: 'Alle Artikel anzeigen',
   
   // Contact section
   contactMe: 'Kontaktieren Sie mich',
@@ -238,6 +244,7 @@ export const de = {
   loading: 'Wird geladen...',
   language: 'Sprache',
   downloadCV: 'CV herunterladen',
+  cvPath: '/cv/szilard-salamon-de.pdf',
   mySkills: 'Meine Fähigkeiten',
   yearsExperience: 'Jahre',
   completedProjects: 'Fertige',
@@ -284,33 +291,33 @@ export const de = {
   projects: [
     {
       id: "dijlovasok",
-      title: "Dressurreiter",
-      description: "Moderne Website für Dressurreiter-Verein. Responsive Design, Galerie und Veranstaltungsverwaltung."
+      title: "Díjlovasok.hu",
+      description: "Individuelle Vorlage und Joomla-basierte Website für den Dressursport, die professionelles Erscheinungsbild und ein einfach zu verwendendes Content-Management-System bietet."
     },
     {
       id: "eskuvo",
-      title: "Hochzeit",
-      description: "Elegante Hochzeitswebsite. Romantisches Design, Gästebuch und RSVP-System."
+      title: "Eskuvoabalatonon.hu",
+      description: "Elegante und romantische Hochzeitswebsite auf Joomla-Basis, die Plattensee-Hochzeitsorte und -dienstleistungen präsentiert."
     },
     {
       id: "granit",
-      title: "Granit",
-      description: "Gránit Bank Microsite. Modernes Design und Funktionalität nach Bankenstandards."
+      title: "Gránit Elite Metal Bankkarte",
+      description: "Premium Metal Bankkarten-Landing-Page für die GranitBank mit modernem und exklusivem Design, das die Vorteile und Dienstleistungen der Metallbankkarte präsentiert."
     },
     {
       id: "granitblog",
       title: "Granit Blog",
-      description: "Gránit Bank Blog-Plattform. Content-Management-System und benutzerfreundliche Benutzeroberfläche."
+      description: "Gránit Bank Blog-Plattform. Content-Management-System und benutzerfreundliche Editor-Oberfläche."
     },
     {
       id: "humda",
-      title: "Humda",
-      description: "Unternehmens-Präsentationswebsite. Professionelles Design, Dienstleistungen und Kontaktschnittstelle."
+      title: "Humda Green",
+      description: "Nachhaltigkeitsfokussierte Website für HUMDA, die die umweltbewussten Initiativen und grünen Programme des Unternehmens präsentiert."
     },
     {
       id: "invest",
-      title: "Invest",
-      description: "Website für Investmentberatung. Vertrauensbildendes Design und Kundenportal."
+      title: "Investline",
+      description: "Professionelle Finanzdienstleistungs-Website zur Präsentation von Investment- und Vermögensverwaltungslösungen mit modernem und vertrauensvollem Corporate Design."
     },
     {
       id: "kb8",
@@ -319,12 +326,12 @@ export const de = {
     },
     {
       id: "palace",
-      title: "Palace",
-      description: "Palace Hotel Website. Luxuriöses Design, Buchungssystem und Galerie."
+      title: "Palace Poker Club",
+      description: "Szombathelyer Poker Club komplettes Frontend und Backend mit individueller Admin-Oberfläche und maßgeschneiderten Lösungen."
     },
     {
       id: "ursulyabeauty",
-      title: "Ursulyabeauty",
+      title: "Ursulya Beauty Wien",
       description: "Schönheitssalon Website. Elegantes Design, Terminbuchungssystem und Dienstleistungen."
     }
   ]

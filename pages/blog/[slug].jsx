@@ -92,7 +92,7 @@ const BlogSingle = ({ post, latestPosts }) => {
                 <div className="post-tags scrolla-element-anim-1 scroll-animate" data-animate="active">
                   <div className="tags">
                     <div className="lui-subtitle">
-                      <span>{language === 'hu' ? 'Címkék:' : 'Tags:'}</span>
+                      <span>{t('tags')}:</span>
                     </div>
                     {currentTags.map((tag, index) => (
                       <span key={tag}>
@@ -111,7 +111,7 @@ const BlogSingle = ({ post, latestPosts }) => {
                 <Link legacyBehavior href="/blog">
                   <a className="post-nav-link">
                     <i className="fas fa-arrow-left" />
-                    <span>{language === 'hu' ? 'Vissza a bloghoz' : 'Zurück zum Blog'}</span>
+<span>{t('backToBlog')}</span>
                   </a>
                 </Link>
               </div>
@@ -122,7 +122,7 @@ const BlogSingle = ({ post, latestPosts }) => {
               <div className="col__sedebar">
                 <div className="blog-menu scrolla-element-anim-1 scroll-animate" data-animate="active">
                   <h5 className="lui-title">
-                    <span>{language === 'hu' ? 'Legfrissebb cikkek' : 'Neueste Artikel'}</span>
+                    <span>{t('latestPosts')}</span>
                   </h5>
                   <div className="recent-posts">
                     {latestPosts.filter(p => p.slug !== post.slug).slice(0, 3).map(latestPost => (
@@ -157,7 +157,7 @@ const BlogSingle = ({ post, latestPosts }) => {
                 
                 <div className="blog-menu scrolla-element-anim-1 scroll-animate" data-animate="active">
                   <h5 className="lui-title">
-                    <span>{language === 'hu' ? 'Kapcsolódó témák' : 'Verwandte Themen'}</span>
+                    <span>{t('relatedTopics')}</span>
                   </h5>
                   <div className="archive-links">
                     <ul>

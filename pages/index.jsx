@@ -140,7 +140,7 @@ const Index = ({ latestPosts }) => {
                 <div className="bts">
                   <a
                     target="_blank"
-                    href="https://drive.google.com/"
+                    href={t('cvPath')}
                     className="btn"
                   >
                     <span>{t('downloadCV')}</span>
@@ -500,10 +500,6 @@ const Index = ({ latestPosts }) => {
                 data-splitting="words"
                 data-animate="active"
               >
-                <span>
-                  {" "}
-                  my <b>Cases</b>
-                </span>
               </div>
             </div>
           </div>
