@@ -1,13 +1,13 @@
 ---
 title: "NextJS és PostgreSQL: A tökéletes páros admin felületek készítéséhez"
-titleDe: "NextJS und PostgreSQL: Das perfekte Paar für Admin-Interfaces"
+titleDe: "Projekt-Update: Ursula Beauty Wien – performante Website mit eigener Admin-Oberfläche"
 excerpt: "Fedezd fel, hogyan készíthetsz gyors és hatékony admin felületeket NextJS és PostgreSQL kombinációjával. Részletes útmutató a modern webfejlesztés eszközeivel."
-excerptDe: "Entdecke, wie du schnelle und effiziente Admin-Interfaces mit der Kombination aus NextJS und PostgreSQL erstellen kannst. Ein detaillierter Leitfaden mit modernen Webentwicklungstools."
+excerptDe: "Abschluss eines Kundenprojekts: Die neue Website von Ursula Beauty ist live – mit sehr guten PageSpeed-Insights-Werten, PostgreSQL-Datenbank und einer maßgeschneiderten Admin-Oberfläche."
 category: "Webfejlesztés"
 categoryDe: "Webentwicklung"
 tags: ["NextJS", "PostgreSQL", "Admin", "Frontend", "Backend"]
-tagsDe: ["NextJS", "PostgreSQL", "Admin", "Frontend", "Backend"]
-date: "2025-10-18"
+tagsDe: ["NextJS", "PostgreSQL", "Performance", "Admin", "Projekt"]
+date: "2026-02-10"
 author: "Salamon Szilard"
 image: "/assets/images/blog8.jpg"
 ---
@@ -109,97 +109,45 @@ Ez a technológia kombináció hosszú távon is kifizetődő befektetés, amell
 
 ---
 
-# NextJS und PostgreSQL: Einfache Lösung für Admin-Bereiche
+# Projekt-Update: Ursula Beauty Wien – performante Website mit eigener Admin-Oberfläche
 
-Viele Unternehmen kämpfen damit, effiziente Admin-Bereiche zu erstellen. In diesem Artikel zeige ich, warum **NextJS** und **PostgreSQL** eine gute Wahl für solche Projekte sind.
+In den letzten Wochen habe ich die neue Website für **Ursula Beauty (Wien)** umgesetzt. Ziel des Projekts war eine moderne, schnelle und wartbare Webpräsenz, die nicht nur optisch überzeugt, sondern auch technisch sauber und zukunftssicher aufgebaut ist.
 
-## Was ist NextJS und warum ist es vorteilhaft?
+👉 Live-Website: https://www.ursulabeauty.at/
 
-NextJS ist ein modernes Webentwicklungs-Tool, das die Arbeit erheblich erleichtert:
+## Fokus auf Performance und Qualität
 
-### Schnelles Laden
-Die Seiten laden schnell, weil sie bereits mit fertigen Daten ankommen. Das ist wichtig, wenn viele Informationen angezeigt werden müssen.
+Ein zentrales Ziel war eine sehr gute Performance. Die Website erzielt **starke Google PageSpeed / Page Insight Ergebnisse** in den Bereichen Performance, Best Practices und SEO.  
+Schnelle Ladezeiten sind gerade im Beauty- und Dienstleistungsbereich entscheidend – sowohl für die Nutzererfahrung als auch für die Sichtbarkeit in Suchmaschinen.
 
-### Einfache Entwicklung
-Alles ist an einem Ort - man muss nicht getrennt Server und Client entwickeln. Das spart Zeit und Geld.
+## Technisches Setup
 
-### Leichte Erweiterung
-Neue Funktionen lassen sich einfach hinzufügen. Man muss nur eine neue Datei erstellen und schon funktioniert es.
+Die Website basiert auf einer **modernen NextJS-Architektur** mit klarer Trennung von Frontend und Datenhaltung:
 
-## Warum PostgreSQL Datenbank?
+- **Frontend:** NextJS (komponentenbasiert, responsive, SEO-freundlich)
+- **Datenbank:** PostgreSQL
+- **Content-Verwaltung:** Eigene, maßgeschneiderte Admin-Oberfläche
+- **Hosting & Deployment:** Performance-optimierte Konfiguration
 
-PostgreSQL ist ein zuverlässiger Datenbankmanager, der weltweit verwendet wird:
+Alle Texte und Inhalte werden **direkt aus der PostgreSQL-Datenbank** geladen und über die Admin-Oberfläche gepflegt. Dadurch kann die Kundin Inhalte selbstständig aktualisieren – ohne technisches Vorwissen und ohne Abhängigkeit von einem CMS wie WordPress.
 
-### Sichere Datenspeicherung
-Die Daten sind sicher, gehen nicht verloren und werden nicht beschädigt. Das ist kritisch bei Geschäftsdaten.
+## Eigene Admin-Oberfläche statt Standard-CMS
 
-### Komplexe Abfragen
-Man kann leicht komplizierte Reports erstellen. Zum Beispiel: "Zeige die Verkäufe der letzten 3 Monate nach Kategorien".
+Anstelle eines klassischen CMS kam eine **individuell entwickelte Admin-Oberfläche** zum Einsatz. Diese bietet:
 
-### Flexible Datenverarbeitung
-Kann verschiedene Datentypen verwalten - Text, Zahlen, Datum oder sogar JSON-formatierte Informationen.
+- Übersichtliche Verwaltung von Texten und Seiten
+- Schnelle Aktualisierung von Inhalten
+- Klare Benutzerführung ohne unnötige Funktionen
+- Hohe Sicherheit und Kontrolle über die Daten
 
-## Wie funktioniert es in der Praxis?
+Diese Lösung ist besonders geeignet für kleinere Unternehmen, die eine **stabile, performante und wartungsarme Website** benötigen.
 
-### 1. Projekt-Start
-Der Entwickler startet das Projekt mit einfachen Befehlen. Wie wenn man ein neues Word-Dokument öffnet.
+## Fazit
 
-### 2. Datenbank-Einrichtung
-Stellen Sie sich die Datenbank wie eine Excel-Tabelle vor, nur viel intelligenter. PostgreSQL verwaltet automatisch die Daten:
+Das Projekt **Ursula Beauty** zeigt, wie sich mit modernen Webtechnologien eine hochwertige Website realisieren lässt, die sowohl technisch als auch geschäftlich überzeugt:
+- Sehr gute Performance-Werte
+- Saubere, skalierbare Architektur
+- Eigene Admin-Oberfläche auf PostgreSQL-Basis
+- Zukunftssichere Grundlage für Erweiterungen
 
-- **Benutzer-Tabelle**: Name, E-Mail, Berechtigung
-- **Produkt-Tabelle**: Name, Preis, Kategorie  
-- **Bestellungen-Tabelle**: Datum, Summe, Status
-
-### 3. Admin-Bereich erstellen
-Mit NextJS werden einfache Seiten erstellt:
-
-- **Dashboard**: Zusammenfassende Daten und Grafiken
-- **Benutzer**: Liste, Bearbeitung, Löschung
-- **Einstellungen**: System-Konfiguration
-
-## Warum lohnt sich diese Lösung?
-
-### 1. Schnellere Entwicklung
-Die gemeinsame Nutzung von NextJS und PostgreSQL führt zu **70% schnellerer** Entwicklung. Was früher wochenlang dauerte, ist jetzt in Tagen fertig.
-
-### 2. Kosteneffizienz
-- Weniger Entwicklungszeit = niedrigere Kosten
-- Ein Technology-Stack = einfachere Wartung
-- Skalierbare Lösung = langfristige Rentabilität
-
-### 3. Zuverlässigkeit
-Große Unternehmen (Netflix, Airbnb, Spotify) verwenden auch diese Technologie. Wenn es für sie funktioniert, funktioniert es auch bei kleineren Unternehmen hervorragend.
-
-## Sicherheitsvorteile
-
-### Eingebauter Schutz
-Das System schützt automatisch vor den meisten Angriffen:
-
-- **Schutz vor Datendiebstahl**: verschlüsselte Datenübertragung
-- **Berechtigungsverwaltung**: nur sehen, was erlaubt ist
-- **Backup**: automatische Datensicherung
-
-### Einfache Benutzerrechte
-Leicht einstellbar, wer was machen darf:
-- **Admin**: kann alles sehen und ändern
-- **Editor**: kann Daten ändern
-- **Betrachter**: kann nur ansehen
-
-## Zusammenfassung
-
-Wenn Ihr Unternehmen einen Admin-Bereich benötigt, ist die Kombination aus NextJS und PostgreSQL eine ausgezeichnete Wahl.
-
-**Warum diese Lösung gut ist:**
-- **Schnell**: aus Wochen werden Tage
-- **Sicher**: geschützte Daten und Benutzer
-- **Kosteneffizient**: kostet weniger Geld
-- **Zuverlässig**: große Unternehmen verwenden es auch
-
-**Wann sollten Sie dies wählen:**
-- Neues Admin-System wird benötigt
-- Das aktuelle ist zu langsam oder veraltet
-- Wachstum erfordert größere Kapazität
-- Sicherheits-Update ist erforderlich
-
-Diese Technologie-Kombination ist eine langfristig lohnende Investition, mit der das Unternehmen seine Geschäftsprozesse effizient verwalten kann.
+Solche Projekte setze ich bevorzugt um: **maßgeschneiderte, performante Weblösungen**, die langfristig funktionieren – remote und zuverlässig.

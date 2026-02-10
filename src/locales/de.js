@@ -8,7 +8,7 @@ export const de = {
   // Home section
   welcome: 'Willkommen bei',
   name: 'Szilárd Salamon',
-  title: 'Frontend Webentwickler',
+  title: 'Frontend Developer',
   subtitle: 'Saubere, moderne Frontend-Lösungen – remote & zuverlässig',
   greeting: 'Hallo',
   myNameIs: 'mein Name ist',
@@ -22,25 +22,25 @@ export const de = {
   // Services section
   whatIDo: 'Was ich mache',
   myServices: 'Meine Dienstleistungen',
-  servicesSubtitle: 'Moderne Webentwicklung, die funktioniert und Ihr Produkt verkauft',
+  servicesSubtitle: 'Moderne Webentwicklung, die funktioniert: performant, wartbar und SEO-bewusst.',
 
   landingPageTitle: 'Landing Pages & Präsentationswebsites',
-  landingPageDescription: 'Moderne, konvertierende Seiten für kleine und mittlere Unternehmen. Stilvoll mit Tailwind CSS, blitzschnell mit Next.js.',
+  landingPageDescription: 'Moderne Landing Pages für kleine und mittlere Unternehmen – klar strukturiert, responsiv und performance-optimiert (z. B. mit Next.js und Tailwind CSS).',
 
   corporateWebTitle: 'Unternehmenswebsites & Webanwendungen',
-  corporateWebDescription: 'Komplexe Projekte auf React/Next.js Basis. Responsive Design, ausgezeichnete Leistung, SEO-freundlich.',
+  corporateWebDescription: 'Websites und Webanwendungen auf React/Next.js oder Angular Basis – responsiv, wartbar und SEO-freundlich umgesetzt.',
 
   seoTitle: 'SEO & Suchmaschinenoptimierung',
-  seoDescription: 'Ich bringe Ihre Website auf die erste Google-Seite. Technisches SEO, Content-Optimierung und Linkaufbau professionell.',
+  seoDescription: 'Technisches SEO und solide Grundlagen: saubere Struktur, Core Web Vitals, Meta-Daten, strukturierte Inhalte und Performance-Optimierung.',
 
   cmsWebshopTitle: 'Custom CMS & E-Commerce Lösungen',
-  cmsWebshopDescription: 'Maßgeschneiderte Content-Management-Systeme und Online-Shop-Lösungen. Vollständige Kontrolle über Funktionalität und Design.',
+  cmsWebshopDescription: 'Maßgeschneiderte CMS- und E‑Commerce‑Lösungen (z. B. Headless). Fokus auf klare редакtions-Workflows, Sicherheit und Performance.',
 
   wordpressTitle: 'WordPress Template Entwicklung',
   wordpressDescription: 'Individuell entwickelte WordPress-Themes und Plugins. Schnelle, sichere und leicht verwaltbare Lösungen.',
 
   sitebuildingTitle: 'Sitebuilding & Figma → Code',
-  sitebuildingDescription: 'Ich erwecke Ihre Designentwürfe zum Leben. Aus Figma, Adobe XD pixel-perfekte Website mit sauberem Code.',
+  sitebuildingDescription: 'Figma → Code: saubere, responsive Umsetzung Ihrer Designs mit klarer Struktur, wiederverwendbaren Komponenten und sauberem CSS.',
 
   // Skills section
   professionalSkills: 'Berufliche Fähigkeiten',
@@ -53,22 +53,22 @@ export const de = {
     nextjs: {
       name: 'Next.js',
       percentage: 85,
-      description: 'Modernes React-Framework für Full-Stack-Webanwendungen. Server-side Rendering, API-Routes und optimierte Performance auf Expertenebene.'
+      description: 'Modernes React-Framework für Websites und Webanwendungen (SSR/SSG), Routing, API-Routes und performance-orientierte Umsetzung.'
     },
     javascript: {
       name: 'JavaScript',
       percentage: 90,
-      description: 'Tiefe Kenntnisse in ES6+ Syntax, asynchroner Programmierung und modernen JavaScript-Entwicklungsumgebungen. DOM-Manipulation und API-Integration professionell.'
+      description: 'Sicher in ES6+ Syntax, asynchroner Programmierung, API-Integration und modernen Toolchains – mit Fokus auf sauberen, wartbaren Code.'
     },
     css: {
       name: 'CSS3 / SASS / Tailwind / Bootstrap',
       percentage: 90,
-      description: 'Exzellente Stylesheet-Erstellung. Responsive Design, CSS Grid, Flexbox, Animationen und moderne CSS-Preprocessing-Tools auf Expertenebene.'
+      description: 'Responsive UI mit CSS Grid/Flexbox, Sass und Utility-Ansätzen (Tailwind). Strukturierte Styles, saubere Komponenten und solide UI-Details.'
     },
     figma: {
       name: 'Figma / Adobe Cloud',
       percentage: 75,
-      description: 'Pixel-perfekte Umsetzung von Design-Entwürfen. Figma-Komponenten interpretieren, Adobe Creative Suite und Design-Development-Zusammenarbeit.'
+      description: 'Präzise Umsetzung von Designs (Figma/Adobe) in responsiven Code – mit sauberem Handoff, Komponentenlogik und konsistenter UI.'
     },
     wordpress: {
       name: 'WordPress',
@@ -78,7 +78,7 @@ export const de = {
     git: {
       name: 'Git / Vercel',
       percentage: 75,
-      description: 'Versionskontrolle mit Git, Branch-Management, CI/CD-Pipeline-Setup auf Vercel-Plattform und effiziente Teamarbeit.'
+      description: 'Git für Versionskontrolle (Branches, Reviews) sowie Deployment/Hosting z. B. über Vercel – mit Fokus auf klare Abläufe und saubere Releases.'
     },
     react: {
       name: 'React',
@@ -98,12 +98,12 @@ export const de = {
     angular: {
       name: 'Angular',
       percentage: 65,
-      description: 'TypeScript-basierte Entwicklung, Komponentenarchitektur, Services-Nutzung, RxJS reactive Programming und Angular Material Implementation.'
+      description: 'TypeScript-basierte Entwicklung mit Komponenten/Services, Angular Material und RxJS-Grundlagen – für strukturierte, wartbare Frontends.'
     },
     claudecode: {
       name: 'Claude Code',
-      percentage: 100,
-      description: 'Meisterhafte KI-unterstützte Entwicklung. Maximale Claude Code Nutzung für Code-Generierung, Refactoring und komplexe Entwicklungsaufgaben.'
+      percentage: 70,
+      description: 'KI-unterstützte Entwicklung (z. B. Claude Code) für Analyse, Refactoring und Dokumentation – als Werkzeug, nicht als Autopilot.'
     },
     sketch: {
       name: 'Sketch',
@@ -113,7 +113,7 @@ export const de = {
     joomla: {
       name: 'Joomla',
       percentage: 80,
-      description: 'CMS-Anpassung, Komponenten- und Modul-Entwicklung, Template-Erstellung, Datenbank-Migration und Multisite-Management auf erfahrenem Niveau.'
+      description: 'Joomla-Anpassung (Templates, Module), Pflege bestehender Installationen und Migrationen – praxisnah aus Agenturprojekten.'
     },
     php: {
       name: 'PHP',
@@ -129,27 +129,27 @@ export const de = {
   freelancer: 'Freelancer',
   freelancerTitle: 'Frontend Developer',
   freelancerYears: '2024 - heute',
-  freelancerDesc: 'Ich nutze mein bisher erworbenes Wissen weiter und setze es bei kleineren und größeren Aufträgen ein. Ich helfe verschiedenen Unternehmen wie Autowerkstätten, Schönheitssalons und Fitnessstudios bei der täglichen Pflege und Weiterentwicklung ihrer Webpräsenz. Dabei konzentriere ich mich auf die Optimierung bestehender Websites und die Entwicklung neuer, benutzerfreundlicher Lösungen.',
+  freelancerDesc: 'Pflege und Weiterentwicklung bestehender Websites sowie Umsetzung neuer Seiten/Features. Remote-Abstimmung mit Kunden, Fokus auf responsive Layouts, saubere Umsetzung und Performance-Basics.',
 
   gbSolutions: 'GB SOLUTIONS ZRT. / INTUITECH',
   gbSolutionsTitle: 'NextJs Frontend Developer',
   gbSolutionsYears: '2021-2024',
-  gbSolutionsDesc: 'Der Hauptkunde des Unternehmens war vor allem zu Beginn die Gránit Bank. Ich war in dem Team, das Microsites für die Bank erstellte. Davon entstanden schließlich sehr viele, die neueren programmierten wir bereits unter NextJs, so konnte ich auch in React eintauchen.',
+  gbSolutionsDesc: 'Entwicklung und Betreuung von Microsites für Bankkunden (u. a. Gránit Bank). Umsetzung moderner UI-Komponenten und Seiten in Next.js/React, Zusammenarbeit mit Design/Backend, Versionierung über Git (GitLab).',
 
   easywaySystem: 'EASYWAY SYSTEM',
   easywayTitle: 'Angular Frontend Developer / Sitebuilder',
   easywayYears: '2019-2021',
-  easywayDesc: 'Wir entwickelten hauptsächlich webbasierte Anwendungen für heimische Banken und Verkehrsunternehmen. Hier begann ich, mich mit den Grundlagen von Angular und den dazugehörigen Framework-Systemen wie Angular Material vertraut zu machen.',
+  easywayDesc: 'Webbasierte Anwendungen für Banken und Verkehrsunternehmen. Einstieg und Vertiefung in Angular + Angular Material, Aufbau wiederverwendbarer UI-Bausteine.',
 
   adaptiveRecognition: 'ADAPTIVE RECOGNITION - ARH ZRT.',
   adaptiveTitle: 'Frontend Developer',
   adaptiveYears: '2014-2019',
-  adaptiveDesc: 'Es handelt sich um ein international anerkanntes führendes Technologieunternehmen, wo neben den Hauptseiten des Unternehmens zahlreiche Microsites unter meiner Leitung entstanden.',
+  adaptiveDesc: 'Umsetzung und Pflege von Corporate Websites und mehreren Microsites. Mitarbeit an Marketing-/Kampagnen-Assets (z. B. animierte Banner) in agiler Zusammenarbeit.',
 
   greenroom: 'GREENROOM',
   greenroomTitle: 'Frontend Developer',
   greenroomYears: '2010-2014',
-  greenroomDesc: 'In meiner Laufbahn habe ich hier am meisten gelernt. Mit meinen Kollegen arbeiteten wir mit modernsten Web-Tools an großen Projekten und ich erstellte auch sehr viele animierte Banner.',
+  greenroomDesc: 'Entwicklung und Wartung von Websites für bestehende und neue Kunden. Schnelle Iterationen im Agenturumfeld sowie Erstellung von animierten Werbemitteln.',
 
   hinoraGroup: 'HINORA Group',
   hinoraTitle: 'Webentwickler',
@@ -161,7 +161,7 @@ export const de = {
   bkfTitle: 'Budapester Kommunikationshochschule',
   bkfSpecialty: 'Werbefachmann',
   bkfYears: '2005-2007',
-  bkfDesc: 'Ab 2001 lernte ich in Szentgotthárd Programmierung, dann entschied ich mich, in Sárvár mein Abitur zu machen. Mich interessierte schon immer die Werbebranche und Kreativität, deshalb zog ich nach Budapest. An der Hochschule bildete ich mich weiter, wo ich für meine Diplomarbeit das Thema "Die Rolle der Werbung im Webdesign" wählte.',
+  bkfDesc: 'Ausbildung mit Schwerpunkt Kommunikation/Werbung. Diplomarbeit: "Die Rolle der Werbung im Webdesign". Solide Grundlage für UI-/Webprojekte und Sitebuilding.',
 
   // Personal traits
   personalTraits: 'Persönliche Eigenschaften',
@@ -236,10 +236,10 @@ export const de = {
   yourMessage: 'Ihre Nachricht',
   acceptTerms: '* Bedingungen akzeptieren.',
   thankYouMessage: 'Danke, Ihre Nachricht wurde erfolgreich gesendet.',
-  
+
   // Footer
   allRightsReserved: 'Alle Rechte vorbehalten',
-  
+
   // Common
   loading: 'Wird geladen...',
   language: 'Sprache',
@@ -250,7 +250,7 @@ export const de = {
   completedProjects: 'Fertige',
   experience: 'Erfahrung',
   projects: 'Projekte',
-  
+
   // Navigation menu
   navigation: {
     home: "Startseite",
@@ -265,7 +265,7 @@ export const de = {
     contact: "Kontakt",
     pages: "Seiten"
   },
-  
+
   // Game section
   game: {
     title: "Szilárd Entwicklungsabenteuer",
@@ -286,7 +286,7 @@ export const de = {
     blogPage: "Blog",
     singlePost: "Beitrag"
   },
-  
+
   // Portfolio/Projects section
   projects: [
     {
@@ -327,12 +327,12 @@ export const de = {
     {
       id: "palace",
       title: "Palace Poker Club",
-      description: "Szombathelyer Poker Club komplettes Frontend und Backend mit individueller Admin-Oberfläche und maßgeschneiderten Lösungen."
+      description: "Poker-Club Website – Umsetzung von Frontend und Backend inkl. individueller Admin-Oberfläche für Content-Pflege."
     },
     {
       id: "ursulabeauty",
       title: "Ursula Beauty Wien",
-      description: "Schönheitssalon Website. Elegantes Design, Terminbuchungssystem und Dienstleistungen."
+      description: "Website für einen Beauty-Salon in Wien – performante Umsetzung mit moderner Architektur, Inhalte aus PostgreSQL und eigener Admin-Oberfläche zur Pflege der Texte."
     }
   ]
 };
