@@ -28,13 +28,13 @@ const PortfolioIsotope = ({ noViewMore }) => {
               >
                 <div className="image">
                   <div className="img">
-                    <div 
-                      onClick={() => openLightbox(`assets/images/portfolio/${project.id}.png`, project.title)}
+                    <div
+                      onClick={() => openLightbox(`assets/images/portfolio/${project.image || project.id + '.png'}`, project.title)}
                       style={{ cursor: 'pointer' }}
                     >
                       <img
                         decoding="async"
-                        src={`assets/images/portfolio/${project.id}.png`}
+                        src={`assets/images/portfolio/${project.image || project.id + '.png'}`}
                         alt={project.title}
                       />
                       <span className="overlay" />
@@ -49,6 +49,16 @@ const PortfolioIsotope = ({ noViewMore }) => {
                     <p>
                       {project.description}
                     </p>
+                    {project.url && (
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', marginTop: '8px', gap: '6px', color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        {project.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                      </a>
+                    )}
                   </div>
                 </div>
                 <div

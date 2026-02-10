@@ -331,8 +331,10 @@ export const de = {
     },
     {
       id: "ursulabeauty",
+      image: "ursula-beauty.jpg",
       title: "Ursula Beauty Wien",
-      description: "Website für einen Beauty-Salon in Wien – performante Umsetzung mit moderner Architektur, Inhalte aus PostgreSQL und eigener Admin-Oberfläche zur Pflege der Texte."
+      description: "Website für einen Beauty-Salon in Wien – performante Umsetzung mit moderner Architektur, Inhalte aus PostgreSQL und eigener Admin-Oberfläche zur Pflege der Texte.",
+      url: "https://www.ursulabeauty.at/"
     }
   ]
 };

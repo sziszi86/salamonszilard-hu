@@ -335,8 +335,10 @@ export const hu = {
     },
     {
       id: "ursulabeauty",
+      image: "ursula-beauty.jpg",
       title: "Ursula Beauty Wien",
-      description: "Szépségszalon weboldala. Elegáns design, időpontfoglalási rendszer és szolgáltatások."
+      description: "Szépségszalon weboldala. Elegáns design, időpontfoglalási rendszer és szolgáltatások.",
+      url: "https://www.ursulabeauty.at/"
     }
   ]
 };
