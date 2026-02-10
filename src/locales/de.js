@@ -9,15 +9,15 @@ export const de = {
   welcome: 'Willkommen bei',
   name: 'Szilárd Salamon',
   title: 'Frontend Webentwickler',
-  subtitle: 'Kreative und moderne Websites erstellen',
+  subtitle: 'Saubere, moderne Frontend-Lösungen – remote & zuverlässig',
   greeting: 'Hallo',
   myNameIs: 'mein Name ist',
   iAm: 'Ich bin',
-  introduction: 'Ich bin ein 39-jähriger, ehrgeiziger und fröhlicher Entwickler voller Ideen und Pläne. Ich lebe in Schattendorf, Österreich und plane hier meine Zukunft. Ich habe umfangreiche Erfahrung in der Webentwicklung.',
-  personalDescription: 'Ich bin ein ehrgeiziger und fröhlicher junger Mann voller Ideen und Pläne',
-  
+  introduction: 'Ich bin Frontend Developer / Sitebuilder mit über 15 Jahren Erfahrung in der Umsetzung von Websites, Microsites und webbasierten Anwendungen. Mein Fokus liegt auf sauberer, responsiver UI-Implementierung (Figma → Code) mit modernen Frameworks wie Next.js/React oder Angular.',
+  personalDescription: 'Frontend Developer mit Fokus auf Sitebuilding, sauberen Code und effiziente Remote-Zusammenarbeit.',
+
   // Extended introduction
-  extendedIntro: 'Ich bin ein 39-jähriger, ambitionierter und lebensfroher junger Mann voller Ideen und Pläne. Ich wohne in Schattendorf und plane meine Zukunft in Österreich, da meine Partnerin und ein großer Teil meiner Familie bereits hier leben oder arbeiten. Ich habe eine Bewegungseinschränkung, die eine Anerkennung als Person mit besonderen Bedürfnissen zur Folge hat, was für Unternehmen steuerliche Vorteile bietet. Dies beeinträchtigt jedoch weder meine Mobilität noch meine Arbeitsleistung. Da ich bisher ausschließlich für ungarische multinationale Unternehmen gearbeitet habe, lerne ich gerne Deutsch, jedoch reichen meine aktuellen Deutschkenntnisse noch nicht für fließende mündliche Kommunikation aus.',
+  extendedIntro: 'Ich bin Frontend Developer / Sitebuilder mit über 15 Jahren Berufserfahrung in Agentur- und Unternehmensumgebungen. Ich setze Designs präzise von Figma in wartbaren, responsiven Code um und arbeite komponentenbasiert mit Next.js/React oder Angular sowie modernem CSS (Sass/Tailwind).\nIch arbeite remote-first und sehr zuverlässig in asynchroner Zusammenarbeit (E-Mail, Chat, Tickets) mit klarer schriftlicher Kommunikation und guter Dokumentation.\nIn Ungarn bin ich offiziell als Arbeitnehmer mit veränderter Arbeitsfähigkeit anerkannt; die entsprechende Anerkennung in Österreich ist in Vorbereitung und kann – je nach Regelung – Förderungen bzw. Abgabenbegünstigungen für Arbeitgeber ermöglichen. Deutsch lerne ich aktuell in einem Kurs; in der Startphase bevorzuge ich schriftliche Kommunikation.',
 
   // Services section
   whatIDo: 'Was ich mache',
@@ -41,7 +41,7 @@ export const de = {
 
   sitebuildingTitle: 'Sitebuilding & Figma → Code',
   sitebuildingDescription: 'Ich erwecke Ihre Designentwürfe zum Leben. Aus Figma, Adobe XD pixel-perfekte Website mit sauberem Code.',
-  
+
   // Skills section
   professionalSkills: 'Berufliche Fähigkeiten',
   myTalent: 'Mein Talent',
@@ -121,75 +121,75 @@ export const de = {
       description: 'Server-seitige Programmierung Grundlagen, MySQL-Datenbankverbindungen, einfache API-Endpunkte erstellen und WordPress Backend-Entwicklung.'
     }
   },
-  
+
   // Professional experience
   workExperience: 'Berufserfahrung',
-  
+
   // Current work
   freelancer: 'Freelancer',
   freelancerTitle: 'Frontend Developer',
   freelancerYears: '2024 - heute',
   freelancerDesc: 'Ich nutze mein bisher erworbenes Wissen weiter und setze es bei kleineren und größeren Aufträgen ein. Ich helfe verschiedenen Unternehmen wie Autowerkstätten, Schönheitssalons und Fitnessstudios bei der täglichen Pflege und Weiterentwicklung ihrer Webpräsenz. Dabei konzentriere ich mich auf die Optimierung bestehender Websites und die Entwicklung neuer, benutzerfreundlicher Lösungen.',
-  
+
   gbSolutions: 'GB SOLUTIONS ZRT. / INTUITECH',
   gbSolutionsTitle: 'NextJs Frontend Developer',
   gbSolutionsYears: '2021-2024',
   gbSolutionsDesc: 'Der Hauptkunde des Unternehmens war vor allem zu Beginn die Gránit Bank. Ich war in dem Team, das Microsites für die Bank erstellte. Davon entstanden schließlich sehr viele, die neueren programmierten wir bereits unter NextJs, so konnte ich auch in React eintauchen.',
-  
+
   easywaySystem: 'EASYWAY SYSTEM',
   easywayTitle: 'Angular Frontend Developer / Sitebuilder',
   easywayYears: '2019-2021',
   easywayDesc: 'Wir entwickelten hauptsächlich webbasierte Anwendungen für heimische Banken und Verkehrsunternehmen. Hier begann ich, mich mit den Grundlagen von Angular und den dazugehörigen Framework-Systemen wie Angular Material vertraut zu machen.',
-  
+
   adaptiveRecognition: 'ADAPTIVE RECOGNITION - ARH ZRT.',
   adaptiveTitle: 'Frontend Developer',
   adaptiveYears: '2014-2019',
   adaptiveDesc: 'Es handelt sich um ein international anerkanntes führendes Technologieunternehmen, wo neben den Hauptseiten des Unternehmens zahlreiche Microsites unter meiner Leitung entstanden.',
-  
+
   greenroom: 'GREENROOM',
   greenroomTitle: 'Frontend Developer',
   greenroomYears: '2010-2014',
   greenroomDesc: 'In meiner Laufbahn habe ich hier am meisten gelernt. Mit meinen Kollegen arbeiteten wir mit modernsten Web-Tools an großen Projekten und ich erstellte auch sehr viele animierte Banner.',
-  
+
   hinoraGroup: 'HINORA Group',
   hinoraTitle: 'Webentwickler',
   hinoraYears: '2007-2010',
   hinoraDesc: 'Neben der Erstellung von Flash-Bannern war meine Aufgabe die Wartung und Erstellung von Websites für bestehende und neue Kunden.',
-  
+
   // Education
   education: 'Ausbildung',
   bkfTitle: 'Budapester Kommunikationshochschule',
   bkfSpecialty: 'Werbefachmann',
   bkfYears: '2005-2007',
   bkfDesc: 'Ab 2001 lernte ich in Szentgotthárd Programmierung, dann entschied ich mich, in Sárvár mein Abitur zu machen. Mich interessierte schon immer die Werbebranche und Kreativität, deshalb zog ich nach Budapest. An der Hochschule bildete ich mich weiter, wo ich für meine Diplomarbeit das Thema "Die Rolle der Werbung im Webdesign" wählte.',
-  
+
   // Personal traits
   personalTraits: 'Persönliche Eigenschaften',
   goodCommunication: 'Gute Kommunikationsfähigkeiten',
   teamPlayer: 'Teamplayer',
   openToChallenges: 'Offen für neue Herausforderungen',
-  
+
   // Contact information
   contactEmail: 'salamonszilard@gmail.com',
   socialMedia: 'Social Media',
   facebook: 'Facebook',
   youtube: 'YouTube',
   instagram: 'Instagram',
-  
+
   // Portfolio section
   myWork: 'Meine Arbeiten',
   myCases: 'Meine Fälle',
   viewProject: 'Projekt ansehen',
   viewMore: 'Mehr anzeigen',
-  
+
   // Resume section
   resume: 'Lebenslauf',
-  
+
   // Testimonials section
   testimonials: 'Referenzen',
   whatCustomersSay: 'Was Kunden sagen',
   reviews: 'Bewertungen',
-  
+
   // Pricing section
   pricing: 'Preisgestaltung',
   myPriceBoard: 'Meine Preisliste',
@@ -205,7 +205,7 @@ export const de = {
   advertisingService: 'Werbung',
   photography: 'Fotografie',
   popular: 'Beliebt',
-  
+
   // Blog section
   latestBlog: 'Neuester Blog',
   myArticles: 'Meine Artikel und Ratschläge',
@@ -217,16 +217,16 @@ export const de = {
   tags: 'Tags',
   backToBlog: 'Zurück zum Blog',
   allArticles: 'Alle Artikel anzeigen',
-  
+
   // Contact section
   contactMe: 'Kontaktieren Sie mich',
   letsTalk: 'Schreiben Sie mir über Ihre Ideen',
   getInTouch: 'Schreiben Sie mir eine E-Mail',
-  preferredCommunication: 'Ich bevorzuge schriftliche Kommunikation',
+  preferredCommunication: 'Bevorzugter Erstkontakt: E-Mail',
   sendMessage: 'Nachricht senden',
   submit: 'Senden',
   address: 'Adresse',
-  addressText: 'Schattendorf, Österreich',
+  addressText: 'CET-Zeitzone · Remote möglich',
   freelance: 'Freelancer',
   availableNow: 'Jetzt verfügbar',
   email: 'E-Mail',
@@ -244,7 +244,7 @@ export const de = {
   loading: 'Wird geladen...',
   language: 'Sprache',
   downloadCV: 'CV herunterladen',
-  cvPath: '/cv/szilard-salamon-de.pdf',
+  cvPath: '/cv/szilard-salamon-at-de.pdf',
   mySkills: 'Meine Fähigkeiten',
   yearsExperience: 'Jahre',
   completedProjects: 'Fertige',
