@@ -248,7 +248,7 @@ export const hu = {
   loading: 'Betöltés...',
   language: 'Nyelv',
   downloadCV: 'CV letöltése',
-  cvPath: '/cv/szilard-salamon-hu-2025.pdf',
+  cvPath: '/cv/salamon-szilard-ai.pdf',
   mySkills: 'Készségeim',
   yearsExperience: 'Év',
   completedProjects: 'Befejezett',
