@@ -20,23 +20,34 @@ function getBlogPost(slug) {
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
   
-  // Parse content into Hungarian and German sections
+  // Parse content into Hungarian, German and English sections
   // Look for the "---" separator that divides languages
   const sections = content.split(/\n---\n\n/);
-  let hungarianContent, germanContent;
+  let hungarianContent, germanContent, englishContent;
   
-  if (sections.length >= 2) {
+  if (sections.length >= 3) {
     hungarianContent = sections[0];
     germanContent = sections[1];
+    englishContent = sections[2];
+  } else if (sections.length === 2) {
+    hungarianContent = sections[0];
+    germanContent = sections[1];
+    englishContent = sections[1]; // Fallback to German for English
   } else {
-    // Fallback: if no separator found, use same content for both languages
+    // Fallback: if no separator found, use same content for all languages
     hungarianContent = content;
     germanContent = content;
+    englishContent = content;
   }
   
   // Simplified markdown to HTML conversion
   const formatMarkdownToHTML = (text) => {
     if (!text) return '';
+    
+    // Safety check to avoid double formatting if it's already HTML
+    if (text.trim().startsWith('<p>') || text.trim().startsWith('<h1>')) {
+        return text;
+    }
     
     return text
       // Convert headings
@@ -82,11 +93,13 @@ function getBlogPost(slug) {
     frontMatter: data,
     content: {
       hu: formatMarkdownToHTML(hungarianContent),
-      de: formatMarkdownToHTML(germanContent)
+      de: formatMarkdownToHTML(germanContent),
+      en: formatMarkdownToHTML(englishContent)
     },
     rawContent: {
       hu: hungarianContent,
-      de: germanContent
+      de: germanContent,
+      en: englishContent
     }
   };
 }

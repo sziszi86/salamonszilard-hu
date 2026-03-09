@@ -12,7 +12,11 @@ const Blog = ({ posts }) => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString(language === 'hu' ? 'hu-HU' : 'de-DE', {
+    let locale = 'hu-HU';
+    if (language === 'de') locale = 'de-DE';
+    if (language === 'en') locale = 'en-US';
+    
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -24,7 +28,9 @@ const Blog = ({ posts }) => {
     if (tag) {
       setSelectedTag(tag);
       const filtered = posts.filter(post => {
-        const postTags = language === 'hu' ? post.tags : (post.tagsDe || post.tags);
+        let postTags = post.tags;
+        if (language === 'de') postTags = post.tagsDe || post.tags;
+        if (language === 'en') postTags = post.tagsEn || post.tagsDe || post.tags;
         return postTags && postTags.includes(tag);
       });
       setFilteredPosts(filtered);
@@ -53,7 +59,7 @@ const Blog = ({ posts }) => {
               data-splitting="words"
               data-animate="active"
             >
-              <span> {selectedTag ? (language === 'hu' ? `Cikkek ${selectedTag} témakörben` : `Artikel zu ${selectedTag}`) : t('myArticles')} </span>
+              <span> {selectedTag ? t('articlesByTag').replace('{tag}', selectedTag) : t('myArticles')} </span>
             </div>
           </div>
         </div>
@@ -75,57 +81,73 @@ const Blog = ({ posts }) => {
               )}
               {/* Blog Items */}
               <div className="articles-container">
-                {filteredPosts.map((post, index) => (
-                  <div
-                    key={post.slug}
-                    className="archive-item scrolla-element-anim-1 scroll-animate"
-                    data-animate="active"
-                  >
-                    <div className="image">
-                      <Link legacyBehavior href={`/blog/${post.slug}`}>
-                        <a>
-                          <img
-                            src={post.image}
-                            alt={language === 'hu' ? post.title : (post.titleDe || post.title)}
-                            loading="lazy"
-                          />
-                        </a>
-                      </Link>
-                    </div>
-                    <div className="desc">
-                      <div className="category lui-subtitle">
-                        <span>{language === 'hu' ? post.category : (post.categoryDe || post.category)}</span>
-                      </div>
-                      <h5 className="lui-title">
+                {filteredPosts.map((post, index) => {
+                  let title = post.title;
+                  let category = post.category;
+                  let excerpt = post.excerpt;
+                  
+                  if (language === 'de') {
+                    title = post.titleDe || post.title;
+                    category = post.categoryDe || post.category;
+                    excerpt = post.excerptDe || post.excerpt;
+                  } else if (language === 'en') {
+                    title = post.titleEn || post.titleDe || post.title;
+                    category = post.categoryEn || post.categoryDe || post.category;
+                    excerpt = post.excerptEn || post.excerptDe || post.excerpt;
+                  }
+                  
+                  return (
+                    <div
+                      key={post.slug}
+                      className="archive-item scrolla-element-anim-1 scroll-animate"
+                      data-animate="active"
+                    >
+                      <div className="image">
                         <Link legacyBehavior href={`/blog/${post.slug}`}>
                           <a>
-                            {language === 'hu' ? post.title : (post.titleDe || post.title)}
+                            <img
+                              src={post.image}
+                              alt={title}
+                              loading="lazy"
+                            />
                           </a>
                         </Link>
-                      </h5>
-                      <div className="lui-text">
-                        <p>
-                          {language === 'hu' ? post.excerpt : (post.excerptDe || post.excerpt)}
-                        </p>
-                        <div className="readmore">
+                      </div>
+                      <div className="desc">
+                        <div className="category lui-subtitle">
+                          <span>{category}</span>
+                        </div>
+                        <h5 className="lui-title">
                           <Link legacyBehavior href={`/blog/${post.slug}`}>
-                            <a className="lnk">
-                              {t('readMore')}
+                            <a>
+                              {title}
                             </a>
                           </Link>
+                        </h5>
+                        <div className="lui-text">
+                          <p>
+                            {excerpt}
+                          </p>
+                          <div className="readmore">
+                            <Link legacyBehavior href={`/blog/${post.slug}`}>
+                              <a className="lnk">
+                                {t('readMore')}
+                              </a>
+                            </Link>
+                          </div>
                         </div>
-                      </div>
-                      <div className="bottom">
-                        <div className="date lui-subtitle">
-                          <span>{formatDate(post.date)}</span>
-                        </div>
-                        <div className="author lui-subtitle">
-                          <span>by {post.author}</span>
+                        <div className="bottom">
+                          <div className="date lui-subtitle">
+                            <span>{formatDate(post.date)}</span>
+                          </div>
+                          <div className="author lui-subtitle">
+                            <span>by {post.author}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4">
@@ -137,7 +159,11 @@ const Blog = ({ posts }) => {
                   </h5>
                   <div className="archive-links">
                     <ul>
-                      {[...new Set(posts.map(post => language === 'hu' ? post.category : (post.categoryDe || post.category)))].map(category => (
+                      {[...new Set(posts.map(post => {
+                        if (language === 'de') return post.categoryDe || post.category;
+                        if (language === 'en') return post.categoryEn || post.categoryDe || post.category;
+                        return post.category;
+                      }))].map(category => (
                         <li key={category}>
                           <a>{category}</a>
                         </li>
@@ -150,33 +176,39 @@ const Blog = ({ posts }) => {
                     <span>{t('latestPosts')}</span>
                   </h5>
                   <div className="recent-posts">
-                    {posts.slice(0, 3).map(post => (
-                      <div key={post.slug} className="recent-post">
-                        <div className="image">
-                          <Link legacyBehavior href={`/blog/${post.slug}`}>
-                            <a>
-                              <img 
-                                src={post.image} 
-                                alt={language === 'hu' ? post.title : (post.titleDe || post.title)}
-                                loading="lazy"
-                              />
-                            </a>
-                          </Link>
-                        </div>
-                        <div className="desc">
-                          <h6 className="lui-title">
+                    {posts.slice(0, 3).map(post => {
+                      let title = post.title;
+                      if (language === 'de') title = post.titleDe || post.title;
+                      if (language === 'en') title = post.titleEn || post.titleDe || post.title;
+                      
+                      return (
+                        <div key={post.slug} className="recent-post">
+                          <div className="image">
                             <Link legacyBehavior href={`/blog/${post.slug}`}>
                               <a>
-                                {language === 'hu' ? post.title : (post.titleDe || post.title)}
+                                <img 
+                                  src={post.image} 
+                                  alt={title}
+                                  loading="lazy"
+                                />
                               </a>
                             </Link>
-                          </h6>
-                          <div className="date lui-subtitle">
-                            <span>{formatDate(post.date)}</span>
+                          </div>
+                          <div className="desc">
+                            <h6 className="lui-title">
+                              <Link legacyBehavior href={`/blog/${post.slug}`}>
+                                <a>
+                                  {title}
+                                </a>
+                              </Link>
+                            </h6>
+                            <div className="date lui-subtitle">
+                              <span>{formatDate(post.date)}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>

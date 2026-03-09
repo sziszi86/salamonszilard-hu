@@ -19,6 +19,12 @@ const LanguageSwitcher = () => {
             🇩🇪
           </span>
         );
+      case 'en':
+        return (
+          <span className="flag-icon">
+            🇬🇧
+          </span>
+        );
       default:
         return null;
     }

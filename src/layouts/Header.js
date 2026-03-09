@@ -201,36 +201,6 @@ const Header = () => {
                         <div className="menu-language-switcher">
                           <LanguageSwitcher />
                         </div>
-                        {/* social */}
-                        <div className="menu-social-links">
-                          <a
-                            href="http://dribbble.com"
-                            target="blank"
-                            className="scrolla-element-anim-1"
-                            title="dribbble"
-                          >
-                            <i className="fab fa-dribbble" />
-                          </a>
-                          <a
-                            href="http://twitter.com"
-                            target="blank"
-                            className="scrolla-element-anim-1"
-                            title="twitter"
-                          >
-                            <i className="fab fa-twitter" />
-                          </a>
-                          <a
-                            href="http://behance.com"
-                            target="blank"
-                            className="scrolla-element-anim-1"
-                            title="behance"
-                          >
-                            <i className="fab fa-behance" />
-                          </a>
-                        </div>
-                        <div className="v-line-block">
-                          <span />
-                        </div>
                       </div>
                     </div>
                   </div>

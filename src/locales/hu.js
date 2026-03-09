@@ -221,6 +221,7 @@ export const hu = {
   tags: 'Címkék',
   backToBlog: 'Vissza a bloghoz',
   allArticles: 'Minden cikk megtekintése',
+  articlesByTag: 'Cikkek {tag} témakörben',
   
   // Contact section
   contactMe: 'Kapcsolat',
@@ -240,6 +241,12 @@ export const hu = {
   yourMessage: 'Üzeneted',
   acceptTerms: '* Feltételek elfogadása.',
   thankYouMessage: 'Köszönöm, az üzeneted sikeresen elküldve.',
+  fillAllFields: 'Kérlek töltsd ki az összes mezőt!',
+  emailSubjectPrefix: 'Weboldal üzenet',
+  newEmailSubject: 'Új üzenet',
+  autoResponse: 'Köszönöm {name}, az üzeneted megérkezett! Hamarosan válaszolok.',
+  errorMessage: 'Hiba történt',
+  unknownError: 'Ismeretlen hiba történt az üzenet küldése során.',
   
   // Footer
   allRightsReserved: 'Minden jog fenntartva',
@@ -281,7 +288,16 @@ export const hu = {
     gameOver: "GAME OVER",
     codesCollected: "Kódok összegyűjtve",
     restartButton: "Újrakezdés",
-    playAgainButton: "Újra játék"
+    playAgainButton: "Újra játék",
+    score: "Pontszám",
+    rewards: "Jutalmak",
+    apples: "Almák",
+    hits: "Találatok",
+    congratulation: "GRATULÁLUNK!",
+    winDescription: "Összegyűjtöttél mind az 50 jutalmat!",
+    tapToJump: "Koppints az ugráshoz!",
+    collectRewards: "Gyűjtsd össze a jutalmakat pontokért!",
+    winGoal: "Gyűjts össze mind az 50 jutalmat a győzelemhez!"
   },
   pages: {
     worksList: "Munkák (Lista)",

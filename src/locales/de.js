@@ -217,6 +217,7 @@ export const de = {
   tags: 'Tags',
   backToBlog: 'Zurück zum Blog',
   allArticles: 'Alle Artikel anzeigen',
+  articlesByTag: 'Artikel zu {tag}',
 
   // Contact section
   contactMe: 'Kontaktieren Sie mich',
@@ -236,6 +237,12 @@ export const de = {
   yourMessage: 'Ihre Nachricht',
   acceptTerms: '* Bedingungen akzeptieren.',
   thankYouMessage: 'Danke, Ihre Nachricht wurde erfolgreich gesendet.',
+  fillAllFields: 'Bitte füllen Sie alle Felder aus!',
+  emailSubjectPrefix: 'Website-Nachricht',
+  newEmailSubject: 'Neue Nachricht',
+  autoResponse: 'Danke {name}, Ihre Nachricht ist eingegangen! Ich werde bald antworten.',
+  errorMessage: 'Ein Fehler ist aufgetreten',
+  unknownError: 'Beim Senden der Nachricht ist ein unbekannter Fehler aufgetreten.',
 
   // Footer
   allRightsReserved: 'Alle Rechte vorbehalten',
@@ -277,7 +284,16 @@ export const de = {
     gameOver: "GAME OVER",
     codesCollected: "Codes gesammelt",
     restartButton: "Neustart",
-    playAgainButton: "Nochmal spielen"
+    playAgainButton: "Nochmal spielen",
+    score: "Punktestand",
+    rewards: "Belohnungen",
+    apples: "Äpfel",
+    hits: "Treffer",
+    congratulation: "HERZLICHEN GLÜCKWUNSCH!",
+    winDescription: "Du hast alle 50 Belohnungen gesammelt!",
+    tapToJump: "Tippe zum Springen!",
+    collectRewards: "Sammle Belohnungen für Punkte!",
+    winGoal: "Sammle alle 50 Belohnungen zum Sieg!"
   },
   pages: {
     worksList: "Arbeiten (Liste)",

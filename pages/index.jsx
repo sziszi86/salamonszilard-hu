@@ -38,7 +38,7 @@ const Index = ({ latestPosts }) => {
 
     // Basic validation
     if (!name || !email || !subject || !message) {
-      setError('Kérlek töltsd ki az összes mezőt!');
+      setError(t('fillAllFields'));
       setShowError(true);
       setIsSubmitting(false);
       setTimeout(() => setShowError(false), 5000);
@@ -53,11 +53,11 @@ const Index = ({ latestPosts }) => {
       const formSubmitData = new FormData();
       formSubmitData.append('name', name);
       formSubmitData.append('email', email); 
-      formSubmitData.append('subject', `Weboldal üzenet: ${subject}`);
+      formSubmitData.append('subject', `${t('emailSubjectPrefix')}: ${subject}`);
       formSubmitData.append('message', message);
       formSubmitData.append('_next', window.location.href); // Redirect back to same page
-      formSubmitData.append('_subject', `Új üzenet: ${subject}`);
-      formSubmitData.append('_autoresponse', `Köszönöm ${name}, az üzeneted megérkezett! Hamarosan válaszolok.`);
+      formSubmitData.append('_subject', `${t('newEmailSubject')}: ${subject}`);
+      formSubmitData.append('_autoresponse', t('autoResponse').replace('{name}', name));
 
       const response = await fetch('https://formsubmit.co/salamonszilard@gmail.com', {
         method: 'POST',
@@ -77,7 +77,7 @@ const Index = ({ latestPosts }) => {
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      setError(`Hiba történt: ${error.message || 'Ismeretlen hiba történt az üzenet küldése során.'}`);
+      setError(`${t('errorMessage')}: ${error.message || t('unknownError')}`);
       setShowError(true);
       // Hide error message after 8 seconds for longer error messages
       setTimeout(() => setShowError(false), 8000);
@@ -88,7 +88,11 @@ const Index = ({ latestPosts }) => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString(language === 'hu' ? 'hu-HU' : 'de-DE', {
+    let locale = 'hu-HU';
+    if (language === 'de') locale = 'de-DE';
+    if (language === 'en') locale = 'en-US';
+    
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

@@ -478,7 +478,7 @@ function Game() {
   return (
     <Layout>
       <Head>
-        <title>Szalámi Szilárds Fejlesztő Játék</title>
+        <title>{t('title', 'game')}</title>
       </Head>
       
       <div style={{
@@ -872,15 +872,15 @@ function Game() {
               padding: '8px',
               borderRadius: '8px'
             }}>
-              <div>Score: {score}</div>
-              <div>Jutalmak: {totalRewardsCollected}/50</div>
+              <div>{t('score', 'game')}: {score}</div>
+              <div>{t('rewards', 'game')}: {totalRewardsCollected}/50</div>
               {applesCollected > 0 && (
                 <div style={{ color: '#27ae60', fontSize: '14px' }}>
-                  Almák: {applesCollected}/3 ❤️
+                  {t('apples', 'game')}: {applesCollected}/3 ❤️
                 </div>
               )}
               <div style={{ color: hitCount > 0 ? '#e74c3c' : 'transparent', fontSize: '14px' }}>
-                Hits: {hitCount}/3
+                {t('hits', 'game')}: {hitCount}/3
               </div>
             </div>
 
@@ -960,10 +960,10 @@ function Game() {
                 zIndex: 2000
               }}>
                 <div style={{ marginBottom: '20px', fontSize: '32px' }}>
-                  🎉 GRATULATION! 🎉
+                  🎉 {t('congratulation', 'game')} 🎉
                 </div>
                 <div style={{ marginBottom: '15px', fontSize: '28px' }}>
-                  🎊 SIKERES FEJLESZTÉS! 🎊
+                  🎊 {t('successMessage', 'game')} 🎊
                 </div>
                 <div style={{ 
                   fontSize: '16px', 
@@ -971,7 +971,7 @@ function Game() {
                   marginBottom: '20px',
                   maxWidth: '80%'
                 }}>
-                  Du hast alle 50 Belohnungen gesammelt! / Összegyűjtöttél mind az 50 jutalmat!
+                  {t('winDescription', 'game')}
                 </div>
                 <button
                   style={{
@@ -1003,7 +1003,7 @@ function Game() {
                     initializeGame();
                   }}
                 >
-                  Nochmal spielen / Újra játék
+                  {t('playAgainButton', 'game')}
                 </button>
               </div>
             )}
@@ -1031,8 +1031,7 @@ function Game() {
                 animation: 'bounce 1s infinite alternate'
               }}>
                 <div style={{ fontSize: '30px', marginBottom: '8px' }}>👆</div>
-                <div>Koppints az ugráshoz!</div>
-                <div style={{ fontSize: '12px', marginTop: '5px', opacity: 0.8 }}>Tap to jump!</div>
+                <div>{t('tapToJump', 'game')}</div>
               </div>
             </div>
           )}
@@ -1046,11 +1045,11 @@ function Game() {
           padding: '0 10px'
         }}>
           <p style={{ margin: '5px 0' }}>
-            {isMobile ? 'Koppints az ugráshoz! / Tap to jump!' : t('jumpInstructions', 'game')}
+            {t('jumpInstructions', 'game')}
           </p>
-          <p style={{ margin: '5px 0' }}>Gyűjtsd össze a jutalmakat pontokért! / Sammle Belohnungen für Punkte!</p>
+          <p style={{ margin: '5px 0' }}>{t('collectRewards', 'game')}</p>
           <p style={{ fontWeight: 'bold', color: '#e74c3c', margin: '10px 0', fontSize: isMobile ? '11px' : '13px' }}>
-            Gyűjts össze mind az 50 jutalmat a győzelemhez! / Sammle alle 50 Belohnungen zum Sieg!
+            {t('winGoal', 'game')}
           </p>
         </div>
         

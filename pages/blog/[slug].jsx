@@ -7,16 +7,30 @@ const BlogSingle = ({ post, latestPosts }) => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString(language === 'hu' ? 'hu-HU' : 'de-DE', {
+    let locale = 'hu-HU';
+    if (language === 'de') locale = 'de-DE';
+    if (language === 'en') locale = 'en-US';
+    
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
   };
 
-  const currentTitle = language === 'hu' ? post.frontMatter.title : (post.frontMatter.titleDe || post.frontMatter.title);
-  const currentCategory = language === 'hu' ? post.frontMatter.category : (post.frontMatter.categoryDe || post.frontMatter.category);
-  const currentTags = language === 'hu' ? post.frontMatter.tags : (post.frontMatter.tagsDe || post.frontMatter.tags);
+  let currentTitle = post.frontMatter.title;
+  let currentCategory = post.frontMatter.category;
+  let currentTags = post.frontMatter.tags;
+
+  if (language === 'de') {
+    currentTitle = post.frontMatter.titleDe || post.frontMatter.title;
+    currentCategory = post.frontMatter.categoryDe || post.frontMatter.category;
+    currentTags = post.frontMatter.tagsDe || post.frontMatter.tags;
+  } else if (language === 'en') {
+    currentTitle = post.frontMatter.titleEn || post.frontMatter.titleDe || post.frontMatter.title;
+    currentCategory = post.frontMatter.categoryEn || post.frontMatter.categoryDe || post.frontMatter.category;
+    currentTags = post.frontMatter.tagsEn || post.frontMatter.tagsDe || post.frontMatter.tags;
+  }
 
   return (
     <Layout>
@@ -125,33 +139,39 @@ const BlogSingle = ({ post, latestPosts }) => {
                     <span>{t('latestPosts')}</span>
                   </h5>
                   <div className="recent-posts">
-                    {latestPosts.filter(p => p.slug !== post.slug).slice(0, 3).map(latestPost => (
-                      <div key={latestPost.slug} className="recent-post">
-                        <div className="image">
-                          <Link legacyBehavior href={`/blog/${latestPost.slug}`}>
-                            <a>
-                              <img 
-                                src={latestPost.image} 
-                                alt={language === 'hu' ? latestPost.title : (latestPost.titleDe || latestPost.title)}
-                                loading="lazy"
-                              />
-                            </a>
-                          </Link>
-                        </div>
-                        <div className="desc">
-                          <h6 className="lui-title">
+                    {latestPosts.filter(p => p.slug !== post.slug).slice(0, 3).map(latestPost => {
+                      let title = latestPost.title;
+                      if (language === 'de') title = latestPost.titleDe || latestPost.title;
+                      if (language === 'en') title = latestPost.titleEn || latestPost.titleDe || latestPost.title;
+                      
+                      return (
+                        <div key={latestPost.slug} className="recent-post">
+                          <div className="image">
                             <Link legacyBehavior href={`/blog/${latestPost.slug}`}>
                               <a>
-                                {language === 'hu' ? latestPost.title : (latestPost.titleDe || latestPost.title)}
+                                <img 
+                                  src={latestPost.image} 
+                                  alt={title}
+                                  loading="lazy"
+                                />
                               </a>
                             </Link>
-                          </h6>
-                          <div className="date lui-subtitle">
-                            <span>{formatDate(latestPost.date)}</span>
+                          </div>
+                          <div className="desc">
+                            <h6 className="lui-title">
+                              <Link legacyBehavior href={`/blog/${latestPost.slug}`}>
+                                <a>
+                                  {title}
+                                </a>
+                              </Link>
+                            </h6>
+                            <div className="date lui-subtitle">
+                              <span>{formatDate(latestPost.date)}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
                 
@@ -164,7 +184,17 @@ const BlogSingle = ({ post, latestPosts }) => {
                       <li><Link legacyBehavior href="/blog?tag=React"><a>React</a></Link></li>
                       <li><Link legacyBehavior href="/blog?tag=NextJS"><a>Next.js</a></Link></li>
                       <li><Link legacyBehavior href="/blog?tag=CSS"><a>CSS</a></Link></li>
-                      <li><Link legacyBehavior href={`/blog?tag=${encodeURIComponent(language === 'hu' ? 'Webfejlesztés' : 'Webentwicklung')}`}><a>{language === 'hu' ? 'Webfejlesztés' : 'Webentwicklung'}</a></Link></li>
+                      <li>
+                        <Link legacyBehavior href={`/blog?tag=${encodeURIComponent(
+                          language === 'hu' ? 'Webfejlesztés' : 
+                          (language === 'de' ? 'Webentwicklung' : 'Web Development')
+                        )}`}>
+                          <a>
+                            {language === 'hu' ? 'Webfejlesztés' : 
+                             (language === 'de' ? 'Webentwicklung' : 'Web Development')}
+                          </a>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
